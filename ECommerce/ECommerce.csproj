@@ -129,7 +129,22 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DataPopulation\AddressData.cs" />
+    <Compile Include="DataPopulation\CartData.cs" />
     <Compile Include="DataPopulation\CartStatusData.cs" />
+    <Compile Include="DataPopulation\CategoryData.cs" />
+    <Compile Include="DataPopulation\InventoryData.cs" />
+    <Compile Include="DataPopulation\InvoiceData.cs" />
+    <Compile Include="DataPopulation\ItemsData.cs" />
+    <Compile Include="DataPopulation\OrdersData.cs" />
+    <Compile Include="DataPopulation\OrdersStatusData.cs" />
+    <Compile Include="DataPopulation\PaymentData.cs" />
+    <Compile Include="DataPopulation\PaymentModeData.cs" />
+    <Compile Include="DataPopulation\PreferenceData.cs" />
+    <Compile Include="DataPopulation\ProductData.cs" />
+    <Compile Include="DataPopulation\SellerData.cs" />
+    <Compile Include="DataPopulation\ShipmentData.cs" />
+    <Compile Include="DataPopulation\ThemeData.cs" />
     <Compile Include="DataPopulation\UserData.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

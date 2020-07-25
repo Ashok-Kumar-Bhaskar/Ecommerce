@@ -19,7 +19,7 @@ namespace ECommerce.DataPopulation
                 new User(){ FirstName ="Admin",Email="admin@psiog.com",Username="Admin",Password = "password", 
                   DefaultContact = 1234567890, Role="Admin",IsDeleted = false },
                 new User(){ FirstName ="Ashok", LastName="Kumar" ,Email="redmoon.ashok@gmail.com",Username="Ashok",Password = "password",
-                  DefaultContact = 9710948799, Role="Admin",IsDeleted = false }
+                  DefaultContact = 9710948799, Role="Customer",IsDeleted = false }
       };
     }
 

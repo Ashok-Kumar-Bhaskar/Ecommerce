@@ -18,7 +18,7 @@ namespace ECommerce.UnitTests
     #endregion
 
     #region [-- Methods--]
-    //Run this method only once, as Data Reducancy will take place
+    //Run this method only once, as Data Redundancy will take place
     private bool InsertDataAddToDB()
     {
       var m_UserData = new UserData();
@@ -32,6 +32,7 @@ namespace ECommerce.UnitTests
     }
     #endregion
 
+    #region [-- Test Methods--]
     [TestMethod]
     public void CheckWhetherDataHasBeenAdded()
     {
@@ -48,5 +49,6 @@ namespace ECommerce.UnitTests
       Assert.IsNotNull(userListData);
       Assert.AreEqual(userListData.Count, 2);
     }
+    #endregion
   }
 }

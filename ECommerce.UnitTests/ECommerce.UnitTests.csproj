@@ -57,8 +57,23 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UnitTests\AddressTests.cs" />
     <Compile Include="UnitTests\CartStatusTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitTests\CartTests.cs" />
+    <Compile Include="UnitTests\CategoryTests.cs" />
+    <Compile Include="UnitTests\InventoryTests.cs" />
+    <Compile Include="UnitTests\InvoiceTests.cs" />
+    <Compile Include="UnitTests\ItemsTests.cs" />
+    <Compile Include="UnitTests\OrderStatusTests.cs" />
+    <Compile Include="UnitTests\OrdersTests.cs" />
+    <Compile Include="UnitTests\PaymentModeTests.cs" />
+    <Compile Include="UnitTests\PaymentTests.cs" />
+    <Compile Include="UnitTests\PreferenceTests.cs" />
+    <Compile Include="UnitTests\ProductTests.cs" />
+    <Compile Include="UnitTests\SellerTests.cs" />
+    <Compile Include="UnitTests\ShipmentTests.cs" />
+    <Compile Include="UnitTests\ThemeTests.cs" />
     <Compile Include="UnitTests\UserTests.cs" />
   </ItemGroup>
   <ItemGroup>
