@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b3d53ae43ff14c6ca76b538c9c7229a4" Name="Diagram1">
+        <EntityTypeShape EntityType="ECommerceModel.Address" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ECommerceModel.Cart" Width="1.5" PointX="6" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ECommerceModel.CartStatu" Width="1.5" PointX="3.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ECommerceModel.Category" Width="1.5" PointX="1.5" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ECommerceModel.Inventory" Width="1.5" PointX="6" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ECommerceModel.Invoice" Width="1.5" PointX="13.5" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ECommerceModel.Item" Width="1.5" PointX="8.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ECommerceModel.Order" Width="1.5" PointX="11.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ECommerceModel.OrdersStatu" Width="1.5" PointX="9" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ECommerceModel.Payment" Width="1.5" PointX="9" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ECommerceModel.PaymentMode" Width="1.5" PointX="6.75" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ECommerceModel.Preference" Width="1.5" PointX="6" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ECommerceModel.Product" Width="1.5" PointX="3.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ECommerceModel.Seller" Width="1.5" PointX="3.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ECommerceModel.Shipment" Width="1.5" PointX="9" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ECommerceModel.Theme" Width="1.5" PointX="3.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ECommerceModel.User" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <AssociationConnector Association="ECommerceModel.Address_User" ManuallyRouted="false" />
+        <AssociationConnector Association="ECommerceModel.Cart_CartStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="ECommerceModel.Cart_Items_Cart" ManuallyRouted="false" />
+        <AssociationConnector Association="ECommerceModel.Cart_User" ManuallyRouted="false" />
+        <AssociationConnector Association="ECommerceModel.Orders_Cart" ManuallyRouted="false" />
+        <AssociationConnector Association="ECommerceModel.Product_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="ECommerceModel.Cart_Items_Inventory" ManuallyRouted="false" />
+        <AssociationConnector Association="ECommerceModel.Inventory_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="ECommerceModel.Stock_Seller" ManuallyRouted="false" />
+        <AssociationConnector Association="ECommerceModel.Invoice_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="ECommerceModel.Orders_Orders_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="ECommerceModel.Orders_Payment" ManuallyRouted="false" />
+        <AssociationConnector Association="ECommerceModel.Orders_Shipment" ManuallyRouted="false" />
+        <AssociationConnector Association="ECommerceModel.Orders_User" ManuallyRouted="false" />
+        <AssociationConnector Association="ECommerceModel.Payment_Payment_Mode" ManuallyRouted="false" />
+        <AssociationConnector Association="ECommerceModel.Preference_Theme" ManuallyRouted="false" />
+        <AssociationConnector Association="ECommerceModel.Preference_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

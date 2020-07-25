@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ECommerceModelStoreContainer" CdmEntityContainer="ECommerceEntities">
+    <EntitySetMapping Name="Addresses">
+      <EntityTypeMapping TypeName="ECommerceModel.Address">
+        <MappingFragment StoreEntitySet="Address">
+          <ScalarProperty Name="Address_ID" ColumnName="Address_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Door" ColumnName="Door" />
+          <ScalarProperty Name="Street1" ColumnName="Street1" />
+          <ScalarProperty Name="Street2" ColumnName="Street2" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="AlternateContact" ColumnName="AlternateContact" />
+          <ScalarProperty Name="IsShipping" ColumnName="IsShipping" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Carts">
+      <EntityTypeMapping TypeName="ECommerceModel.Cart">
+        <MappingFragment StoreEntitySet="Cart">
+          <ScalarProperty Name="Cart_ID" ColumnName="Cart_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="CartStatus_ID" ColumnName="CartStatus_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CartStatus">
+      <EntityTypeMapping TypeName="ECommerceModel.CartStatu">
+        <MappingFragment StoreEntitySet="CartStatus">
+          <ScalarProperty Name="CartStatus_ID" ColumnName="CartStatus_ID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="ECommerceModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Inventories">
+      <EntityTypeMapping TypeName="ECommerceModel.Inventory">
+        <MappingFragment StoreEntitySet="Inventory">
+          <ScalarProperty Name="Commodity_ID" ColumnName="Commodity_ID" />
+          <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+          <ScalarProperty Name="Seller_ID" ColumnName="Seller_ID" />
+          <ScalarProperty Name="Stock" ColumnName="Stock" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Invoices">
+      <EntityTypeMapping TypeName="ECommerceModel.Invoice">
+        <MappingFragment StoreEntitySet="Invoice">
+          <ScalarProperty Name="Invoice_Number" ColumnName="Invoice_Number" />
+          <ScalarProperty Name="Orders_ID" ColumnName="Orders_ID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Items">
+      <EntityTypeMapping TypeName="ECommerceModel.Item">
+        <MappingFragment StoreEntitySet="Items">
+          <ScalarProperty Name="Items_ID" ColumnName="Items_ID" />
+          <ScalarProperty Name="Cart_ID" ColumnName="Cart_ID" />
+          <ScalarProperty Name="Commodity_ID" ColumnName="Commodity_ID" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="ECommerceModel.Order">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="Orders_ID" ColumnName="Orders_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Cart_ID" ColumnName="Cart_ID" />
+          <ScalarProperty Name="Payment_ID" ColumnName="Payment_ID" />
+          <ScalarProperty Name="Shipment_ID" ColumnName="Shipment_ID" />
+          <ScalarProperty Name="OrdersStatus_Code" ColumnName="OrdersStatus_Code" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="EstimatedDate" ColumnName="EstimatedDate" />
+          <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrdersStatus">
+      <EntityTypeMapping TypeName="ECommerceModel.OrdersStatu">
+        <MappingFragment StoreEntitySet="OrdersStatus">
+          <ScalarProperty Name="OrdersStatus_Code" ColumnName="OrdersStatus_Code" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Payments">
+      <EntityTypeMapping TypeName="ECommerceModel.Payment">
+        <MappingFragment StoreEntitySet="Payment">
+          <ScalarProperty Name="Payment_ID" ColumnName="Payment_ID" />
+          <ScalarProperty Name="PaymentMode_ID" ColumnName="PaymentMode_ID" />
+          <ScalarProperty Name="Paid" ColumnName="Paid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentModes">
+      <EntityTypeMapping TypeName="ECommerceModel.PaymentMode">
+        <MappingFragment StoreEntitySet="PaymentMode">
+          <ScalarProperty Name="PaymentMode_ID" ColumnName="PaymentMode_ID" />
+          <ScalarProperty Name="Mode" ColumnName="Mode" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Preferences">
+      <EntityTypeMapping TypeName="ECommerceModel.Preference">
+        <MappingFragment StoreEntitySet="Preference">
+          <ScalarProperty Name="Preference_ID" ColumnName="Preference_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Theme_ID" ColumnName="Theme_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="ECommerceModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+          <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
+          <ScalarProperty Name="Brand" ColumnName="Brand" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="Variance" ColumnName="Variance" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ReorderQuantity" ColumnName="ReorderQuantity" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sellers">
+      <EntityTypeMapping TypeName="ECommerceModel.Seller">
+        <MappingFragment StoreEntitySet="Seller">
+          <ScalarProperty Name="Seller_ID" ColumnName="Seller_ID" />
+          <ScalarProperty Name="SellerName" ColumnName="SellerName" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Shipments">
+      <EntityTypeMapping TypeName="ECommerceModel.Shipment">
+        <MappingFragment StoreEntitySet="Shipment">
+          <ScalarProperty Name="Shipment_ID" ColumnName="Shipment_ID" />
+          <ScalarProperty Name="AgentName" ColumnName="AgentName" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Themes">
+      <EntityTypeMapping TypeName="ECommerceModel.Theme">
+        <MappingFragment StoreEntitySet="Theme">
+          <ScalarProperty Name="Theme_ID" ColumnName="Theme_ID" />
+          <ScalarProperty Name="ThemeName" ColumnName="ThemeName" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="ECommerceModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="DefaultContact" ColumnName="DefaultContact" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
