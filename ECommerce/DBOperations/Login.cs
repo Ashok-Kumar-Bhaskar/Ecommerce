@@ -1,42 +1,12 @@
 ﻿using ECommerce.HelperClasses;
 using ECommerce.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using System.Web;
 
 namespace ECommerce.DBOperations
 {
   public class Login
   {
-    #region [-- Properties --] 
-    private User user = new User();
-
-    #region [-- Username --]
-    private string m_Username { get; set; }
-    public string Username
-    {
-      get{
-        return m_Username;
-      }      
-      set => m_Username = value;
-    }
-    #endregion
-
-    #region [-- Password --]
-    private string m_Password { get; set; }
-    public string Password
-    {
-      get{
-        return m_Password;
-      }
-      set => m_Password = value;
-    }
-    #endregion
-
-    #endregion
-
     #region [-- Methods --]
     public bool? IsUsernameExist(string givenUsername)
     {
@@ -70,16 +40,14 @@ namespace ECommerce.DBOperations
 
     public bool? IsPhoneNumberExist(long givenPhoneNumber)
     {
-      try
-      {
+      try {
         using (ECommerceEntities db = new ECommerceEntities())
         {
           var result = db.Users.Where(u => u.DefaultContact == givenPhoneNumber).FirstOrDefault();
           return result == null ? false : true;
         }
       }
-      catch (Exception ex)
-      {
+      catch (Exception ex) {
         LogFile.WriteLog(ex);
         return false;
       }
@@ -99,6 +67,7 @@ namespace ECommerce.DBOperations
         return null;
       }
     }
+
     public bool? CheckForValidCredentials(string givenUsername, string givenPassword)
     {
       try {
@@ -114,13 +83,12 @@ namespace ECommerce.DBOperations
         }
         return false;
       }
-
       catch (Exception ex) {
         LogFile.WriteLog(ex);
         return false;
       }
     }
-
     #endregion
+
   }
 }

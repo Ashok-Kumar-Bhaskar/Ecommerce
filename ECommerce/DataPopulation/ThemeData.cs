@@ -1,19 +1,18 @@
-﻿using ECommerce.Models;
-using System;
+﻿using ECommerce.Interfaces;
+using ECommerce.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace ECommerce.DataPopulation
 {
-  public class ThemeData
+  public class ThemeData : IDataPopulation
   {
     #region [-- Properties --] 
     private IList<Theme> m_ListTheme = new List<Theme>();
     #endregion
 
     #region [-- Methods --]
-    private void InitializeDataForTheme()
+    public void InitializeData()
     {
       m_ListTheme = new List<Theme>() {
                 new Theme(){ ThemeName = "Normal Mode", IsDeleted = false },
@@ -30,7 +29,7 @@ namespace ECommerce.DataPopulation
     #region [-- Constructor --]
     public ThemeData()
     {
-      InitializeDataForTheme();
+      InitializeData();
     }
     #endregion
   }

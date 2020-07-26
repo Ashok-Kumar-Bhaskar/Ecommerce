@@ -1,19 +1,18 @@
-﻿using ECommerce.Models;
-using System;
+﻿using ECommerce.Interfaces;
+using ECommerce.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace ECommerce.DataPopulation
 {
-  public class OrdersStatusData
+  public class OrdersStatusData : IDataPopulation
   {
     #region [-- Properties --] 
     private IList<OrdersStatu> m_ListOrdersStatus = new List<OrdersStatu>();
     #endregion
 
     #region [-- Methods --]
-    private void InitializeDataForOrdersStatus()
+    public void InitializeData()
     {
       m_ListOrdersStatus = new List<OrdersStatu>() {
                 new OrdersStatu(){ Status = "Initiated"  },
@@ -30,7 +29,7 @@ namespace ECommerce.DataPopulation
     #region [-- Constructor --]
     public OrdersStatusData()
     {
-      InitializeDataForOrdersStatus();
+      InitializeData();
     }
     #endregion
   }

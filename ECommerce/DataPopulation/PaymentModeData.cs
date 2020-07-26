@@ -1,19 +1,18 @@
-﻿using ECommerce.Models;
-using System;
+﻿using ECommerce.Interfaces;
+using ECommerce.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace ECommerce.DataPopulation
 {
-  public class PaymentModeData
+  public class PaymentModeData : IDataPopulation
   {
     #region [-- Properties --] 
     private IList<PaymentMode> m_ListPaymentMode = new List<PaymentMode>();
     #endregion
 
     #region [-- Methods --]
-    private void InitializeDataForPaymentMode()
+    public void InitializeData()
     {
       m_ListPaymentMode = new List<PaymentMode>() {
                 new PaymentMode(){ Mode = "Credit Card", IsDeleted = false },
@@ -30,7 +29,7 @@ namespace ECommerce.DataPopulation
     #region [-- Constructor --]
     public PaymentModeData()
     {
-      InitializeDataForPaymentMode();
+      InitializeData();
     }
     #endregion
   }

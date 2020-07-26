@@ -1,19 +1,18 @@
-﻿using ECommerce.Models;
-using System;
+﻿using ECommerce.Interfaces;
+using ECommerce.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace ECommerce.DataPopulation
 {
-  public class ShipmentData
+  public class ShipmentData : IDataPopulation
   {
     #region [-- Properties --] 
     private IList<Shipment> m_ListShipment = new List<Shipment>();
     #endregion
 
     #region [-- Methods --]
-    private void InitializeDataForShipment()
+    public void InitializeData()
     {
       m_ListShipment = new List<Shipment>() {
                 new Shipment(){ AgentName = "BlueDart", IsDeleted = false },
@@ -30,7 +29,7 @@ namespace ECommerce.DataPopulation
     #region [-- Constructor --]
     public ShipmentData()
     {
-      InitializeDataForShipment();
+      InitializeData();
     }
     #endregion
   }

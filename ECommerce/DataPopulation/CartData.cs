@@ -1,19 +1,18 @@
-﻿using ECommerce.Models;
-using System;
+﻿using ECommerce.Interfaces;
+using ECommerce.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace ECommerce.DataPopulation
 {
-  public class CartData
+  public class CartData : IDataPopulation
   {
     #region [-- Properties --] 
     private IList<Cart> m_ListCart = new List<Cart>();
     #endregion
 
     #region [-- Methods --]
-    private void InitializeDataForCart()
+    public void InitializeData()
     {
       m_ListCart = new List<Cart>() {
                 new Cart(){ User_ID = 101, CartStatus_ID = 45001}
@@ -29,7 +28,7 @@ namespace ECommerce.DataPopulation
     #region [-- Constructor --]
     public CartData()
     {
-      InitializeDataForCart();
+      InitializeData();
     }
     #endregion
   }

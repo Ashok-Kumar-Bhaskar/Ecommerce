@@ -1,19 +1,18 @@
-﻿using ECommerce.Models;
-using System;
+﻿using ECommerce.Interfaces;
+using ECommerce.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace ECommerce.DataPopulation
 {
-  public class PreferenceData
+  public class PreferenceData : IDataPopulation
   {
     #region [-- Properties --] 
     private IList<Preference> m_ListPreference = new List<Preference>();
     #endregion
 
     #region [-- Methods --]
-    private void InitializeDataForPreference()
+    public void InitializeData()
     {
       m_ListPreference = new List<Preference>() {
                 new Preference(){ User_ID = 101, Theme_ID = 40000002 },
@@ -30,7 +29,7 @@ namespace ECommerce.DataPopulation
     #region [-- Constructor --]
     public PreferenceData()
     {
-      InitializeDataForPreference();
+      InitializeData();
     }
     #endregion
   }

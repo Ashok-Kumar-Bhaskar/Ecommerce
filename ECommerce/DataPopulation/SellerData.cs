@@ -1,19 +1,18 @@
-﻿using ECommerce.Models;
-using System;
+﻿using ECommerce.Interfaces;
+using ECommerce.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace ECommerce.DataPopulation
 {
-  public class SellerData
+  public class SellerData : IDataPopulation
   {
     #region [-- Properties --] 
     private IList<Seller> m_ListSeller = new List<Seller>();
     #endregion
 
     #region [-- Methods --]
-    private void InitializeDataForSeller()
+    public void InitializeData()
     {
       m_ListSeller = new List<Seller>() {
                 new Seller(){ SellerName = "Delhi Enterprise", IsDeleted = false },
@@ -30,7 +29,7 @@ namespace ECommerce.DataPopulation
     #region [-- Constructor --]
     public SellerData()
     {
-      InitializeDataForSeller();
+      InitializeData();
     }
     #endregion
   }

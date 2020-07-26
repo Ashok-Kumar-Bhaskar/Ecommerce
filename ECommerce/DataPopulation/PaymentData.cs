@@ -1,19 +1,18 @@
-﻿using ECommerce.Models;
-using System;
+﻿using ECommerce.Interfaces;
+using ECommerce.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace ECommerce.DataPopulation
 {
-  public class PaymentData
+  public class PaymentData : IDataPopulation
   {
     #region [-- Properties --] 
     private IList<Payment> m_ListPayment = new List<Payment>();
     #endregion
 
     #region [-- Methods --]
-    private void InitializeDataForPayment()
+    public void InitializeData()
     {
       m_ListPayment = new List<Payment>() {
                 new Payment(){ PaymentMode_ID = 742001, Paid = true },
@@ -30,7 +29,7 @@ namespace ECommerce.DataPopulation
     #region [-- Constructor --]
     public PaymentData()
     {
-      InitializeDataForPayment();
+      InitializeData();
     }
     #endregion
   }

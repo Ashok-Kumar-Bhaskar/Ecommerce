@@ -80,3 +80,4 @@ C:\Users\ashok\Desktop\Psiog\Phase 3\End To End\EcommerceDataPopulation\ECommerc
 C:\Users\ashok\Desktop\Psiog\Phase 3\End To End\EcommerceDataPopulation\ECommerce\obj\Debug\ECommerce.csproj.CopyComplete
 C:\Users\ashok\Desktop\Psiog\Phase 3\End To End\EcommerceDataPopulation\ECommerce\obj\Debug\ECommerce.dll
 C:\Users\ashok\Desktop\Psiog\Phase 3\End To End\EcommerceDataPopulation\ECommerce\obj\Debug\ECommerce.pdb
+C:\Users\ashok\Desktop\Psiog\Phase 3\End To End\EcommerceDataPopulation\ECommerce\obj\Debug\ECommerce.csprojAssemblyReference.cache

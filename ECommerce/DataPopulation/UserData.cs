@@ -1,19 +1,18 @@
-﻿using ECommerce.Models;
-using System;
+﻿using ECommerce.Interfaces;
+using ECommerce.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace ECommerce.DataPopulation
 {
-  public class UserData
+  public class UserData : IDataPopulation
   {
     #region [-- Properties --] 
     private IList<User> m_ListUser = new List<User>();
     #endregion
 
     #region [-- Methods --]
-    private void InitializeDataForUser()
+    public void InitializeData()
     {
       m_ListUser = new List<User>() {
                 new User(){ FirstName ="Admin",Email="admin@psiog.com",Username="Admin",Password = "password", 
@@ -32,7 +31,7 @@ namespace ECommerce.DataPopulation
     #region [-- Constructor --]
     public UserData()
     {
-      InitializeDataForUser();
+      InitializeData();
     }
     #endregion
   }

@@ -1,19 +1,18 @@
-﻿using ECommerce.Models;
-using System;
+﻿using ECommerce.Interfaces;
+using ECommerce.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace ECommerce.DataPopulation
 {
-  public class ProductData
+  public class ProductData : IDataPopulation
   {
     #region [-- Properties --] 
     private IList<Product> m_ListProduct = new List<Product>();
     #endregion
 
     #region [-- Methods --]
-    private void InitializeDataForProduct()
+    public void InitializeData()
     {
       m_ListProduct = new List<Product>() {
                 new Product(){ Category_ID = 1, Brand = "Poco", ProductName = "F1", Variance = "64GB + 6GB", Color = "Black",
@@ -32,7 +31,7 @@ namespace ECommerce.DataPopulation
     #region [-- Constructor --]
     public ProductData()
     {
-      InitializeDataForProduct();
+      InitializeData();
     }
     #endregion
   }

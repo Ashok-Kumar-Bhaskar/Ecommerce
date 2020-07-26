@@ -1,19 +1,18 @@
-﻿using ECommerce.Models;
-using System;
+﻿using ECommerce.Interfaces;
+using ECommerce.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace ECommerce.DataPopulation
 {
-  public class ItemsData
+  public class ItemsData : IDataPopulation
   {
     #region [-- Properties --] 
     private IList<Item> m_ListItem = new List<Item>();
     #endregion
 
     #region [-- Methods --]
-    private void InitializeDataForItem()
+    public void InitializeData()
     {
       m_ListItem = new List<Item>() {
                 new Item(){ Cart_ID = 50001, Commodity_ID = 210002, Quantity = 1, Amount = 21999},
@@ -30,7 +29,7 @@ namespace ECommerce.DataPopulation
     #region [-- Constructor --]
     public ItemsData()
     {
-      InitializeDataForItem();
+      InitializeData();
     }
     #endregion
   }

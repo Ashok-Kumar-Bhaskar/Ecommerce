@@ -1,19 +1,18 @@
-﻿using ECommerce.Models;
-using System;
+﻿using ECommerce.Interfaces;
+using ECommerce.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace ECommerce.DataPopulation
 {
-  public class CategoryData
+  public class CategoryData : IDataPopulation
   {
     #region [-- Properties --] 
     private IList<Category> m_ListCategory = new List<Category>();
     #endregion
 
     #region [-- Methods --]
-    private void InitializeDataForCategory()
+    public void InitializeData()
     {
       m_ListCategory = new List<Category>() {
                 new Category(){ CategoryName = "Smartphones", IsDeleted = false },
@@ -30,7 +29,7 @@ namespace ECommerce.DataPopulation
     #region [-- Constructor --]
     public CategoryData()
     {
-      InitializeDataForCategory();
+      InitializeData();
     }
     #endregion
   }
