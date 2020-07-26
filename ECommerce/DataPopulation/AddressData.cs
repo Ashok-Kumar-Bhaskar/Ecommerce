@@ -1,19 +1,20 @@
-﻿using ECommerce.Models;
+﻿using ECommerce.Interfaces;
+using ECommerce.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ECommerce.DataPopulation
+namespace ECommerce.DataPopulation 
 {
-  public class AddressData
+  public class AddressData : IDataPopulation
   {
     #region [-- Properties --] 
     private IList<Address> m_ListAddress = new List<Address>();
     #endregion
 
     #region [-- Methods --]
-    private void InitializeDataForAddress()
+    public void InitializeData()
     {
       m_ListAddress = new List<Address>() {
                 new Address(){ User_ID = 101, Door = 57, Street1 = "Sri Venkateshwara Nagar", Street2 = "1st Cross Street", Area = "Pallikaranai",
@@ -34,7 +35,7 @@ namespace ECommerce.DataPopulation
     #region [-- Constructor --]
     public AddressData()
     {
-      InitializeDataForAddress();
+      InitializeData();
     }
     #endregion
   }

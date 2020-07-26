@@ -146,9 +146,12 @@
     <Compile Include="DataPopulation\ShipmentData.cs" />
     <Compile Include="DataPopulation\ThemeData.cs" />
     <Compile Include="DataPopulation\UserData.cs" />
+    <Compile Include="DBOperations\Login.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper Classes\LogFile.cs" />
+    <Compile Include="Interfaces\IDataPopulation.cs" />
     <Compile Include="Models\Address.cs">
       <DependentUpon>ECommerce.tt</DependentUpon>
     </Compile>

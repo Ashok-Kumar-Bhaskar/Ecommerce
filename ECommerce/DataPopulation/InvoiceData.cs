@@ -1,4 +1,5 @@
-﻿using ECommerce.Models;
+﻿using ECommerce.Interfaces;
+using ECommerce.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,14 +7,14 @@ using System.Web;
 
 namespace ECommerce.DataPopulation
 {
-  public class InvoiceData
+  public class InvoiceData : IDataPopulation
   {
     #region [-- Properties --] 
     private IList<Invoice> m_ListInvoice = new List<Invoice>();
     #endregion
 
     #region [-- Methods --]
-    private void InitializeDataForInvoice()
+    public void InitializeData()
     {
       m_ListInvoice = new List<Invoice>() {
                 new Invoice(){ Orders_ID = 700002 }
@@ -29,7 +30,7 @@ namespace ECommerce.DataPopulation
     #region [-- Constructor --]
     public InvoiceData()
     {
-      InitializeDataForInvoice();
+      InitializeData();
     }
     #endregion
   }
