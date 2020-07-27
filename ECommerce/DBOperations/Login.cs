@@ -7,15 +7,27 @@ namespace ECommerce.DBOperations
 {
   public class Login
   {
+    private ECommerceEntities db = new ECommerceEntities();
     #region [-- Methods --]
+    public User FindUser(string givenUsername)
+    {
+      try
+      {
+          var result = db.Users.Where(u => u.Username == givenUsername).FirstOrDefault();
+          return result == null ? null: result;
+      }
+      catch (Exception ex)
+      {
+        LogFile.WriteLog(ex);
+        return null;
+      }
+    }
+
     public bool? IsUsernameExist(string givenUsername)
     {
       try {
-        using (ECommerceEntities db = new ECommerceEntities())
-        {
           var result = db.Users.Where(u => u.Username == givenUsername).FirstOrDefault();
           return result == null ? false : true;
-        }
       }
       catch (Exception ex) {
         LogFile.WriteLog(ex);
@@ -23,14 +35,16 @@ namespace ECommerce.DBOperations
       }
     }
 
+    //public bool? IsValidPhoneNumber(object givenObject)
+    //{
+    //  object.defaultPhonenumber 
+    //}
+
     public bool? IsEmailExist(string givenEmail)
     {
       try {
-        using (ECommerceEntities db = new ECommerceEntities())
-        {
           var result = db.Users.Where(u => u.Email == givenEmail).FirstOrDefault();
           return result == null ? false : true;
-        }
       }
       catch (Exception ex) {
         LogFile.WriteLog(ex);
@@ -41,11 +55,8 @@ namespace ECommerce.DBOperations
     public bool? IsPhoneNumberExist(long givenPhoneNumber)
     {
       try {
-        using (ECommerceEntities db = new ECommerceEntities())
-        {
           var result = db.Users.Where(u => u.DefaultContact == givenPhoneNumber).FirstOrDefault();
           return result == null ? false : true;
-        }
       }
       catch (Exception ex) {
         LogFile.WriteLog(ex);
@@ -56,11 +67,8 @@ namespace ECommerce.DBOperations
     public User GetUserDetails(string givenUsername)
     {
       try {
-        using (ECommerceEntities db = new ECommerceEntities())
-        {
           var user = db.Users.Where(u => u.Username == givenUsername).FirstOrDefault();
           return user == null ? null : user;
-        }
       }
       catch (Exception ex) {
         LogFile.WriteLog(ex);

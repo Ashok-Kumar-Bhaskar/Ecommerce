@@ -1,4 +1,5 @@
 ﻿using ECommerce.DataPopulation;
+using ECommerce.DBOperations;
 using ECommerce.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
@@ -10,17 +11,27 @@ namespace ECommerce.UnitTests
   {
     #region [-- Properties --]
     private ECommerceEntities db = new ECommerceEntities();
+    private CartData m_CartData = new CartData();
+    private Login login = new Login();
+    private User user = new User();
 
     #endregion
 
     #region [-- Methods--]
     //Run this method only once, as Data Redundancy will take place
-    private bool InsertDataAddToDB()
+    private bool InsertDataAddToDB(string username)
     {
-      var m_CartData = new CartData();
-      db.Carts.AddRange(m_CartData.ReturnListDataForCart().ToList());
+      user = login.FindUser(username);
+      if (user.Role == "Admin")
+      {
+        db.Carts.AddRange(m_CartData.ReturnListDataForCart().ToList());
+      }
+      else
+      {
+        return false;
+      }
 
-      var result = db.SaveChanges();
+      int result = db.SaveChanges();
       if (result == 0)
         return false;
       else
@@ -29,12 +40,22 @@ namespace ECommerce.UnitTests
     #endregion
 
     #region [-- Test Methods--]
+    //Run this method only once, as Data Redundancy will take place
     [TestMethod]
-    public void CheckWhetherDataHasBeenAdded()
+    public void CheckWhetherDataHasBeenAdded_ByAdmin()
     {
-      var result = InsertDataAddToDB();
+      bool result = InsertDataAddToDB("Admin");
 
       Assert.IsTrue(result);
+    }
+
+    [TestMethod]
+    //Run this method only once, as Data Redundancy will take place
+    public void CheckWhetherDataCannotBeAdded_ByUser()
+    {
+      bool result = InsertDataAddToDB("Ashok");
+
+      Assert.IsFalse(result);
     }
 
     [TestMethod]
@@ -43,7 +64,7 @@ namespace ECommerce.UnitTests
       var cartListData = db.Carts.ToList();
 
       Assert.IsNotNull(cartListData);
-      Assert.AreEqual(cartListData.Count, 1);
+      Assert.AreEqual(cartListData.Count, 4);
     }
     #endregion
   }

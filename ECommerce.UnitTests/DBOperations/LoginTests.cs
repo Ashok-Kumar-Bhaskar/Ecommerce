@@ -12,7 +12,7 @@ namespace ECommerce.UnitTests.DBOperations
     public void CheckIsUsernameExist(string username, bool expectedValue)
     {
       Login login = new Login();
-      var result = login.IsUsernameExist(username);
+      bool? result = login.IsUsernameExist(username);
 
       Assert.AreEqual(result, expectedValue);
     }
@@ -39,7 +39,7 @@ namespace ECommerce.UnitTests.DBOperations
     public void CheckForValidCredentials(string username,string password, bool expectedValue)
     {
       Login login = new Login();
-      var result = login.CheckForValidCredentials(username,password);
+      bool? result = login.CheckForValidCredentials(username,password);
 
       Assert.AreEqual(result, expectedValue);
     }
@@ -50,7 +50,7 @@ namespace ECommerce.UnitTests.DBOperations
     public void CheckIsEmailExist(string emailID, bool expectedValue)
     {
       Login login = new Login();
-      var result = login.IsEmailExist(emailID);
+      bool? result = login.IsEmailExist(emailID);
 
       Assert.AreEqual(result, expectedValue);
     }
@@ -60,7 +60,7 @@ namespace ECommerce.UnitTests.DBOperations
     public void CheckIsPhoneNumberExist(long number, bool expectedValue)
     {
       Login login = new Login();
-      var result = login.IsPhoneNumberExist(number);
+      bool? result = login.IsPhoneNumberExist(number);
 
       Assert.AreEqual(result, expectedValue);
     }

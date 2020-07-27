@@ -20,7 +20,7 @@ namespace ECommerce.DataPopulation
       };
     }
 
-    public IEnumerable<Order> ReturnListDataForOrder()
+    public IEnumerable<Order> ReturnListDataForOrders()
     {
       return m_ListOrder.ToList();
     }

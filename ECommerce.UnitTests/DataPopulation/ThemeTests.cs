@@ -1,4 +1,5 @@
 ﻿using ECommerce.DataPopulation;
+using ECommerce.DBOperations;
 using ECommerce.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
@@ -10,17 +11,27 @@ namespace ECommerce.UnitTests
   {
     #region [-- Properties --]
     private ECommerceEntities db = new ECommerceEntities();
+    private ThemeData m_ThemeData = new ThemeData();
+    private Login login = new Login();
+    private User user = new User();
 
     #endregion
 
     #region [-- Methods--]
     //Run this method only once, as Data Redundancy will take place
-    private bool InsertDataAddToDB()
+    private bool InsertDataAddToDB(string username)
     {
-      var m_ThemeData = new ThemeData();
-      db.Themes.AddRange(m_ThemeData.ReturnListDataForTheme().ToList());
+      user = login.FindUser(username);
+      if (user.Role == "Admin")
+      {
+        db.Themes.AddRange(m_ThemeData.ReturnListDataForTheme().ToList());
+      }
+      else
+      {
+        return false;
+      }
 
-      var result = db.SaveChanges();
+      int result = db.SaveChanges();
       if (result == 0)
         return false;
       else
@@ -29,21 +40,31 @@ namespace ECommerce.UnitTests
     #endregion
 
     #region [-- Test Methods--]
+    //Run this method only once, as Data Redundancy will take place
     [TestMethod]
-    public void CheckWhetherDataHasBeenAdded()
+    public void CheckWhetherDataHasBeenAdded_ByAdmin()
     {
-      var result = InsertDataAddToDB();
+      bool result = InsertDataAddToDB("Admin");
 
       Assert.IsTrue(result);
     }
 
     [TestMethod]
+    //Run this method only once, as Data Redundancy will take place
+    public void CheckWhetherDataCannotBeAdded_ByUser()
+    {
+      bool result = InsertDataAddToDB("Ashok");
+
+      Assert.IsFalse(result);
+    }
+
+    [TestMethod]
     public void CheckWhetherItemsCountIsEqual()
     {
-      var ThemeListData = db.Themes.ToList();
+      var themeListData = db.Themes.ToList();
 
-      Assert.IsNotNull(ThemeListData);
-      Assert.AreEqual(ThemeListData.Count, 2);
+      Assert.IsNotNull(themeListData);
+      Assert.AreEqual(themeListData.Count, 2);
     }
     #endregion
   }

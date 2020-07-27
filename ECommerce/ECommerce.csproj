@@ -151,6 +151,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper Classes\LogFile.cs" />
+    <Compile Include="Helper Classes\PasswordHash.cs" />
     <Compile Include="Interfaces\IDataPopulation.cs" />
     <Compile Include="Models\Address.cs">
       <DependentUpon>ECommerce.tt</DependentUpon>
