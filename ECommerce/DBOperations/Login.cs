@@ -1,7 +1,9 @@
-﻿using ECommerce.HelperClasses;
+﻿using ECommerce.DataPopulation;
+using ECommerce.HelperClasses;
 using ECommerce.Models;
 using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace ECommerce.DBOperations
 {
@@ -35,10 +37,22 @@ namespace ECommerce.DBOperations
       }
     }
 
-    //public bool? IsValidPhoneNumber(object givenObject)
-    //{
-    //  object.defaultPhonenumber 
-    //}
+    public bool? IsValidPhoneNumber(string givenPhoneNumber)
+    {
+      String regx = "(0/91)?[7-9][0-9]{9}";
+      bool result = Regex.Match(givenPhoneNumber,regx).Success;
+      Console.Write(result);
+      return result;
+    }
+
+    public bool? IsValidEmail(string givenEmail)
+    {
+      Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+      Match match = regex.Match(givenEmail);
+      bool result = match.Success;
+      Console.Write(result);
+      return result;
+    }
 
     public bool? IsEmailExist(string givenEmail)
     {

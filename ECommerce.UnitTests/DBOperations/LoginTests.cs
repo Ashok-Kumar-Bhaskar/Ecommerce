@@ -55,6 +55,24 @@ namespace ECommerce.UnitTests.DBOperations
       Assert.AreEqual(result, expectedValue);
     }
 
+    [TestCase("9710948799", true)]
+    [TestCase("234567891", false)]
+    public void CheckIsPhoneNumberValid(string number, bool expectedValue)
+    {
+      Login login = new Login();
+      bool? result = login.IsValidPhoneNumber(number);
+      Assert.AreEqual(result, expectedValue);
+    }
+
+    [TestCase("redmoon.ashok@gmail.com", true)]
+    [TestCase("asdasd.cscs", false)]
+    public void CheckIsEmailValid(string email, bool expectedValue)
+    {
+      Login login = new Login();
+      bool? result = login.IsValidEmail(email);
+      Assert.AreEqual(result, expectedValue);
+    }
+
     [TestCase(9710948799, true)]
     [TestCase(123456789, false)]
     public void CheckIsPhoneNumberExist(long number, bool expectedValue)

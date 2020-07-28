@@ -81,3 +81,9 @@ C:\Users\ashok\Desktop\Psiog\Phase 3\End To End\EcommerceDataPopulation\ECommerc
 C:\Users\ashok\Desktop\Psiog\Phase 3\End To End\EcommerceDataPopulation\ECommerce\obj\Debug\ECommerce.dll
 C:\Users\ashok\Desktop\Psiog\Phase 3\End To End\EcommerceDataPopulation\ECommerce\obj\Debug\ECommerce.pdb
 C:\Users\ashok\Desktop\Psiog\Phase 3\End To End\EcommerceDataPopulation\ECommerce\obj\Debug\ECommerce.csprojAssemblyReference.cache
+C:\Users\ashok\Desktop\Psiog\Phase 3\End To End\EcommerceDataPopulation\ECommerce\bin\System.Net.Http.Formatting.dll
+C:\Users\ashok\Desktop\Psiog\Phase 3\End To End\EcommerceDataPopulation\ECommerce\bin\System.Web.Http.dll
+C:\Users\ashok\Desktop\Psiog\Phase 3\End To End\EcommerceDataPopulation\ECommerce\bin\System.Web.Http.WebHost.dll
+C:\Users\ashok\Desktop\Psiog\Phase 3\End To End\EcommerceDataPopulation\ECommerce\bin\System.Net.Http.Formatting.xml
+C:\Users\ashok\Desktop\Psiog\Phase 3\End To End\EcommerceDataPopulation\ECommerce\bin\System.Web.Http.xml
+C:\Users\ashok\Desktop\Psiog\Phase 3\End To End\EcommerceDataPopulation\ECommerce\bin\System.Web.Http.WebHost.xml

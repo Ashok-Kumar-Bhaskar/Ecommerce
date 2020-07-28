@@ -46,3 +46,7 @@ C:\Users\ashok\Desktop\Psiog\Phase 3\End To End\EcommerceDataPopulation\ECommerc
 C:\Users\ashok\Desktop\Psiog\Phase 3\End To End\EcommerceDataPopulation\ECommerce.UnitTests\obj\Debug\ECommerce.UnitTests.csproj.CopyComplete
 C:\Users\ashok\Desktop\Psiog\Phase 3\End To End\EcommerceDataPopulation\ECommerce.UnitTests\obj\Debug\ECommerce.UnitTests.dll
 C:\Users\ashok\Desktop\Psiog\Phase 3\End To End\EcommerceDataPopulation\ECommerce.UnitTests\obj\Debug\ECommerce.UnitTests.pdb
+C:\Users\ashok\Desktop\Psiog\Phase 3\End To End\EcommerceDataPopulation\ECommerce.UnitTests\bin\Debug\System.Web.Http.dll
+C:\Users\ashok\Desktop\Psiog\Phase 3\End To End\EcommerceDataPopulation\ECommerce.UnitTests\bin\Debug\System.Net.Http.Formatting.dll
+C:\Users\ashok\Desktop\Psiog\Phase 3\End To End\EcommerceDataPopulation\ECommerce.UnitTests\bin\Debug\System.Web.Http.xml
+C:\Users\ashok\Desktop\Psiog\Phase 3\End To End\EcommerceDataPopulation\ECommerce.UnitTests\bin\Debug\System.Net.Http.Formatting.xml
