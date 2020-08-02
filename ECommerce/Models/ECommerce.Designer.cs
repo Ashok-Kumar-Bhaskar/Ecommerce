@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\ashok\Desktop\Psiog\Phase 3\End To End\ECommerce\Models\ECommerce.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\ashok\Desktop\Psiog\Phase 3\End To End_Ecommerce\Ecommerce\ECommerce\Models\ECommerce.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

@@ -23,7 +23,7 @@ namespace ECommerce.Models
     
         public long Cart_ID { get; set; }
         public long User_ID { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
+        public System.DateTime Date { get; set; }
         public long CartStatus_ID { get; set; }
     
         public virtual CartStatu CartStatu { get; set; }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ECommerceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ECommerceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Address">
           <Key>
             <PropertyRef Name="Address_ID" />
@@ -29,7 +29,7 @@
           </Key>
           <Property Name="Cart_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="User_ID" Type="bigint" Nullable="false" />
-          <Property Name="Date" Type="datetime" />
+          <Property Name="Date" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
           <Property Name="CartStatus_ID" Type="bigint" Nullable="false" />
         </EntityType>
         <EntityType Name="CartStatus">
@@ -125,7 +125,7 @@
           <Key>
             <PropertyRef Name="Product_ID" />
           </Key>
-          <Property Name="Product_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Product_ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Category_ID" Type="bigint" Nullable="false" />
           <Property Name="Brand" Type="nvarchar" MaxLength="100" />
           <Property Name="ProductName" Type="varchar" MaxLength="50" Nullable="false" />
@@ -465,8 +465,7 @@
             <End Role="Inventory" EntitySet="Inventory" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ECommerceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -495,7 +494,7 @@
           </Key>
           <Property Name="Cart_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="User_ID" Type="Int64" Nullable="false" />
-          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Date" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="CartStatus_ID" Type="Int64" Nullable="false" />
           <NavigationProperty Name="CartStatu" Relationship="Self.Cart_CartStatus" FromRole="Cart" ToRole="CartStatus" />
           <NavigationProperty Name="Items" Relationship="Self.Cart_Items_Cart" FromRole="Cart" ToRole="Items" />

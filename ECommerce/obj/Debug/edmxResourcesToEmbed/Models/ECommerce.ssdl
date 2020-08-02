@@ -24,7 +24,7 @@
     </Key>
     <Property Name="Cart_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="User_ID" Type="bigint" Nullable="false" />
-    <Property Name="Date" Type="datetime" />
+    <Property Name="Date" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
     <Property Name="CartStatus_ID" Type="bigint" Nullable="false" />
   </EntityType>
   <EntityType Name="CartStatus">
@@ -120,7 +120,7 @@
     <Key>
       <PropertyRef Name="Product_ID" />
     </Key>
-    <Property Name="Product_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Product_ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="Category_ID" Type="bigint" Nullable="false" />
     <Property Name="Brand" Type="nvarchar" MaxLength="100" />
     <Property Name="ProductName" Type="varchar" MaxLength="50" Nullable="false" />

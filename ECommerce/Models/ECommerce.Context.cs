@@ -42,5 +42,5 @@ namespace ECommerce.Models
         public virtual DbSet<Shipment> Shipments { get; set; }
         public virtual DbSet<Theme> Themes { get; set; }
         public virtual DbSet<User> Users { get; set; }
-  }
+    }
 }

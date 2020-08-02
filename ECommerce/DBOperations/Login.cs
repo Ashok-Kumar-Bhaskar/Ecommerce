@@ -11,6 +11,63 @@ namespace ECommerce.DBOperations
   {
     private ECommerceEntities db = new ECommerceEntities();
     #region [-- Methods --]
+    public string userName { get; set; }
+    public string password { get; set; }
+
+    public static string LoginAttempt(string username, string password, out User user) //Login function
+    {
+      try
+      {
+        using (ECommerceEntities db = new ECommerceEntities())
+        {
+          user = db.Users.Where(l => l.Username == username).FirstOrDefault();
+         // password = PasswordHashing.Hash(password);
+          if (user != null)
+          {
+            if (String.Compare(password, user.Password) == 0)
+            {
+              return "Successfull";
+            }
+            else
+            {
+              user = null;
+              return "Password is Wrong";
+            }
+          }
+          else
+          {
+            user = null;
+            return "Invalid Credentials";
+          }
+        }
+      }
+      catch (Exception ex)
+      {
+        LogFile.WriteLog(ex);
+        user = null;
+        return "Exception Caused";
+      }
+    }
+
+    public static int SaveToDB(User user) //Check Saving to DB exists in the DB
+    {
+      try
+      {
+        using (ECommerceEntities db = new ECommerceEntities())
+        {
+          db.Users.Add(user);
+          int flag = db.SaveChanges();
+          return flag;
+
+        }
+      }
+      catch (Exception ex)
+      {
+        LogFile.WriteLog(ex);
+        return -1;
+      }
+    }
+
     public User FindUser(string givenUsername)
     {
       try

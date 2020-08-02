@@ -25,7 +25,7 @@
     </Key>
     <Property Name="Cart_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="User_ID" Type="Int64" Nullable="false" />
-    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="Date" Type="DateTime" Precision="3" Nullable="false" />
     <Property Name="CartStatus_ID" Type="Int64" Nullable="false" />
     <NavigationProperty Name="CartStatu" Relationship="Self.Cart_CartStatus" FromRole="Cart" ToRole="CartStatus" />
     <NavigationProperty Name="Items" Relationship="Self.Cart_Items_Cart" FromRole="Cart" ToRole="Items" />
