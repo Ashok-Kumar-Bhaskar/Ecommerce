@@ -49,7 +49,7 @@ namespace ECommerce.Controllers
       catch (Exception ex)
       {
         LogFile.WriteLog(ex);
-        return BadRequest();
+        return BadRequest("exception");
       }
     }
 

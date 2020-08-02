@@ -8,7 +8,8 @@ namespace ECommerce.ViewModel
     public long Cart_ID { get; set; }
     public long Orders_ID { get; set; }
     public long User_ID { get; set; }
-    public string Name { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
     public long Payment_ID { get; set; }
     public long Commodity_ID { get; set; }
     public int Quantity { get; set; }

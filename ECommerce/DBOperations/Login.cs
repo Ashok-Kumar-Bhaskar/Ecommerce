@@ -1,4 +1,5 @@
 ﻿using ECommerce.DataPopulation;
+using ECommerce.Helper_Classes;
 using ECommerce.HelperClasses;
 using ECommerce.Models;
 using System;
@@ -21,7 +22,7 @@ namespace ECommerce.DBOperations
         using (ECommerceEntities db = new ECommerceEntities())
         {
           user = db.Users.Where(l => l.Username == username).FirstOrDefault();
-         // password = PasswordHashing.Hash(password);
+          //password = PasswordHash.GenerateHash(password);
           if (user != null)
           {
             if (String.Compare(password, user.Password) == 0)

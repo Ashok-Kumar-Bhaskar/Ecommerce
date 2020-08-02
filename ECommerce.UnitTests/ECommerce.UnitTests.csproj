@@ -64,6 +64,12 @@
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\ECommerce\packages\MSTest.TestFramework.2.1.1\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\ECommerce\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\ECommerce\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework, Version=3.12.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\ECommerce\packages\NUnit.3.12.0\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
@@ -73,27 +79,58 @@
     <Reference Include="System.IdentityModel.Tokens.Jwt, Version=6.7.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\ECommerce\packages\System.IdentityModel.Tokens.Jwt.6.7.1\lib\net461\System.IdentityModel.Tokens.Jwt.dll</HintPath>
     </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\ECommerce\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\ECommerce\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\ECommerce\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\ECommerce\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\ECommerce\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\ECommerce\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\ECommerce\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\ECommerce\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataPopulation\AddressTests.cs" />
-    <Compile Include="DataPopulation\CartStatusTests.cs" />
-    <Compile Include="DBOperations\LoginTests.cs" />
+    <Compile Include="ControllersTests\AddressControllerTests.cs" />
+    <Compile Include="ControllersTests\CartControllerTests.cs" />
+    <Compile Include="ControllersTests\OrdersControllerTests.cs" />
+    <Compile Include="ControllersTests\ProductControllerTests.cs" />
+    <Compile Include="ControllersTests\TokenControllerTests.cs" />
+    <Compile Include="ControllersTests\UserControllerTests.cs" />
+    <Compile Include="DataPopulationTests\AddressTests.cs" />
+    <Compile Include="DataPopulationTests\CartStatusTests.cs" />
+    <Compile Include="DBOperationsTests\LoginTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DataPopulation\CartTests.cs" />
-    <Compile Include="DataPopulation\CategoryTests.cs" />
-    <Compile Include="DataPopulation\InventoryTests.cs" />
-    <Compile Include="DataPopulation\InvoiceTests.cs" />
-    <Compile Include="DataPopulation\ItemsTests.cs" />
-    <Compile Include="DataPopulation\OrderStatusTests.cs" />
-    <Compile Include="DataPopulation\OrdersTests.cs" />
-    <Compile Include="DataPopulation\PaymentModeTests.cs" />
-    <Compile Include="DataPopulation\PaymentTests.cs" />
-    <Compile Include="DataPopulation\PreferenceTests.cs" />
-    <Compile Include="DataPopulation\ProductTests.cs" />
-    <Compile Include="DataPopulation\SellerTests.cs" />
-    <Compile Include="DataPopulation\ShipmentTests.cs" />
-    <Compile Include="DataPopulation\ThemeTests.cs" />
-    <Compile Include="DataPopulation\UserTests.cs" />
+    <Compile Include="DataPopulationTests\CartTests.cs" />
+    <Compile Include="DataPopulationTests\CategoryTests.cs" />
+    <Compile Include="DataPopulationTests\InventoryTests.cs" />
+    <Compile Include="DataPopulationTests\InvoiceTests.cs" />
+    <Compile Include="DataPopulationTests\ItemsTests.cs" />
+    <Compile Include="DataPopulationTests\OrderStatusTests.cs" />
+    <Compile Include="DataPopulationTests\OrdersTests.cs" />
+    <Compile Include="DataPopulationTests\PaymentModeTests.cs" />
+    <Compile Include="DataPopulationTests\PaymentTests.cs" />
+    <Compile Include="DataPopulationTests\PreferenceTests.cs" />
+    <Compile Include="DataPopulationTests\ProductTests.cs" />
+    <Compile Include="DataPopulationTests\SellerTests.cs" />
+    <Compile Include="DataPopulationTests\ShipmentTests.cs" />
+    <Compile Include="DataPopulationTests\ThemeTests.cs" />
+    <Compile Include="DataPopulationTests\UserTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
