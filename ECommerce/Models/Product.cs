@@ -29,7 +29,7 @@ namespace ECommerce.Models
         public string Description { get; set; }
         public int ReorderQuantity { get; set; }
         public string Image { get; set; }
-        public bool IsDeleted { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
     
         public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

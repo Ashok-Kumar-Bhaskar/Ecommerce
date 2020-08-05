@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.UI.WebControls;
 
 namespace ECommerce.Controllers
 {
@@ -33,5 +34,29 @@ namespace ECommerce.Controllers
         LogFile.WriteLog(e);
         return BadRequest(); }
       }
+
+    [HttpPost]
+    [Route("api/PostCategory")]
+    public IHttpActionResult PostCategory(Category category)
+    {
+      try
+      {
+        Category cat = new Category();
+        cat.CategoryName = category.CategoryName;
+        cat.IsDeleted = category.IsDeleted;
+
+        db.Categories.Add(cat);
+        db.SaveChanges();
+        return Ok(cat);
+      }
+
+      catch (Exception e)
+      {
+        LogFile.WriteLog(e);
+        return BadRequest();
+      }
     }
+
+    
+  }
 }

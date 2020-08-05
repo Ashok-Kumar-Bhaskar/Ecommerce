@@ -183,6 +183,7 @@
     <Compile Include="DataPopulation\ShipmentData.cs" />
     <Compile Include="DataPopulation\ThemeData.cs" />
     <Compile Include="DataPopulation\UserData.cs" />
+    <Compile Include="DBOperations\DataOperations.cs" />
     <Compile Include="Helper Classes\Encode.cs" />
     <Compile Include="DBOperations\Login.cs" />
     <Compile Include="Global.asax.cs">
@@ -261,9 +262,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\CartViewModel.cs" />
-    <Compile Include="ViewModel\HomeViewModel.cs" />
-    <Compile Include="ViewModel\LoginViewModel.cs" />
-    <Compile Include="ViewModel\OrderHistoryViewModel.cs" />
+    <Compile Include="ViewModel\InvoiceViewModel.cs" />
     <Compile Include="ViewModel\OrdersViewModel.cs" />
     <Compile Include="ViewModel\ProductViewModel.cs" />
     <Compile Include="ViewModel\SearchResultsViewModel.cs" />

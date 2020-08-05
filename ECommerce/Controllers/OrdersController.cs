@@ -1,4 +1,5 @@
-﻿using ECommerce.HelperClasses;
+﻿using ECommerce.DBOperations;
+using ECommerce.HelperClasses;
 using ECommerce.Models;
 using ECommerce.ViewModel;
 using System;
@@ -21,22 +22,10 @@ namespace ECommerce.Controllers
       {
         try
         {
-          var ordersList = (from o in db.Orders join
-                           c in db.Carts on o.Cart_ID equals c.Cart_ID join
-                           i in db.Items on c.Cart_ID equals i.Cart_ID join
-                           u in db.Users on o.User_ID equals u.User_ID join
-                           s in db.Shipments on o.Shipment_ID equals s.Shipment_ID join
-                           p in db.Payments on o.Payment_ID equals p.Payment_ID join
-                           pm in db.PaymentModes on p.PaymentMode_ID equals pm.PaymentMode_ID
-                
-                          select new
-                          {
-                            o.Orders_ID, o.User_ID, o.Date, o.Shipment_ID, o.Payment_ID, c.Cart_ID, i.Items_ID, i.Commodity_ID,
-                            i.Amount, i.Quantity, u.FirstName, u.LastName, s.AgentName, pm.Mode
-                          
-                          });
+          DataOperations op = new DataOperations();
+          var result = op.GetOrderDetails();
 
-          return Ok(ordersList.ToList());
+          return Ok(result);
         }
 
         catch (Exception e)
@@ -52,23 +41,9 @@ namespace ECommerce.Controllers
       {
         try
         {
-          var invoiceList = (from o in db.Orders.Where(e => e.Orders_ID == id) join
-                           c in db.Carts on o.Cart_ID equals c.Cart_ID join
-                           i in db.Items on c.Cart_ID equals i.Cart_ID join
-                           u in db.Users on o.User_ID equals u.User_ID join
-                           s in db.Shipments on o.Shipment_ID equals s.Shipment_ID join
-                           p in db.Payments on o.Payment_ID equals p.Payment_ID join
-                           pm in db.PaymentModes on p.PaymentMode_ID equals pm.PaymentMode_ID
-                
-                          select new
-                          {
-                            o.Orders_ID, o.User_ID, o.Date, o.DeliveryDate, o.Payment_ID, c.Cart_ID, i.Items_ID, i.Commodity_ID,
-                            i.Amount, i.Quantity, Name = u.FirstName + " " + u.LastName, s.AgentName, pm.Mode, p.Paid
-                          
-                          });
-
-     
-          return Ok(invoiceList.ToList());
+          DataOperations op = new DataOperations();
+          var result = op.GetInvoiceDetails(id);
+          return Ok(result);
         }
 
         catch (Exception e)

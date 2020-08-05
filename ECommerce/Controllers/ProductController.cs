@@ -1,4 +1,5 @@
-﻿using ECommerce.HelperClasses;
+﻿using ECommerce.DBOperations;
+using ECommerce.HelperClasses;
 using ECommerce.Models;
 using ECommerce.ViewModel;
 using System;
@@ -107,31 +108,27 @@ namespace ECommerce.Controllers
     {
       try
       {
-        List<ProductViewModel> productList = new List<ProductViewModel>();
-        var ListOfProductsForProductPage = (from i in db.Inventories
-                                            join p in db.Products on i.Product_ID equals p.Product_ID
-                                            join s in db.Sellers on i.Seller_ID equals s.Seller_ID
-                  
-                                            select new
-                                    {
-                                      p.Product_ID, p.ProductName, p.Image, p.Brand, p.Color, p.Variance, s.SellerName, i.Commodity_ID, i.Price, i.Stock
-                                    });
-        foreach (var list in ListOfProductsForProductPage)
-        {
-          ProductViewModel productvm = new ProductViewModel();
-          productvm.Product_ID = list.Product_ID;
-          productvm.ProductName = list.ProductName;
-          productvm.Image = list.Image;
-          productvm.Brand = list.Brand;
-          productvm.Color = list.Color;
-          productvm.Variance = list.Variance;
-          productvm.SellerName = list.SellerName;
-          productvm.Commodity_ID = list.Commodity_ID;
-          productvm.Price = list.Price;
-          productvm.Stock = list.Stock;
-          productList.Add(productvm);
-        }
-        return Ok(productList);
+        DataOperations op = new DataOperations();
+        var result = op.GetProductsForHomePage();
+        return Ok(result);
+      }
+
+      catch (Exception e)
+      {
+        LogFile.WriteLog(e);
+        return BadRequest();
+      }
+    }
+
+    [HttpGet]
+    [Route("api/GetProductsInEachCategory")]
+    public IHttpActionResult GetProductsInEachCategory(Category category)
+    {
+      try
+      {
+        DataOperations op = new DataOperations();
+        var result = op.GetProductsForEachCategory(category);
+        return Ok(result);
       }
 
       catch (Exception e)

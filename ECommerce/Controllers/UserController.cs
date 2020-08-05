@@ -1,4 +1,5 @@
-﻿using ECommerce.HelperClasses;
+﻿using ECommerce.DBOperations;
+using ECommerce.HelperClasses;
 using ECommerce.Models;
 using ECommerce.ViewModel;
 using System;
@@ -17,25 +18,10 @@ namespace ECommerce.Controllers
     {
       try
       {
-        var userList = (from u in db.Users join
-                        p in db.Preferences on u.User_ID equals p.User_ID join
-                        t in db.Themes on p.Theme_ID equals t.Theme_ID
+        DataOperations op = new DataOperations();
+        var result = op.GetUserDetails();
 
-                        select new
-                        {
-                          u.User_ID,
-                          u.FirstName,
-                          u.LastName,
-                          u.Email,
-                          u.Username,
-                          u.Password,
-                          u.DefaultContact,
-                          u.Role,
-                          t.ThemeName
-                          
-                        });
-
-        return Ok(userList.ToList());
+        return Ok(result.ToList());
       }
 
       catch (Exception e)

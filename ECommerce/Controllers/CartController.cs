@@ -1,4 +1,5 @@
 ﻿
+using ECommerce.DBOperations;
 using ECommerce.HelperClasses;
 using ECommerce.Models;
 using ECommerce.ViewModel;
@@ -100,39 +101,9 @@ namespace ECommerce.Controllers
     {
       try
       {
-        List<CartViewModel> cartList = new List<CartViewModel>();
-        var ListOfProductsForCartPage = (from item in db.Items
-                                         join i in db.Inventories on item.Commodity_ID equals i.Commodity_ID
-                                         join c in db.Carts on item.Cart_ID equals c.Cart_ID
-                                         join cs in db.CartStatus on c.CartStatus_ID equals cs.CartStatus_ID
-                    
-
-                                         select new
-                                         { c.User_ID,
-                                           c.Cart_ID,
-                                           c.Date,
-                                           i.Commodity_ID,
-                                           item.Quantity,
-                                           i.Price,
-                                           cs.Description,
-                                           i.Stock,
-                                           c.CartStatus_ID
-                                         });
-        foreach (var list in ListOfProductsForCartPage)
-        {
-          CartViewModel cartvm = new CartViewModel();
-          cartvm.User_ID = list.User_ID;
-          cartvm.Cart_ID = list.Cart_ID;
-          cartvm.Commodity_ID = list.Commodity_ID;
-          cartvm.Quantity = list.Quantity;
-          cartvm.Price = list.Price;
-          cartvm.Stock = list.Stock;
-          cartvm.CartStatus_ID = list.CartStatus_ID;
-          //cartvm.CartDate = (DateTime)list.Date;
-          cartvm.CartDescription = list.Description;
-          cartList.Add(cartvm);
-        }
-        return Ok(cartList);
+        DataOperations op = new DataOperations();
+        var result = op.GetCartDetails();
+        return Ok(result);
       }
 
       catch (Exception e)
