@@ -46,8 +46,8 @@ namespace ECommerce.Controllers
     }
 
     [HttpGet]
-    [Route("api/GetProductByCategory")]
-    public IHttpActionResult GetProductByCategory(Category category)
+    [Route("api/GetProductByCategory/{id=id}")]
+    public IHttpActionResult GetProductByCategory(int id)
     {
       try
       {
@@ -55,7 +55,7 @@ namespace ECommerce.Controllers
         productList = db.Products.ToList();
         var ListOfProducts = (from p in db.Products.Where(e=> e.IsDeleted == false) join
                               i in db.Inventories on p.Product_ID equals i.Product_ID join
-                              c in db.Categories.Where(f => f.Category_ID == category.Category_ID) on p.Category_ID equals c.Category_ID join
+                              c in db.Categories.Where(f => f.Category_ID == id) on p.Category_ID equals c.Category_ID join
                               s in db.Sellers on i.Seller_ID equals s.Seller_ID
                               select new
                               {

@@ -29,8 +29,8 @@ import { MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
 import { ProductComponent } from './product/product.component';
 import { ProductRoutingModule } from './product/product-routing.module';
-// import { CategoryComponent } from './category/category.component';
-// import { CategoryRoutingModule } from './category/category-routing.module';
+import { CategoryComponent } from './category/category.component';
+import { CategoryRoutingModule } from './category/category-routing.module';
 
 
 @NgModule({
@@ -38,12 +38,12 @@ import { ProductRoutingModule } from './product/product-routing.module';
     AppComponent,
     HomeComponent,
     ProductComponent,
-    // CategoryComponent,
+    CategoryComponent,
   ],
   imports: [
     LayoutModule,
     HomeRoutingModule,
-    // CategoryRoutingModule,
+    CategoryRoutingModule,
     ProductRoutingModule,
     MatGridListModule,
     MatToolbarModule,

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Category } from '../models/category.model';
 import { Product } from '../models/product.model';
 
@@ -43,8 +43,8 @@ export class DataService {
     return this.http.get<Product[]>("https://localhost:44313/api/GetProduct");
   }
  
-  // public getProductsListByCategory(category): Observable<any> {
-  //   return this.http.get<Product[]>("https://localhost:44313/api/GetProductByCategory", category);
-  // }
+  public getProductsListByCategory(id): Observable<Product[]> {
+    return this.http.get<Product[]>("https://localhost:44313/api/GetProductByCategory/" + id);
+  }
   
 }

@@ -65,12 +65,6 @@ export class HomeComponent implements OnInit {
   {
     localStorage.setItem("category",JSON.stringify(cat));
     this.router.navigate(['/category']);
-    // console.log(this.products)
-    // this.pList = [];
-    // this.products.forEach(element => {
-    //   if(element.Category_ID == cat.Category_ID && !this.pList.includes(element.ProductName))
-    //     this.pList.push(element.ProductName);
-    //   });
   }
 
   getP()

@@ -1,20 +1,19 @@
-<!-- <mat-sidenav-container class="example-container">
+<mat-sidenav-container class="example-container">
     <mat-sidenav-content class = "side-menu">
       
   
-        <button mat-menu-item [matMenuTriggerFor] = "products" *ngFor = "let cat of categories" (click)="getpdts(cat)"> {{ cat.CategoryName }}</button>
+        <button mat-menu-item  *ngFor = "let cat of categories" (click)="getpdts(cat)"> {{ cat.CategoryName }}</button>
   
-        <!-- <mat-menu #products = "matMenu" xPosition = "after" yPosition = "above" class = "product-container">
-            <button mat-menu-item *ngFor = "let pdt of pList" class = "product"  > {{pdt}} </button>
-        </mat-menu> -->
+        <mat-menu #products = "matMenu" class = "product-container">
+        </mat-menu>
   
     </mat-sidenav-content>
   </mat-sidenav-container>
   
   <div class="container" ng-container  >
-    <mat-grid-list cols="3" rowHeight="1:1.2" [gutterSize]="'40px'">
+    <mat-grid-list cols="3" rowHeight="1:1.3" [gutterSize]="'40px'">
   
-    <mat-grid-tile *ngFor = "let ps of p">
+    <mat-grid-tile *ngFor = "let ps of productOfCategory">
       
       <mat-card class="example-card" >
       <img mat-card-image src="data:image/jpg;base64,{{ps.Image}}">
@@ -31,4 +30,4 @@
   </mat-grid-tile>
   
   </mat-grid-list>
-  </div> -->
+  </div>
