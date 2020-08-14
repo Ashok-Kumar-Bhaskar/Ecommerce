@@ -24,13 +24,47 @@ namespace ECommerce.Controllers
       {
         List<Product> productList = new List<Product>();
         productList = db.Products.ToList();
-        var ListOfProducts = (from p in db.Products
+        var ListOfProducts = (from p in db.Products.Where(e=> e.IsDeleted == false) join
+                              i in db.Inventories on p.Product_ID equals i.Product_ID join
+                              c in db.Categories on p.Category_ID equals c.Category_ID join
+                              s in db.Sellers on i.Seller_ID equals s.Seller_ID
                               select new
                               {
-                                p.Product_ID,
-                                p.ProductName, p.Image, p.Brand
+                                p.Product_ID, p.Category_ID, p.Color,
+                                p.Description, p.IsDeleted, p.ReorderQuantity, p.Variance,
+                                p.ProductName, p.Image, p.Brand, i.Price, c.CategoryName, s.SellerName,
+                                i.Commodity_ID, i.Stock
                               });
-        return Ok(ListOfProducts.ToList());
+        return Ok(ListOfProducts);
+      }
+
+      catch (Exception e)
+      {
+        LogFile.WriteLog(e);
+        return BadRequest();
+      }
+    }
+
+    [HttpGet]
+    [Route("api/GetProductByCategory")]
+    public IHttpActionResult GetProductByCategory(Category category)
+    {
+      try
+      {
+        List<Product> productList = new List<Product>();
+        productList = db.Products.ToList();
+        var ListOfProducts = (from p in db.Products.Where(e=> e.IsDeleted == false) join
+                              i in db.Inventories on p.Product_ID equals i.Product_ID join
+                              c in db.Categories.Where(f => f.Category_ID == category.Category_ID) on p.Category_ID equals c.Category_ID join
+                              s in db.Sellers on i.Seller_ID equals s.Seller_ID
+                              select new
+                              {
+                                p.Product_ID, p.Category_ID, p.Color,
+                                p.Description, p.IsDeleted, p.ReorderQuantity, p.Variance,
+                                p.ProductName, p.Image, p.Brand, i.Price, c.CategoryName, s.SellerName,
+                                i.Commodity_ID, i.Stock
+                              });
+        return Ok(ListOfProducts);
       }
 
       catch (Exception e)

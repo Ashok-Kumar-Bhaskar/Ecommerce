@@ -1,0 +1,16 @@
+
+
+app-footer{
+    background-color: orange;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 30px;
+    width: 100%;
+    overflow: hidden;
+}
+
+app-navbar{
+    width: 100%;
+    position: sticky;
+}

@@ -5,6 +5,7 @@ using ECommerce.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace ECommerce.DBOperations
@@ -12,7 +13,7 @@ namespace ECommerce.DBOperations
   public class DataOperations
   {
     private ECommerceEntities db = new ECommerceEntities();
-    public List<CartViewModel> GetCartDetails()
+    public async Task<List<CartViewModel>> GetCartDetails()
     {
       try
       {
@@ -249,7 +250,7 @@ namespace ECommerce.DBOperations
           productvm.Commodity_ID = list.Commodity_ID;
           productvm.Price = list.Price;
           productvm.Stock = list.Stock;
-          productvm.Category = list.CategoryName;
+          productvm.CategoryName = list.CategoryName;
           productList.Add(productvm);
         }
 
@@ -268,11 +269,28 @@ namespace ECommerce.DBOperations
       try
       {
         List<ProductViewModel> productList = new List<ProductViewModel>();
-        var pList = (from p in db.Products join
-                   c in db.Categories.Where(e => e.CategoryName == category.CategoryName) on p.Category_ID equals c.Category_ID
+        var pList = (from p in db.Products.Where(f => f.IsDeleted == false) join
+                   c in db.Categories.Where(e => e.Category_ID == category.Category_ID) on p.Category_ID equals c.Category_ID join
+                     i in db.Inventories on p.Product_ID equals i.Product_ID join
+                     s in db.Sellers on i.Seller_ID equals s.Seller_ID
 
                    select new
-                   { p.Product_ID, p.ProductName, p.Image
+                   {
+                     p.Product_ID,
+                     p.Category_ID,
+                     p.Color,
+                     p.Description,
+                     p.IsDeleted,
+                     p.ReorderQuantity,
+                     p.Variance,
+                     p.ProductName,
+                     p.Image,
+                     p.Brand,
+                     i.Price,
+                     c.CategoryName,
+                     s.SellerName,
+                     i.Commodity_ID,
+                     i.Stock
                    });
 
         foreach (var list in pList)
@@ -281,10 +299,22 @@ namespace ECommerce.DBOperations
           productvm.Product_ID = list.Product_ID;
           productvm.ProductName = list.ProductName;
           productvm.Image = list.Image;
+          productvm.Brand = list.Brand;
+          productvm.CategoryName = list.CategoryName;
+          productvm.Color = list.Color;
+          productvm.Commodity_ID = list.Commodity_ID;
+          productvm.Description = list.Description;
+          productvm.Price = list.Price;
+          productvm.SellerName = list.SellerName;
+          productvm.Stock = list.Stock;
+          productvm.isDeleted = list.IsDeleted;
+          productvm.Category_ID = list.Category_ID;
+          productvm.Variance = list.Variance;
+          productvm.ReorderQuantity = list.ReorderQuantity;
           productList.Add(productvm);
         }
 
-        return productList;
+        return productList.ToList();
       }
 
       catch (Exception e)

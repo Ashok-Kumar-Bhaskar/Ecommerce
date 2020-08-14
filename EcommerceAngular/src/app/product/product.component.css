@@ -1,0 +1,46 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.image-container{
+    background-color: lightsalmon;
+    width: 400px;
+    height: 400px;
+    margin-left: 5%;
+    margin-top: 5%;
+}
+
+.details-container{
+    background-color: blueviolet;
+    width: 40%;
+    margin-top: 5%;
+    margin-right: 10%;
+
+}
+
+.image{
+    display: inline-block;
+    height: 100%;
+}
+
+table {
+    width: 100%;
+    text-align: left;
+    text-decoration: none;
+    border: none;
+    box-shadow: none;
+    background-color: brown;
+    padding: 20px;
+  }
+
+  table th,tr,td {
+      padding: 10px;
+  }
+ 
+  #name {
+      font-size: 250%;
+      font-weight: bolder;
+  }

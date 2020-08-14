@@ -1,0 +1,39 @@
+.spacer {
+    flex: 1 1 auto;
+  }
+
+  .toolbar{
+      background-color:  black;
+  }
+
+.logo{
+    width: 4rem;
+    height: 4rem;
+    object-fit: contain;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.link{
+    width: 4rem;
+    height: 4rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+}
+
+.logout{
+    padding-left: 2%;
+    padding-right: 0.5%;
+    padding-top: 1%;
+}
+
+.navitem{
+    padding-right: 2%;
+    color: white;
+    text-decoration: none;
+}

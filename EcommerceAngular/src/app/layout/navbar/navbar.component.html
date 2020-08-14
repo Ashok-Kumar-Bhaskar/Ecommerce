@@ -1,0 +1,33 @@
+<p>
+  <mat-toolbar class="toolbar">
+   <div (click)="goToHome()" ><img class="logo" src="../../assets/logo.png"/></div>
+  
+    <span (click)="goToHome()" class="link">mirror.com</span>
+
+    <span class="spacer"></span>
+
+    
+    <a mat-button [routerLink]="'/create-activity'" class="navitem"> Orders </a>
+
+
+    <mat-icon>shopping_cart</mat-icon>
+    <a mat-button [routerLink]="'/create-activity'" class="navitem"> Cart </a>
+
+    <mat-icon>{{show ? 'wb_sunny' : 'nights_stay'}}</mat-icon>    
+    <section class="theme">
+      <mat-slide-toggle class="toggle" [color]="color" [checked]="checked" [disabled]="disabled"
+      [formControl]="darkTheme" (click)="changetheme()">
+      </mat-slide-toggle>
+    </section>
+      
+    <section class="logout"> <mat-icon>power_settings_new</mat-icon></section>
+     
+  </mat-toolbar>
+</p>
+
+
+
+  
+        
+    
+

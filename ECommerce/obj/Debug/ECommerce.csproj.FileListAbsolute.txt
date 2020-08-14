@@ -150,7 +150,9 @@ C:\Users\ashok\Desktop\Psiog\Phase 3\End To End_Ecommerce\Ecommerce\ECommerce\bi
 C:\Users\ashok\Desktop\Psiog\Phase 3\End To End_Ecommerce\Ecommerce\ECommerce\bin\Newtonsoft.Json.dll
 C:\Users\ashok\Desktop\Psiog\Phase 3\End To End_Ecommerce\Ecommerce\ECommerce\bin\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\ashok\Desktop\Psiog\Phase 3\End To End_Ecommerce\Ecommerce\ECommerce\bin\System.Net.Http.Formatting.dll
+C:\Users\ashok\Desktop\Psiog\Phase 3\End To End_Ecommerce\Ecommerce\ECommerce\bin\System.Web.Cors.dll
 C:\Users\ashok\Desktop\Psiog\Phase 3\End To End_Ecommerce\Ecommerce\ECommerce\bin\System.Web.Helpers.dll
+C:\Users\ashok\Desktop\Psiog\Phase 3\End To End_Ecommerce\Ecommerce\ECommerce\bin\System.Web.Http.Cors.dll
 C:\Users\ashok\Desktop\Psiog\Phase 3\End To End_Ecommerce\Ecommerce\ECommerce\bin\System.Web.Http.dll
 C:\Users\ashok\Desktop\Psiog\Phase 3\End To End_Ecommerce\Ecommerce\ECommerce\bin\System.Web.Http.WebHost.dll
 C:\Users\ashok\Desktop\Psiog\Phase 3\End To End_Ecommerce\Ecommerce\ECommerce\bin\System.Web.Mvc.dll
@@ -168,6 +170,7 @@ C:\Users\ashok\Desktop\Psiog\Phase 3\End To End_Ecommerce\Ecommerce\ECommerce\bi
 C:\Users\ashok\Desktop\Psiog\Phase 3\End To End_Ecommerce\Ecommerce\ECommerce\bin\System.IdentityModel.Tokens.Jwt.xml
 C:\Users\ashok\Desktop\Psiog\Phase 3\End To End_Ecommerce\Ecommerce\ECommerce\bin\System.Net.Http.Formatting.xml
 C:\Users\ashok\Desktop\Psiog\Phase 3\End To End_Ecommerce\Ecommerce\ECommerce\bin\System.Web.Http.xml
+C:\Users\ashok\Desktop\Psiog\Phase 3\End To End_Ecommerce\Ecommerce\ECommerce\bin\System.Web.Http.Cors.xml
 C:\Users\ashok\Desktop\Psiog\Phase 3\End To End_Ecommerce\Ecommerce\ECommerce\bin\System.Web.Http.WebHost.xml
 C:\Users\ashok\Desktop\Psiog\Phase 3\End To End_Ecommerce\Ecommerce\ECommerce\bin\System.Web.Helpers.xml
 C:\Users\ashok\Desktop\Psiog\Phase 3\End To End_Ecommerce\Ecommerce\ECommerce\bin\System.Web.Mvc.xml
@@ -184,6 +187,3 @@ C:\Users\ashok\Desktop\Psiog\Phase 3\End To End_Ecommerce\Ecommerce\ECommerce\ob
 C:\Users\ashok\Desktop\Psiog\Phase 3\End To End_Ecommerce\Ecommerce\ECommerce\obj\Debug\ECommerce.csproj.CopyComplete
 C:\Users\ashok\Desktop\Psiog\Phase 3\End To End_Ecommerce\Ecommerce\ECommerce\obj\Debug\ECommerce.dll
 C:\Users\ashok\Desktop\Psiog\Phase 3\End To End_Ecommerce\Ecommerce\ECommerce\obj\Debug\ECommerce.pdb
-C:\Users\ashok\Desktop\Psiog\Phase 3\End To End_Ecommerce\Ecommerce\ECommerce\bin\System.Web.Cors.dll
-C:\Users\ashok\Desktop\Psiog\Phase 3\End To End_Ecommerce\Ecommerce\ECommerce\bin\System.Web.Http.Cors.dll
-C:\Users\ashok\Desktop\Psiog\Phase 3\End To End_Ecommerce\Ecommerce\ECommerce\bin\System.Web.Http.Cors.xml
