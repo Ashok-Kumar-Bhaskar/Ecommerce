@@ -5,6 +5,8 @@ import { DataService } from '../shared/data.service';
 import { Product } from '../models/product.model';
 import { HttpClient } from '@angular/common/http';
 import { Router } from "@angular/router";
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { User } from '../models/user.model';
 
 
 @Component({
@@ -27,16 +29,17 @@ export class HomeComponent implements OnInit {
   pList : string[] = [];
   
 
+  expire: Boolean;
 
-  constructor(private httpService: HttpClient, fb: FormBuilder, private dataservice : DataService, private router:Router) {
-    this.options = fb.group({
-      bottom: 0,
-      fixed: false,
-      top: 0
-    });
-  }
+
+  constructor(private httpService: HttpClient,public jwtHelper: JwtHelperService, fb: FormBuilder, private dataservice : DataService, private router:Router) {}
 
   ngOnInit(): void {
+    const token=localStorage.getItem('token');
+    this.expire = this.jwtHelper.isTokenExpired(token);
+    if(token==null || this.expire ){
+      this.router.navigate(['/signin']);
+    }
       this.getCategories();
       this.getProducts();
   }
@@ -51,14 +54,11 @@ export class HomeComponent implements OnInit {
 
   getProducts()
   {
-    
     this.dataservice.getProductsList().subscribe (
       res =>  { this.products = res;
         console.log(this.products);
       this.p=this.products;},
       error =>  console.log(error));
-
-   
   }
   
   getpdts(cat)
@@ -80,5 +80,6 @@ export class HomeComponent implements OnInit {
     localStorage.setItem("product",JSON.stringify(id));
     this.router.navigate(["/product"]);
   }
+
 
 }

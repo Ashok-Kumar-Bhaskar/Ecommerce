@@ -13,13 +13,13 @@ namespace ECommerce.Controllers
     private ECommerceEntities db = new ECommerceEntities();
 
     [HttpGet]
-    [Route("api/GetUser")]
-    public IHttpActionResult GetUser()
+    [Route("api/GetUser/{id=id}")]
+    public IHttpActionResult GetUser(long id)
     {
       try
       {
         DataOperations op = new DataOperations();
-        var result = op.GetUserDetails();
+        var result = op.GetUserDetails(id);
 
         return Ok(result.ToList());
       }

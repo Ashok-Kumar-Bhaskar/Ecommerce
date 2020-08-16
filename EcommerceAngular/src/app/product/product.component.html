@@ -1,24 +1,20 @@
 <div class="container">
 
-<div class="image-container" id = "img">
-</div>
-
-<div class="details-container">
-    <table mat-table class="mat-elevation-z8">
-        <ng-container matColumnDef="property">
-            <th mat-header-cell id="name"> </th> 
-            <tr><td mat-cell id="category"> Category : </td></tr>
-            <tr><td mat-cell id="variance"></td></tr>
-            <tr><td mat-cell id="color"></td></tr>
-            <tr><td mat-cell id="description"> Description : </td></tr>
-            <tr><th mat-header-cell id="price"> Price : </th></tr>
-            <tr><td mat-cell id="seller"> Seller : </td></tr>
-            <tr><td><span>Quantity : </span>
-            <input type="number" ng-model="theValue" name="theValue" step="1" min="0" max="10" required>
-            <button><mat-icon>add_shopping_cart</mat-icon></button></td></tr>
-
-        </ng-container>   
-    </table>
-</div>
-
-</div>
+    <div class="image-container" id = "img">
+    </div>
+    
+    <div class="details-container">
+        <mat-list role="list">
+            <mat-list-item role="listitem" id="name"> {{product.Brand}} {{product.ProductName}} </mat-list-item>
+            <mat-list-item role="listitem" id="category">Category : {{product.CategoryName}}</mat-list-item>
+            <mat-list-item role="listitem" id="variance">{{product.Variance}}</mat-list-item>
+            <mat-list-item role="listitem" id="color"> {{product.Color}} </mat-list-item>
+            <mat-list-item role="listitem" id="description"> Description : {{product.Description}}</mat-list-item>
+            <mat-list-item role="listitem" id="price"> Price : {{product.Price}}</mat-list-item>
+            <mat-list-item role="listitem" id="seller"> Seller : {{product.SellerName}} </mat-list-item>
+            <mat-list-item role="listitem"><span>Quantity : </span>
+                <input type="number" ng-model="theValue" name="theValue" step="1" min="0" max="10" required>
+            <button><mat-icon>add_shopping_cart</mat-icon></button></mat-list-item>
+        </mat-list>
+    </div>
+    </div>

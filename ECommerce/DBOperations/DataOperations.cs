@@ -13,28 +13,34 @@ namespace ECommerce.DBOperations
   public class DataOperations
   {
     private ECommerceEntities db = new ECommerceEntities();
-    public async Task<List<CartViewModel>> GetCartDetails()
+    public List<CartViewModel> GetCartDetails(string username)
     {
       try
       {
         List<CartViewModel> cartList = new List<CartViewModel>();
-        var ListOfProductsForCartPage = (from item in db.Items
-                                         join i in db.Inventories on item.Commodity_ID equals i.Commodity_ID
-                                         join c in db.Carts on item.Cart_ID equals c.Cart_ID
+        var ListOfProductsForCartPage = (from u in db.Users.Where(f => f.Username == username)
+                                         join c in db.Carts.Where(g => g.CartStatus_ID == 45004) on u.User_ID equals c.User_ID
                                          join cs in db.CartStatus on c.CartStatus_ID equals cs.CartStatus_ID
-
+                                         join item in db.Items on c.Cart_ID equals item.Cart_ID
+                                         join i in db.Inventories on item.Commodity_ID equals i.Commodity_ID
+                                         join p in db.Products.Where(e => e.IsDeleted == false) on i.Product_ID equals p.Product_ID
 
                                          select new
                                          {
                                            c.User_ID,
                                            c.Cart_ID,
                                            c.Date,
-                                           i.Commodity_ID,
+                                           item.Commodity_ID,
                                            item.Quantity,
                                            i.Price,
                                            cs.Description,
                                            i.Stock,
-                                           c.CartStatus_ID
+                                           c.CartStatus_ID,
+                                           p.ProductName,
+                                           p.Brand,
+                                           p.Color,
+                                           p.Variance,
+                                           u.Username
                                          });
         foreach (var list in ListOfProductsForCartPage)
         {
@@ -44,10 +50,14 @@ namespace ECommerce.DBOperations
           cartvm.Commodity_ID = list.Commodity_ID;
           cartvm.Quantity = list.Quantity;
           cartvm.Price = list.Price;
-          cartvm.Stock = list.Stock;
           cartvm.CartStatus_ID = list.CartStatus_ID;
-          //cartvm.CartDate = (DateTime)list.Date;
           cartvm.CartDescription = list.Description;
+          cartvm.ProductName = list.ProductName;
+          cartvm.Brand = list.Brand;
+          cartvm.Variance = list.Variance;
+          cartvm.Color = list.Color;
+          cartvm.Total = list.Price * list.Quantity;
+          cartvm.Username = list.Username;
           cartList.Add(cartvm);
         }
         return cartList;
@@ -60,14 +70,13 @@ namespace ECommerce.DBOperations
       }
     }
 
-    public List<UserViewModel> GetUserDetails()
+    public List<UserViewModel> GetUserDetails(long id)
     {
       try
       {
         List<UserViewModel> userList = new List<UserViewModel>();
-        var uList = (from u in db.Users join
-                        p in db.Preferences on u.User_ID equals p.User_ID join
-                        t in db.Themes on p.Theme_ID equals t.Theme_ID
+        var uList = (from u in db.Users.Where(f => f.User_ID==id && f.IsDeleted==false) join
+                        c in db.Carts.Where(e=> e.CartStatus_ID == 45004) on u.User_ID equals c.User_ID 
 
                         select new
                         {
@@ -79,8 +88,7 @@ namespace ECommerce.DBOperations
                           u.Password,
                           u.DefaultContact,
                           u.Role,
-                          t.ThemeName
-
+                          c.Cart_ID
                         });
 
         foreach(var list in uList)
@@ -94,7 +102,7 @@ namespace ECommerce.DBOperations
           user.Password = list.Password;
           user.DefaultContact = list.DefaultContact;
           user.Role = list.Role;
-          user.Theme = list.ThemeName;
+          user.Cart_ID = list.Cart_ID;
           userList.Add(user);
         }
 

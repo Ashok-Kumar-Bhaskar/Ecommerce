@@ -14,4 +14,5 @@ export class Product {
     SellerName : string;
     Commodity_ID : number;
     Stock : number;
+    Quantity : number;
 }       

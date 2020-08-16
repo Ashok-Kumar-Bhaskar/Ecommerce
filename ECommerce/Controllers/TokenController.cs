@@ -28,7 +28,7 @@ namespace ECommerce.Controllers
             roles = "Admin";
           }
 
-          IAuthContainerModel model = GetJWTContainerModel(user.Username, roles);
+          IAuthContainerModel model = GetJWTContainerModel(user.Username, roles, user.User_ID);
           IAuthService authService = new JWTService(model.SecretKey);
 
           string token = authService.GenerateToken(model);
@@ -55,14 +55,15 @@ namespace ECommerce.Controllers
 
       [NonAction]
       #region Private Methods
-      private static JWTContainerModel GetJWTContainerModel(string username, string roles)
+      private static JWTContainerModel GetJWTContainerModel(string username, string roles, long userid)
       {
         return new JWTContainerModel()
         {
           Claims = new Claim[]
           {
                     new Claim(ClaimTypes.Name, username),
-                    new Claim(ClaimTypes.Role, roles)
+                    new Claim(ClaimTypes.Role, roles),
+                    new Claim(ClaimTypes.SerialNumber,userid.ToString())
           }
         };
       }

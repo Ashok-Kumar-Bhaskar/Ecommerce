@@ -1,0 +1,30 @@
+<div class="example-container">
+    <div>
+        <img src="../../assets/login.png" class="image">
+    </div>
+    <div class="form-container">
+      <form [formGroup]="signinForm" (submit)="onSubmit()">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Username
+          </mat-label>
+          <input matInput formControlName="Username" required>
+          <mat-error *ngIf="signinForm.controls.Username.touched && signinForm.controls.Username.invalid">
+            <span *ngIf="signinForm.controls.Username.errors.required">This field is mandatory.</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Password
+          </mat-label>
+          <input matInput formControlName="Password" type="password" required>
+          <mat-error *ngIf="signinForm.controls.Password.touched && signinForm.controls.Password.invalid">
+            <span *ngIf="signinForm.controls.Password.errors.required">This field is mandatory.</span>
+          </mat-error>
+         
+        </mat-form-field>
+        <div [hidden] ="!postError" class ="alert alert-danger"> {{postErrorMessage}}</div>
+        <button mat-raised-button color="primary" type="submit">SignIn</button><br><br>
+        <button mat-raised-button color="primary" type="submit" (click)="signup()">SignUp</button>
+      </form>
+      
+    </div>
+  </div>

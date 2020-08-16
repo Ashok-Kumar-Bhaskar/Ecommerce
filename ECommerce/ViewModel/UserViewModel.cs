@@ -16,5 +16,6 @@ namespace ECommerce.ViewModel
     public long DefaultContact { get; set; }
     public string Role { get; set; }
     public string Theme { get; set; }
+    public long Cart_ID { get; set; }
   }
 }

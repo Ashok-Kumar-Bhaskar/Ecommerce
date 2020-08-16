@@ -5,6 +5,7 @@ import { DataService } from '../shared/data.service';
 import { Product } from '../models/product.model';
 import { HttpClient } from '@angular/common/http';
 import { Router } from "@angular/router";
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-category',
@@ -21,14 +22,14 @@ export class CategoryComponent implements OnInit {
 
   productOfCategory : Product[] = [];
 
-
+  expire : boolean;
 
   pList : string[] = [];
   
   category : Category;
   
 
-  constructor(private httpService: HttpClient, fb: FormBuilder, private dataservice : DataService, private router:Router) {
+  constructor(private httpService: HttpClient,public jwtHelper: JwtHelperService, fb: FormBuilder, private dataservice : DataService, private router:Router) {
     this.options = fb.group({
       bottom: 0,
       fixed: false,
@@ -37,6 +38,11 @@ export class CategoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const token=localStorage.getItem('token');
+    this.expire = this.jwtHelper.isTokenExpired(token);
+    if(token==null || this.expire ){
+      this.router.navigate(['/signin']);
+    }
     this.getProducts();
     this.getCategories();
     this.category = JSON.parse(localStorage.getItem("category"));

@@ -1,0 +1,52 @@
+<mat-card-content class="container">
+    <form class="signupForm" [formGroup]="signupForm">
+       <mat-form-field class="full-width" appearance="outline">
+              <mat-label>First Name</mat-label>
+              <input  matInput formControlName="FirstName" placeholder="First name"  name="fname"  required>
+              <mat-error *ngIf="signupForm.controls.FirstName.touched && signupForm.controls.FirstName.invalid">
+                <span *ngIf="signupForm.controls.FirstName.errors.required">This field is mandatory.</span>
+              </mat-error>
+           </mat-form-field>
+           <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Last Name</mat-label>
+              <input  matInput formControlName="LastName" placeholder="Last Name" name="lname"  required>
+              <mat-error *ngIf="signupForm.controls.LastName.touched && signupForm.controls.LastName.invalid">
+                <span *ngIf="signupForm.controls.LastName.errors.required">This field is mandatory.</span>
+              </mat-error>
+           </mat-form-field>
+           <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Username</mat-label>
+              <input  matInput formControlName="Username" placeholder="Username" name="Username"  required>
+              <mat-error *ngIf="signupForm.controls.Username.touched && signupForm.controls.Username.invalid">
+                <span *ngIf="signupForm.controls.Username.errors.required">This field is mandatory.</span>
+              </mat-error>
+           </mat-form-field>
+           <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Email</mat-label>
+              <input  matInput  formControlName="Email" placeholder="Email" name="email" required>
+              <mat-error *ngIf="signupForm.controls.Email.touched && signupForm.controls.Email.invalid">
+                <span *ngIf="signupForm.controls.Email.errors.required">This field is mandatory.</span>
+                <span *ngIf="signupForm.controls.Email.errors.pattern">This field is invalid.</span>
+              </mat-error>
+           </mat-form-field>
+           <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Password</mat-label>
+              <input  matInput formControlName="Password" placeholder="Password"  name="password" required>
+              <mat-error *ngIf="signupForm.controls.Password.touched && signupForm.controls.Password.invalid">
+                <span *ngIf="signupForm.controls.Password.errors.required">This field is mandatory.</span>
+              </mat-error>
+           </mat-form-field>
+           <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Contact</mat-label>
+            <input  matInput formControlName="DefaultContact" placeholder="Contact"  name="DefaultContact" required>
+            <mat-error *ngIf="signupForm.controls.DefaultContact.touched && signupForm.controls.DefaultContact.invalid">
+                <span *ngIf="signupForm.controls.DefaultContact.errors.required">This field is mandatory.</span>
+                <span *ngIf="signupForm.controls.DefaultContact.errors.pattern">This field is invalid.</span>
+            </mat-error>
+         </mat-form-field>
+    </form>
+    <mat-card-actions>
+        <button mat-raised-button (click)="onSubmit()" color="primary">REGISTER</button>
+      </mat-card-actions>
+  </mat-card-content>
+  

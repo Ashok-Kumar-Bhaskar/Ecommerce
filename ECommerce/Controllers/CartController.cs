@@ -15,13 +15,12 @@ namespace ECommerce.Controllers
     private ECommerceEntities db = new ECommerceEntities();
 
     [HttpGet]
-    [Route("api/GetCart")]
-    public IHttpActionResult GetCart()
+    [Route("api/GetCart/{id=id}")]
+    public IHttpActionResult GetCart(long id)
     {
       try
       {
-        var cartList = (from c in db.Carts
-
+        var cartList = (from c in db.Carts.Where(e => e.User_ID==id && e.CartStatus_ID==45004)
                                          select new
                                          {
                                            c.User_ID,
@@ -62,6 +61,28 @@ namespace ECommerce.Controllers
         }
       }
 
+    [HttpPost]
+    [Route("api/PostItem")]
+    public IHttpActionResult PostItem(Item item)
+    {
+      try
+      {
+        if (!ModelState.IsValid)
+        {
+          return BadRequest(ModelState);
+        }
+
+        db.Items.Add(item);
+        db.SaveChanges();
+        return Ok("Item Added Successfully");
+      }
+      catch (Exception ex)
+      {
+        LogFile.WriteLog(ex);
+        return BadRequest();
+      }
+    }
+
     [HttpPut]
     [Route("api/PutCart/{id=id}")]
     public IHttpActionResult PutCart(long id, CartStatu cartstatu)
@@ -96,13 +117,13 @@ namespace ECommerce.Controllers
     }
 
     [HttpGet]
-    [Route("api/GetDetailsForCartPage")]
-    public IHttpActionResult GetDetailsForCartPage()
+    [Route("api/GetDetailsForCartPage/{username=username}")]
+    public IHttpActionResult GetDetailsForCartPage(string username)
     {
       try
       {
         DataOperations op = new DataOperations();
-        var result = op.GetCartDetails();
+        var result = op.GetCartDetails(username);
         return Ok(result);
       }
 

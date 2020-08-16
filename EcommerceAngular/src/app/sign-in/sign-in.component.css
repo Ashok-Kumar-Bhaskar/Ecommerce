@@ -1,0 +1,27 @@
+.example-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.form-container{
+    position: relative;
+    width: 25%;
+    height: 100%;
+    padding: 3%;
+    margin-left: 20%;
+    margin-top: 15%;
+    background-color: seagreen;
+    color: black;
+    text-align: center;
+}
+
+.form-field{
+    display: block;
+}
+
+.image{
+    margin-left: 10%;
+    margin-top: 15%;
+    width: 120%;
+    height: 100%;
+}

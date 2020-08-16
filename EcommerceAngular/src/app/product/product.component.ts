@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { PartiallyEmittedExpression } from 'typescript';
 import { Product } from '../models/product.model';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { Router } from '@angular/router';
+import { User } from '../models/user.model';
+import { Item } from '../models/item.model';
+import { DataService } from '../shared/data.service';
 
 @Component({
   selector: 'app-product',
@@ -9,33 +14,21 @@ import { Product } from '../models/product.model';
 })
 export class ProductComponent implements OnInit {
   displayedColumns: string[] = ['property'];
-
+  expire : boolean;
   product : Product ;
-  
-  constructor() { }
+  user : User;
+  item : Item;
 
-  ngOnInit(): void {
-    this.product = JSON.parse(localStorage.getItem("product"));
+//   doSomething(event){
+//     this.product.Quantity = event;  // input value is logged
+//  }
 
-    document.getElementById("img").innerHTML = "<img src='data:image/jpg;base64," + this.product.Image + "'" + " style='height:100%'>" ;
+ constructor() { }
 
-    document.getElementById("name").innerText += this.product.Brand + " " + this.product.ProductName ;
-    document.getElementById("category").innerHTML += this.product.CategoryName ;
-    if(this.product.Variance != null)
-    {
-      document.getElementById("variance").innerHTML += this.product.Variance ;
-    }
-    if(this.product.Color != null)
-    {
-      document.getElementById("color").innerHTML += this.product.Color ;
-    }
-    if(this.product.Description != null)
-    {
-      document.getElementById("description").innerHTML += this.product.Description ;
-    }   
-    document.getElementById("price").innerHTML += "Rs." + this.product.Price ;
-    document.getElementById("seller").innerHTML += this.product.SellerName ;
-    
+ ngOnInit(): void {
+   this.product = JSON.parse(localStorage.getItem("product"));
+
+   document.getElementById("img").innerHTML = "<img src='data:image/jpg;base64," + this.product.Image + "'" + " style='height:100%'>" ;
+
   }
-
 }
