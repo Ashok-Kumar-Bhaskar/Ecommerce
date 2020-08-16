@@ -24,12 +24,12 @@ export class HomeComponent implements OnInit {
   categories : Category[] = [];
 
   products : Product[] = [];
-
+  user : User;
   p : Product[] =[];
 
   pList : string[] = [];
-
-  item : Item;
+  cartid : number;
+  item : Item = new Item();
   
 
   expire: Boolean;
@@ -45,6 +45,8 @@ export class HomeComponent implements OnInit {
     }
       this.getCategories();
       this.getProducts();
+      this.user =  JSON.parse(localStorage.getItem("user"));
+      this.cartid = this.user[0].Cart_ID;
   }
 
  getCategories()
@@ -83,6 +85,19 @@ export class HomeComponent implements OnInit {
     console.log(id);
     localStorage.setItem("product",JSON.stringify(id));
     this.router.navigate(["/product"]);
+  }
+
+  addToItems(ps){
+    
+    this.item.Cart_ID = this.user[0].Cart_ID;
+    this.item.Commodity_ID = ps.Commodity_ID;
+    this.item.Quantity = 1;
+    this.item.Amount = ps.Price;
+
+    console.log(this.item);
+    this.dataservice.postItems(this.item).subscribe (
+      res =>  console.log(res),
+      error =>  console.log(error));
   }
 
 

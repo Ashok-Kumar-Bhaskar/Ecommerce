@@ -5,6 +5,7 @@ import { DataService } from '../shared/data.service';
 import { map } from 'rxjs/operators';
 import { Cart } from '../models/cart.model';
 import {FormsModule} from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -27,7 +28,7 @@ export class CartComponent implements OnInit {
 
 
 
-  constructor(private dataservice : DataService) { }
+  constructor(private dataservice : DataService, private router:Router) { }
 
   ngOnInit(): void {
     this.user = localStorage.getItem("isUsername") ;
@@ -40,10 +41,11 @@ export class CartComponent implements OnInit {
         console.log(err);  
       }
     );
-      
-
-
-    
+         
   }
 
+  goToOrders()
+  {
+    this.router.navigate(['/order']);
+  }
 }

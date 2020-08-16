@@ -6,6 +6,8 @@ import { Product } from '../models/product.model';
 import { HttpClient } from '@angular/common/http';
 import { Router } from "@angular/router";
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Item } from '../models/item.model';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-category',
@@ -23,7 +25,9 @@ export class CategoryComponent implements OnInit {
   productOfCategory : Product[] = [];
 
   expire : boolean;
-
+  cartid : number;
+  item : Item = new Item();
+  user : User;
   pList : string[] = [];
   
   category : Category;
@@ -50,6 +54,8 @@ export class CategoryComponent implements OnInit {
     console.log(this.category);
 
       this.getProductsInCategory(this.category.Category_ID);
+      this.user =  JSON.parse(localStorage.getItem("user"));
+      this.cartid = this.user[0].Cart_ID;
       
   }
 
@@ -99,6 +105,19 @@ export class CategoryComponent implements OnInit {
     console.log(id);
     localStorage.setItem("product",JSON.stringify(id));
     this.router.navigate(["/product"]);
+  }
+
+  addToItems(ps){
+    
+    this.item.Cart_ID = this.user[0].Cart_ID;
+    this.item.Commodity_ID = ps.Commodity_ID;
+    this.item.Quantity = 1;
+    this.item.Amount = ps.Price;
+
+    console.log(this.item);
+    this.dataservice.postItems(this.item).subscribe (
+      res =>  console.log(res),
+      error =>  console.log(error));
   }
 
 }

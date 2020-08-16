@@ -33,4 +33,6 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     <tr mat-footer-row *matFooterRowDef="['item','quantity','cost','total']"></tr>
   </table>
+
+  <a mat-button (click)="goToOrders()">Buy Now</a>
   
