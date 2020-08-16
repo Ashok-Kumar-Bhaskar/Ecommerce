@@ -134,9 +134,9 @@ namespace ECommerce.Controllers
       }
     }
 
-    [HttpPost]
-    [Route("api/OrderConfirmation")]
-    public IHttpActionResult PostOrderConfirmation(long cartid)
+    [HttpGet]
+    [Route("api/OrderConfirmation/{cartid=cartid}")]
+    public IHttpActionResult GetOrderConfirmation(long cartid)
     {
       try
       {
@@ -146,7 +146,7 @@ namespace ECommerce.Controllers
         }
         DataOperations op = new DataOperations();
         var result = op.GetOrderDetails(cartid);
-        return Ok("Item Added Successfully");
+        return Ok(result);
       }
       catch (Exception ex)
       {

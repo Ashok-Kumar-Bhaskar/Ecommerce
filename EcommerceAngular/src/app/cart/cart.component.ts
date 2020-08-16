@@ -15,12 +15,17 @@ export class CartComponent implements OnInit {
   displayedColumns: string[] = ['item','quantity','cost','total'];
  
   user : string;
+  
+  dataSource : Cart[] = [];
 
+  GrandTotal : any;
   getTotalCost() {
+    this.GrandTotal = this.dataSource.map(t => t.Total ).reduce((acc, value) => acc + value, 0);
+    localStorage.setItem("cartTotalValue", this.GrandTotal);
     return this.dataSource.map(t => t.Total ).reduce((acc, value) => acc + value, 0);
   }
 
-  dataSource : Cart[] = [];
+
 
   constructor(private dataservice : DataService) { }
 

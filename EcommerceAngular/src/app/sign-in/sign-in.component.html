@@ -2,7 +2,10 @@
     <div>
         <img src="../../assets/login.png" class="image">
     </div>
+
+
     <div class="form-container">
+      <mat-card>
       <form [formGroup]="signinForm" (submit)="onSubmit()">
         <mat-form-field class="form-field" appearance="outline">
           <mat-label> Username
@@ -25,6 +28,6 @@
         <button mat-raised-button color="primary" type="submit">SignIn</button><br><br>
         <button mat-raised-button color="primary" type="submit" (click)="signup()">SignUp</button>
       </form>
-      
+    </mat-card>
     </div>
   </div>

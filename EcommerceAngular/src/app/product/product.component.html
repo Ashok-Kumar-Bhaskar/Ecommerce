@@ -12,9 +12,10 @@
             <mat-list-item role="listitem" id="description" *ngIf="product.Description!=null"> Description : {{product.Description}}</mat-list-item>
             <mat-list-item role="listitem" id="price"> Price : {{product.Price}}</mat-list-item>
             <mat-list-item role="listitem" id="seller"> Seller : {{product.SellerName}} </mat-list-item>
-            <mat-list-item role="listitem"><span>Quantity : </span>
-                <input type="number" value = {{product.Quantity}} [ngModel]="product.Quantity" (ngModelChange)="qtychange($event)" step="1" min="0" max="10" required>
-            <button (click)="addToItems()"><mat-icon>add_shopping_cart</mat-icon></button></mat-list-item>
+            <mat-list-item role="listitem" class="button-container"><span>Quantity : </span>
+            <input type="number" value = {{product.Quantity}} [ngModel]="product.Quantity" (ngModelChange)="qtychange($event)" step="1" min="0" max="10" required></mat-list-item>
+            <mat-list-item role="listitem" id="seller"><a mat-button (click)="addToItems()">Add To Cart <mat-icon>shopping_cart</mat-icon></a></mat-list-item>
+            
         </mat-list>
     </div>
     </div>

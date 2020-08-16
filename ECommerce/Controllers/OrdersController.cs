@@ -16,24 +16,24 @@ namespace ECommerce.Controllers
     {
       private ECommerceEntities db = new ECommerceEntities();
 
-      [HttpGet]
-      [Route("api/GetOrders")]
-      public IHttpActionResult GetOrders()
-      {
-        try
-        {
-          DataOperations op = new DataOperations();
-          var result = op.GetOrderDetails();
+      //[HttpGet]
+      //[Route("api/GetOrders")]
+      //public IHttpActionResult GetOrders()
+      //{
+      //  try
+      //  {
+      //    DataOperations op = new DataOperations();
+      //    var result = op.GetOrderDetails();
 
-          return Ok(result);
-        }
+      //    return Ok(result);
+      //  }
 
-        catch (Exception e)
-        {
-          LogFile.WriteLog(e);
-          return BadRequest();
-        }
-      }
+      //  catch (Exception e)
+      //  {
+      //    LogFile.WriteLog(e);
+      //    return BadRequest();
+      //  }
+      //}
 
       [HttpGet]
       [Route("api/GetInvoice/{id=id}")]

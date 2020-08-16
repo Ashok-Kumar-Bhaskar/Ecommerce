@@ -8,13 +8,13 @@ import { User } from '../models/user.model';
 import { Item } from '../models/item.model';
 
 export const darkTheme = {
-  'primary-color': '#455363',
+  'primary-color': '#ffd6bd',
   'background-color': '#455a64',
   'foreground-color' : '#263238',
   'text-color': '#fff'
 };
 export const lightTheme = {
-  'primary-color': '#fff',
+  'primary-color': '#ffa56f',
   'background-color': '#e5e5e5',
   'foreground-color': '#ffffff',
   'text-color': '#2d2d2d'
@@ -68,6 +68,10 @@ export class DataService {
   
   public postItems(item : Item): Observable<any> {
     return this.http.post<any>("https://localhost:44313/api/PostItem",item);
+  }
+
+  public getAddresses(id : number): Observable<any> {
+    return this.http.get<any>("https://localhost:44313/api/GetAddresses/" + id);
   }
 
 }

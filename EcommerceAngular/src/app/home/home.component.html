@@ -23,8 +23,8 @@
         {{ps.Brand}} {{ps.ProductName}} ({{ps.Variance}} - {{ps.Color}}) <br> <b>Price : Rs.{{ps.Price}}</b>
       </p>
     </mat-card-content>
-    <mat-card-actions>
-      <button mat-button>Add To Cart</button>
+    <mat-card-actions class="button-container">
+      <button mat-button >Add To Cart</button>
       <button mat-button (click)="goToProduct(ps)">View</button>
     </mat-card-actions>
   </mat-card>

@@ -1,4 +1,75 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+@import '~@angular/material/prebuilt-themes/indigo-pink.css'; 
+*{
+    box-sizing:border-box;
+}
+:root {
+    --primary-color: #ffa56f; 
+    --background-color: lightgray; 
+    --text-color: #2d2d2d; 
+}
+html, body { margin: 0; height: 100%; }
+body { 
+    margin: 0; 
+    padding: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    overflow-x: hidden; 
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: Lato;
+}
+
+.field-error {
+    border: 1px solid red;
+}
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.mat-form-field-label{
+    color: var(--text-color) !important;
+}
+.mat-form-field-underline{
+    background-color: var(--background-color) !important;
+}
+
+a,mat-toolbar,mat-button{
+    color: var(--background-color) !important;
+    background-color: var(--text-color) !important;
+}
+
+
+.mat-datepicker-toggle {
+    color: var(--text-color) !important;
+ background-color: var(--background-color) !important;
+}
+
+::placeholder{
+    color: var(--text-color) !important;
+}
+.textarea{
+    color: var(--text-color) !important;
+}
+.mat-select-value,input.mat-input-element,textarea.mat-input-element{
+    color: var(--text-color) !important;
+}
+.mat-form-field-appearance-outline .mat-form-field-flex{
+    color: var(--text-color) !important;
+}/*
+.mat-form-field-appearance-outline .mat-form-field-outline {
+    color: var(--text-color) !important;
+}*/
+mat-list-option,mat-selection-list
+{
+    color: var(--text-color) !important;
+}
+
+mat-icon
+{
+    color: var(--background-color) !important;
+    background-color: var(--text-color) !important;
+}
+
+mat-card{
+    background-color: var(--foreground-color) !important ;
+}

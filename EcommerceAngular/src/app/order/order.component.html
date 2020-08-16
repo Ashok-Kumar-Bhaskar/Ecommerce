@@ -1,0 +1,30 @@
+<div class="main-container">
+    <div class="address-container">
+        <!-- <mat-selection-list #addresses [multiple]="false">
+            <mat-list-option *ngFor = "let a of address" [value]="address">
+                {{a.Door}}, {{a.Street1}}, {{a.Street2}}, {{a.Area}}, {{a.City}}, {{a.State}}, <br> {{a.Pincode}},<br> {{a.Contact}}, {{a.AlternateContact}}
+            </mat-list-option>
+        </mat-selection-list> -->
+
+        <mat-selection-list #addresses [multiple]="false" >
+            <mat-list-option *ngFor="let a of address" [value]="a.Address_ID" (click)="getAddressid(a)"> 
+                {{a.Door}}, {{a.Street1}}, {{a.Street2}}, {{a.Area}}, {{a.City}}, {{a.State}}, <br> {{a.Pincode}},<br> {{a.Contact}}, {{a.AlternateContact}}
+            </mat-list-option>
+          </mat-selection-list>
+          <p id="selectedAddress">
+            {{addresses.selectedOptions.selected[0]?.value}}
+          </p>
+          
+    </div>
+
+
+    <div class="payment-container">
+        <h1>Total Amount To be Paid : </h1> <h3><b> Rs. {{ GrandTotal }} </b></h3><br>
+        <h1>Payment Mode : </h1>
+        <mat-selection-list class="payment" #methods [multiple]="false" >
+            <mat-list-option *ngFor="let method of PaymentMethods" [value]="method" (click)="getPaymentID(method)"> 
+                {{method.Mode}}
+            </mat-list-option>
+          </mat-selection-list>
+    </div>
+</div>

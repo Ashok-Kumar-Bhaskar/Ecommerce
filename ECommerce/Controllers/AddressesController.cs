@@ -42,13 +42,14 @@ namespace ECommerce.Controllers
 
 
         [HttpGet]
-        [Route("api/GetAddresses/{id}")]
+        [Route("api/GetAddresses/{id=id}")]
         public IHttpActionResult GetAddressesByID(long id)
         {
           try
           {
             List<Address> addressList = new List<Address>();
-            var ListOfAddresses = (from a in db.Addresses.Where(ad => ad.Address_ID == id)
+            var ListOfAddresses = (from a in db.Addresses.Where(ad => ad.User_ID == id && ad.IsDeleted==false) join
+                                   u in db.Users on a.User_ID equals u.User_ID
                                    select new
                                    {
                                      a.Address_ID,
@@ -61,7 +62,10 @@ namespace ECommerce.Controllers
                                      a.State,
                                      a.Pincode,
                                      a.Contact,
-                                     a.AlternateContact
+                                     a.AlternateContact,
+                                     u.FirstName,
+                                     u.LastName,
+                                     u.Email
                                    });
             return Ok(ListOfAddresses.ToList());
           }

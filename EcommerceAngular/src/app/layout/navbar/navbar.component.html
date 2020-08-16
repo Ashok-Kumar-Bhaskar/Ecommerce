@@ -1,4 +1,4 @@
-<p>
+
   <mat-toolbar class="toolbar">
    <div (click)="goToHome()" ><img class="logo" src="../../assets/logo.png"/></div>
   
@@ -13,18 +13,16 @@
     
     <a mat-button [routerLink]="'/cart'" class="navitem"><mat-icon>shopping_cart</mat-icon> Cart </a>
 
-    <mat-icon>{{show ? 'wb_sunny' : 'nights_stay'}}</mat-icon>    
+    <mat-icon> {{show ? 'wb_sunny' : 'nights_stay'}} </mat-icon>    
     <section class="theme">
       <mat-slide-toggle class="toggle" [color]="color" [checked]="checked" [disabled]="disabled"
       [formControl]="darkTheme" (click)="changetheme()">
       </mat-slide-toggle>
     </section>
       
-    <section class="logout" (click)="logout()"> <mat-icon>power_settings_new</mat-icon></section>
+    <section class="logout" (click)="logout()"> <mat-icon> power_settings_new </mat-icon></section>
      
   </mat-toolbar>
-</p>
-
 
 
   

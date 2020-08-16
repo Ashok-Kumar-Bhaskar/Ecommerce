@@ -1,0 +1,36 @@
+.main-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.address-container{
+    height: 500px;
+    width: 800px;
+}
+
+.payment-container{
+    height: 500px;
+    width: 300px;
+}
+
+.mat-list-option
+{
+    padding: 5px;
+    width: 100%;
+    border: black 1px;
+    outline: black;
+}
+
+.mat-selection-list{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.payment{
+    height: fit-content !important;
+}

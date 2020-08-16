@@ -1,11 +1,10 @@
 .spacer {
     flex: 1 1 auto;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
   }
 
-  .toolbar{
-      background-color:  black;
-  }
-
+ 
 .logo{
     width: 4rem;
     height: 4rem;
@@ -37,4 +36,10 @@
     padding-right: 2%;
     color: white;
     text-decoration: none;
+}
+
+.toolbar{
+    position: sticky;
+    top: 0; /* Sets the sticky toolbar to be on top */
+    z-index: 100; /* Ensure that your app's content doesn't overlap the toolbar */
 }

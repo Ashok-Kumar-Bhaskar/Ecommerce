@@ -41,7 +41,9 @@ import { TokenInterceptorService } from './auth/token-interceptor.service';
 import { CartComponent } from './cart/cart.component';
 import { CartRoutingModule } from './cart/cart-routing.module';
 import { MatTableModule } from '@angular/material/table';
-import {MatListModule} from '@angular/material/list'
+import {MatListModule} from '@angular/material/list';
+import { OrderComponent } from './order/order.component'
+import { OrderRoutingModule } from './order/order-routing.module';
 
 
 @NgModule({
@@ -53,15 +55,18 @@ import {MatListModule} from '@angular/material/list'
     SignupComponent,
     SignInComponent,
     CartComponent,
+    OrderComponent,
   ],
   imports: [
     LayoutModule,
+    MatSidenavModule,
     HomeRoutingModule,
     CartRoutingModule,
     SigninRoutingModule,
     SignupRoutingModule,
     CategoryRoutingModule,
     ProductRoutingModule,
+    OrderRoutingModule,
     MatGridListModule,
     MatToolbarModule,
     BrowserModule,

@@ -151,6 +151,7 @@ namespace ECommerce.DBOperations
                             u.LastName,
                             s.AgentName,
                             pm.Mode
+
                           });
 
         foreach (var list in oList)
@@ -166,8 +167,6 @@ namespace ECommerce.DBOperations
           ovm.Commodity_ID = list.Commodity_ID;
           ovm.Price = (decimal)list.Amount;
           ovm.Quantity = list.Quantity;
-          ovm.FirstName = list.FirstName;
-          ovm.LastName = list.LastName;
           ovm.ProductName = list.ProductName;
           ovm.Brand = list.Brand;
           ovm.Color = list.Color;

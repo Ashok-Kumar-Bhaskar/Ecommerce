@@ -19,7 +19,8 @@ export class NavbarComponent implements OnInit {
   show : boolean = true;
 
   constructor(private router : Router,private dataservice : DataService,public dialog: MatDialog,
-    private form: FormBuilder) { this.darkTheme.valueChanges.subscribe(value => {
+    private form: FormBuilder) { 
+      this.darkTheme.valueChanges.subscribe(value => {
       if (value) {
         console.log(this.darkTheme.value);
         this.dataservice.toggleDark();
