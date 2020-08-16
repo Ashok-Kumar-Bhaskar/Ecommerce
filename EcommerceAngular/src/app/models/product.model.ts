@@ -16,3 +16,4 @@ export class Product {
     Stock : number;
     Quantity : number;
 }       
+

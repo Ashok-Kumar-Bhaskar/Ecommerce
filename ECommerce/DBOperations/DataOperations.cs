@@ -116,14 +116,16 @@ namespace ECommerce.DBOperations
       }
     }
 
-    public List<OrdersViewModel> GetOrderDetails()
+    public List<OrdersViewModel> GetOrderDetails(long cartid)
     {
       try
       {
         List<OrdersViewModel> ordersList = new List<OrdersViewModel>();
         var oList = (from o in db.Orders join
-        c in db.Carts on o.Cart_ID equals c.Cart_ID join
+        c in db.Carts.Where(e => e.Cart_ID == cartid) on o.Cart_ID equals c.Cart_ID join
         i in db.Items on c.Cart_ID equals i.Cart_ID join
+        inv in db.Inventories on i.Commodity_ID equals inv.Commodity_ID join
+        pr in db.Products on inv.Product_ID equals pr.Product_ID join
         u in db.Users on o.User_ID equals u.User_ID join
         s in db.Shipments on o.Shipment_ID equals s.Shipment_ID join
         p in db.Payments on o.Payment_ID equals p.Payment_ID join
@@ -141,11 +143,14 @@ namespace ECommerce.DBOperations
                             i.Commodity_ID,
                             i.Amount,
                             i.Quantity,
+                            pr.ProductName,
+                            pr.Brand,
+                            pr.Variance,
+                            pr.Color,
                             u.FirstName,
                             u.LastName,
                             s.AgentName,
                             pm.Mode
-
                           });
 
         foreach (var list in oList)
@@ -163,6 +168,10 @@ namespace ECommerce.DBOperations
           ovm.Quantity = list.Quantity;
           ovm.FirstName = list.FirstName;
           ovm.LastName = list.LastName;
+          ovm.ProductName = list.ProductName;
+          ovm.Brand = list.Brand;
+          ovm.Color = list.Color;
+          ovm.Variance = list.Variance;
           ordersList.Add(ovm);
         }
 

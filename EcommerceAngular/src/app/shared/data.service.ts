@@ -66,8 +66,8 @@ export class DataService {
     return this.http.get<any>("https://localhost:44313/api/GetUser/" + userid);
   }
   
-  // public postItems(item : Item): Observable<any> {
-  //   return this.http.post<any>("https://localhost:44313/api/PostItem",item);
-  // }
+  public postItems(item : Item): Observable<any> {
+    return this.http.post<any>("https://localhost:44313/api/PostItem",item);
+  }
 
 }

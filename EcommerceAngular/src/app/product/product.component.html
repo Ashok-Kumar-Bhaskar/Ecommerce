@@ -7,14 +7,14 @@
         <mat-list role="list">
             <mat-list-item role="listitem" id="name"> {{product.Brand}} {{product.ProductName}} </mat-list-item>
             <mat-list-item role="listitem" id="category">Category : {{product.CategoryName}}</mat-list-item>
-            <mat-list-item role="listitem" id="variance">{{product.Variance}}</mat-list-item>
-            <mat-list-item role="listitem" id="color"> {{product.Color}} </mat-list-item>
-            <mat-list-item role="listitem" id="description"> Description : {{product.Description}}</mat-list-item>
+            <mat-list-item role="listitem" id="variance" *ngIf="product.Variance!=null">{{product.Variance}}</mat-list-item>
+            <mat-list-item role="listitem" id="color" *ngIf="product.Color!=null"> {{product.Color}} </mat-list-item>
+            <mat-list-item role="listitem" id="description" *ngIf="product.Description!=null"> Description : {{product.Description}}</mat-list-item>
             <mat-list-item role="listitem" id="price"> Price : {{product.Price}}</mat-list-item>
             <mat-list-item role="listitem" id="seller"> Seller : {{product.SellerName}} </mat-list-item>
             <mat-list-item role="listitem"><span>Quantity : </span>
-                <input type="number" ng-model="theValue" name="theValue" step="1" min="0" max="10" required>
-            <button><mat-icon>add_shopping_cart</mat-icon></button></mat-list-item>
+                <input type="number" value = {{product.Quantity}} [ngModel]="product.Quantity" (ngModelChange)="qtychange($event)" step="1" min="0" max="10" required>
+            <button (click)="addToItems()"><mat-icon>add_shopping_cart</mat-icon></button></mat-list-item>
         </mat-list>
     </div>
     </div>

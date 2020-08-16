@@ -134,5 +134,25 @@ namespace ECommerce.Controllers
       }
     }
 
+    [HttpPost]
+    [Route("api/OrderConfirmation")]
+    public IHttpActionResult PostOrderConfirmation(long cartid)
+    {
+      try
+      {
+        if (!ModelState.IsValid)
+        {
+          return BadRequest(ModelState);
+        }
+        DataOperations op = new DataOperations();
+        var result = op.GetOrderDetails(cartid);
+        return Ok("Item Added Successfully");
+      }
+      catch (Exception ex)
+      {
+        LogFile.WriteLog(ex);
+        return BadRequest();
+      }
+    }
   }
 }

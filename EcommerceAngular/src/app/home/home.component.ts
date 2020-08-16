@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from "@angular/router";
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { User } from '../models/user.model';
+import { Item } from '../models/item.model';
 
 
 @Component({
@@ -27,6 +28,8 @@ export class HomeComponent implements OnInit {
   p : Product[] =[];
 
   pList : string[] = [];
+
+  item : Item;
   
 
   expire: Boolean;
@@ -59,6 +62,7 @@ export class HomeComponent implements OnInit {
         console.log(this.products);
       this.p=this.products;},
       error =>  console.log(error));
+
   }
   
   getpdts(cat)
