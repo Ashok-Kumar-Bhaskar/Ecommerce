@@ -34,3 +34,15 @@
 .payment{
     height: fit-content !important;
 }
+
+h3
+{
+    background-color: #ff9900;
+    width: 200px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border:3px outset #999;
+    border-radius: 4px;
+}

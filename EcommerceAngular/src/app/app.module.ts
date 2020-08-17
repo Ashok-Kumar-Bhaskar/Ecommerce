@@ -44,6 +44,8 @@ import { MatTableModule } from '@angular/material/table';
 import {MatListModule} from '@angular/material/list';
 import { OrderComponent } from './order/order.component'
 import { OrderRoutingModule } from './order/order-routing.module';
+import { SummaryComponent } from './summary/summary.component';
+import { SummaryRoutingModule } from './summary/summary-routing.module';
 
 
 @NgModule({
@@ -56,10 +58,12 @@ import { OrderRoutingModule } from './order/order-routing.module';
     SignInComponent,
     CartComponent,
     OrderComponent,
+    SummaryComponent,
   ],
   imports: [
     LayoutModule,
     MatSidenavModule,
+    SummaryRoutingModule,
     HomeRoutingModule,
     CartRoutingModule,
     SigninRoutingModule,

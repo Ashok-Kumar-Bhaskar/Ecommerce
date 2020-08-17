@@ -59,12 +59,14 @@ export class OrderComponent implements OnInit {
     console.log(a);
     this.selectedAddr = a;
     console.log(this.selectedAddr.Address_ID);  
+    localStorage.setItem("Address",JSON.stringify(this.selectedAddr));
   }
 
   getPaymentID(m)
   {
     console.log(m);
-    this.selectedMOP = m.PaymentMode_ID;
+    this.selectedMOP = m;
     console.log(this.selectedMOP);  
+    localStorage.setItem("PaymentMode",JSON.stringify(this.selectedMOP));
   }
 }
