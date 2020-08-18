@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +8,6 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'EcommerceAngular';
-  router : Router;
+
+  constructor(public router: Router, private activatedRoute: ActivatedRoute) {}
 }

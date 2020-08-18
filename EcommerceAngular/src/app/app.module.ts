@@ -46,6 +46,8 @@ import { OrderComponent } from './order/order.component'
 import { OrderRoutingModule } from './order/order-routing.module';
 import { SummaryComponent } from './summary/summary.component';
 import { SummaryRoutingModule } from './summary/summary-routing.module';
+import { InvoiceComponent } from './invoice/invoice.component';
+import { InvoiceRoutingModule } from './invoice/invoice-routing.module';
 
 
 @NgModule({
@@ -59,12 +61,14 @@ import { SummaryRoutingModule } from './summary/summary-routing.module';
     CartComponent,
     OrderComponent,
     SummaryComponent,
+    InvoiceComponent,
   ],
   imports: [
     LayoutModule,
     MatSidenavModule,
     SummaryRoutingModule,
     HomeRoutingModule,
+    InvoiceRoutingModule,
     CartRoutingModule,
     SigninRoutingModule,
     SignupRoutingModule,

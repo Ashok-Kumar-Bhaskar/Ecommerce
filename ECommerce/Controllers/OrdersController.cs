@@ -52,5 +52,27 @@ namespace ECommerce.Controllers
           return BadRequest();
         }
       }
+
+    [HttpPost]
+    [Route("api/PostOrder")]
+    public IHttpActionResult PostOrder(Order order)
+    {
+      try
+      {
+        if (!ModelState.IsValid)
+        {
+          return BadRequest(ModelState);
+        }
+
+        db.Orders.Add(order);
+        db.SaveChanges();
+        return Ok("Order Added Successfully");
+      }
+      catch (Exception ex)
+      {
+        LogFile.WriteLog(ex);
+        return BadRequest();
+      }
     }
+  }
 }

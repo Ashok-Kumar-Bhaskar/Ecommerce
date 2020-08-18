@@ -40,8 +40,8 @@ namespace ECommerce.Controllers
     }
 
     [HttpPost]
-    [Route("api/PostCart")]
-    public IHttpActionResult PostCart(Cart cart)
+    [Route("api/PostCart/{id=id}")]
+    public IHttpActionResult PostCart(long id)
     {
         try
         {
@@ -49,6 +49,10 @@ namespace ECommerce.Controllers
           {
             return BadRequest(ModelState);
           }
+
+          var cart = new Cart();
+          cart.User_ID = id;
+          cart.CartStatus_ID = 45004;
 
           db.Carts.Add(cart);
           db.SaveChanges();
@@ -85,7 +89,7 @@ namespace ECommerce.Controllers
 
     [HttpPut]
     [Route("api/PutCart/{id=id}")]
-    public IHttpActionResult PutCart(long id, CartStatu cartstatu)
+    public IHttpActionResult PutCart(long id)
     {
       try
       {
@@ -103,7 +107,7 @@ namespace ECommerce.Controllers
 
         else
         {
-          list.CartStatus_ID = cartstatu.CartStatus_ID;
+          list.CartStatus_ID = 45001;
           db.SaveChanges();
         }
 

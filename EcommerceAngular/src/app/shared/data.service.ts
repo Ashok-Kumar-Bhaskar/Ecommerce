@@ -6,6 +6,7 @@ import { Product } from '../models/product.model';
 import { Signin } from '../models/signin.model';
 import { User } from '../models/user.model';
 import { Item } from '../models/item.model';
+import { Order } from '../models/order.model';
 
 export const darkTheme = {
   'primary-color': '#ffd6bd',
@@ -74,4 +75,18 @@ export class DataService {
     return this.http.get<any>("https://localhost:44313/api/GetAddresses/" + id);
   }
 
+  public postOrder(order : Order){
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) }; 
+    return this.http.post("https://localhost:44313/api/PostOrder",order);
+  }
+
+  public postCart(id : number){
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) }; 
+    return this.http.post<any>("https://localhost:44313/api/PostCart/"+id,httpOptions);
+  }
+
+  public putCart(id : number){
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) }; 
+    return this.http.put<any>("https://localhost:44313/api/PutCart/"+id,httpOptions);
+  }
 }
