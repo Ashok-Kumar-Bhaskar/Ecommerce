@@ -8,6 +8,7 @@ import { Router } from "@angular/router";
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Item } from '../models/item.model';
 import { User } from '../models/user.model';
+import { UiService } from '../shared/ui.service';
 
 @Component({
   selector: 'app-category',
@@ -33,12 +34,8 @@ export class CategoryComponent implements OnInit {
   category : Category;
   
 
-  constructor(private httpService: HttpClient,public jwtHelper: JwtHelperService, fb: FormBuilder, private dataservice : DataService, private router:Router) {
-    this.options = fb.group({
-      bottom: 0,
-      fixed: false,
-      top: 0
-    });
+  constructor(private ui : UiService,private httpService: HttpClient,public jwtHelper: JwtHelperService, fb: FormBuilder, private dataservice : DataService, private router:Router) {
+    this.ui.spin$.next(true);
   }
 
   ngOnInit(): void {
@@ -49,6 +46,9 @@ export class CategoryComponent implements OnInit {
     }
     this.getProducts();
     this.getCategories();
+    setTimeout(
+      () => this.ui.spin$.next(false), 2500
+     )
     this.category = JSON.parse(localStorage.getItem("category"));
     
     console.log(this.category);

@@ -8,6 +8,7 @@ import { Router } from "@angular/router";
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { User } from '../models/user.model';
 import { Item } from '../models/item.model';
+import { UiService } from '../shared/ui.service';
 
 
 @Component({
@@ -35,7 +36,9 @@ export class HomeComponent implements OnInit {
   expire: Boolean;
 
 
-  constructor(private httpService: HttpClient,public jwtHelper: JwtHelperService, fb: FormBuilder, private dataservice : DataService, private router:Router) {}
+  constructor(private ui : UiService,private httpService: HttpClient,public jwtHelper: JwtHelperService, fb: FormBuilder, private dataservice : DataService, private router:Router) {
+    this.ui.spin$.next(true);
+  }
 
   ngOnInit(): void {
     const token=localStorage.getItem('token');
@@ -43,8 +46,11 @@ export class HomeComponent implements OnInit {
     if(token==null || this.expire ){
       this.router.navigate(['/signin']);
     }
-      this.getCategories();
       this.getProducts();
+      this.getCategories();
+      setTimeout(
+        () => this.ui.spin$.next(false), 5000
+       )
       this.user =  JSON.parse(localStorage.getItem("user"));
       this.cartid = this.user[0].Cart_ID;
   }
