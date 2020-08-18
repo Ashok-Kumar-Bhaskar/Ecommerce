@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from '../models/user.model';
-import { DataService } from '../shared/data.service';
+import { DataService, lightTheme } from '../shared/data.service';
 import { Signin } from '../models/signin.model';
 import jwt_decode from 'jwt-decode';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -24,7 +24,14 @@ export class SignInComponent implements OnInit {
   user : User;
   constructor(private router: Router, private dataservice: DataService, private form: FormBuilder, public jwtHelper: JwtHelperService) { }
 
+  private setTheme(theme: {}) {
+    Object.keys(theme).forEach(k =>
+      document.documentElement.style.setProperty(`--${k}`, theme[k])
+    );
+  }
+
   ngOnInit(): void {
+    this.setTheme(lightTheme);
     const token=localStorage.getItem('token');
     this.expire = this.jwtHelper.isTokenExpired(token);
     if(token!=null && !this.expire ){

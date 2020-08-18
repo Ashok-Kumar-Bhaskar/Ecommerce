@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { User } from '../models/user.model';
 import { Router } from '@angular/router';
-import { DataService } from '../shared/data.service';
+import { DataService, lightTheme } from '../shared/data.service';
 
 @Component({
   selector: 'app-signup',
@@ -17,7 +17,14 @@ export class SignupComponent implements OnInit {
 
   constructor(private dataservice: DataService, private form: FormBuilder,private router: Router) { }
 
+  private setTheme(theme: {}) {
+    Object.keys(theme).forEach(k =>
+      document.documentElement.style.setProperty(`--${k}`, theme[k])
+    );
+  }
+
   ngOnInit(): void {
+    this.setTheme(lightTheme);
     // const token=localStorage.getItem('token');
     // if(token==null)
     // {

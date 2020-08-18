@@ -1,7 +1,7 @@
 import { Component, OnInit, ɵclearResolutionOfComponentResourcesQueue } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Category } from '../models/category.model'
-import { DataService } from '../shared/data.service';
+import { DataService, lightTheme } from '../shared/data.service';
 import { Product } from '../models/product.model';
 import { HttpClient } from '@angular/common/http';
 import { Router } from "@angular/router";
@@ -9,6 +9,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { User } from '../models/user.model';
 import { Item } from '../models/item.model';
 import { UiService } from '../shared/ui.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 
 @Component({
@@ -36,9 +37,10 @@ export class HomeComponent implements OnInit {
   expire: Boolean;
 
 
-  constructor(private ui : UiService,private httpService: HttpClient,public jwtHelper: JwtHelperService, fb: FormBuilder, private dataservice : DataService, private router:Router) {
+  constructor(private _snackBar: MatSnackBar,private ui : UiService,private httpService: HttpClient,public jwtHelper: JwtHelperService, fb: FormBuilder, private dataservice : DataService, private router:Router) {
     this.ui.spin$.next(true);
   }
+
 
   ngOnInit(): void {
     const token=localStorage.getItem('token');
@@ -102,7 +104,10 @@ export class HomeComponent implements OnInit {
 
     console.log(this.item);
     this.dataservice.postItems(this.item).subscribe (
-      res =>  console.log(res),
+      res => {console.log(res); 
+        this._snackBar.open("Added To Cart", "Close", {
+          duration: 2000,});
+        },
       error =>  console.log(error));
   }
 

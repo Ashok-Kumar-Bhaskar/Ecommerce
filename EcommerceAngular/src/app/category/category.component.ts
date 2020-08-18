@@ -9,6 +9,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { Item } from '../models/item.model';
 import { User } from '../models/user.model';
 import { UiService } from '../shared/ui.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-category',
@@ -34,7 +35,7 @@ export class CategoryComponent implements OnInit {
   category : Category;
   
 
-  constructor(private ui : UiService,private httpService: HttpClient,public jwtHelper: JwtHelperService, fb: FormBuilder, private dataservice : DataService, private router:Router) {
+  constructor(private _snackBar: MatSnackBar,private ui : UiService,private httpService: HttpClient,public jwtHelper: JwtHelperService, fb: FormBuilder, private dataservice : DataService, private router:Router) {
     this.ui.spin$.next(true);
   }
 
@@ -116,7 +117,10 @@ export class CategoryComponent implements OnInit {
 
     console.log(this.item);
     this.dataservice.postItems(this.item).subscribe (
-      res =>  console.log(res),
+      res =>  {console.log(res)
+        this._snackBar.open("Added To Cart", "Close", {
+          duration: 2000,});
+      },
       error =>  console.log(error));
   }
 

@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { User } from '../models/user.model';
 import { Item } from '../models/item.model';
 import { DataService } from '../shared/data.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-product',
@@ -29,7 +30,7 @@ qtychange(newValue) {
   console.log(this.product.Quantity);
 } 
 
- constructor(private dataservice:DataService) { }
+ constructor(private _snackBar: MatSnackBar,private dataservice:DataService) { }
 
  ngOnInit(): void {
    this.product = JSON.parse(localStorage.getItem("product"));
@@ -40,13 +41,27 @@ qtychange(newValue) {
    console.log(this.user);
    this.cartid = this.user[0].Cart_ID;
    console.log(this.cartid);
-
+ 
 
   }
+
+  checkQuantity()
+  {
+    if(!this.product.Quantity || this.product.Quantity <=0)
+    {
+      this._snackBar.open("Please enter Quantity", "Close", {
+        duration: 2000,});
+    }
+    else{
+      this.addToItems();
+    }
+  }
+
   addToItems(){
     console.log(this.user.Cart_ID);
     console.log(this.product);
     console.log(this.item);
+
     this.item.Cart_ID = this.user[0].Cart_ID;
     this.item.Commodity_ID = this.product.Commodity_ID;
     this.item.Quantity = this.product.Quantity;
@@ -54,7 +69,10 @@ qtychange(newValue) {
 
     console.log(this.item);
     this.dataservice.postItems(this.item).subscribe (
-      res =>  console.log(res),
+      res =>  { console.log(res);
+        this._snackBar.open("Added To Cart", "Close", {
+          duration: 2000,});
+      },
       error =>  console.log(error));
   }
 

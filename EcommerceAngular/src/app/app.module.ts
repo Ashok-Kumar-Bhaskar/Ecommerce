@@ -49,6 +49,7 @@ import { SummaryRoutingModule } from './summary/summary-routing.module';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { InvoiceRoutingModule } from './invoice/invoice-routing.module';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -79,6 +80,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     ProductRoutingModule,
     OrderRoutingModule,
     MatGridListModule,
+    MatSnackBarModule,
     MatToolbarModule,
     BrowserModule,
     MatListModule,
