@@ -203,7 +203,7 @@ namespace ECommerce.DBOperations
                           {
                             o.Orders_ID, o.User_ID, o.Date, o.DeliveryDate, o.Payment_ID, c.Cart_ID, i.Items_ID, i.Commodity_ID,
                             i.Amount, i.Quantity, Name = (u.FirstName + " " + u.LastName), s.AgentName, pm.Mode, p.Paid,
-                            inv.Invoice_Number
+                            inv.Invoice_Number, 
                           });
 
         
