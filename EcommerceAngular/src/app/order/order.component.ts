@@ -10,6 +10,7 @@ import { User } from '../models/user.model';
 import { PaymentMode } from '../models/paymentmode.model';
 import { Order } from '../models/order.model';
 import { Shipment } from '../models/shipment.model';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-order',
@@ -36,7 +37,7 @@ export class OrderComponent implements OnInit {
                                     {"PaymentMode_ID" : 752003, "Mode" : "COD"},
                                     {"PaymentMode_ID" : 752004, "Mode" : "Net Banking"},]
 
-  constructor(private httpService: HttpClient,public jwtHelper: JwtHelperService, fb: FormBuilder, private dataservice : DataService, private router:Router) { }
+  constructor(public dialog: MatDialog,private httpService: HttpClient,public jwtHelper: JwtHelperService, fb: FormBuilder, private dataservice : DataService, private router:Router) { }
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem("user"));
@@ -130,6 +131,25 @@ export class OrderComponent implements OnInit {
       result =>  { console.log(result); },
       error =>  console.log(error));
 
-     
+      const dialogRef = this.dialog.open(DialogContent, {disableClose: true });
+
+      dialogRef.afterClosed().subscribe(result => {
+        console.log(`Dialog result: ${result}`);
+        
+      });
+
+
   }
+}
+
+@Component({
+  selector: 'dialog-content',
+  templateUrl: './dialog-content.html'})
+export class DialogContent {
+  constructor( private router:Router) { }
+  goToHome()
+  {
+    this.router.navigate(['/home']);
+  }
+
 }

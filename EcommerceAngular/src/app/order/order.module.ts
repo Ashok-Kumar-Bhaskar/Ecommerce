@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { OrderComponent } from './order.component';
+import { OrderComponent, DialogContent } from './order.component';
 
 
 
 @NgModule({
-  declarations: [ OrderComponent ],
+  declarations: [ OrderComponent,DialogContent ],
   imports: [
     CommonModule
   ]

@@ -42,12 +42,13 @@ import { CartComponent } from './cart/cart.component';
 import { CartRoutingModule } from './cart/cart-routing.module';
 import { MatTableModule } from '@angular/material/table';
 import {MatListModule} from '@angular/material/list';
-import { OrderComponent } from './order/order.component'
+import { OrderComponent, DialogContent } from './order/order.component'
 import { OrderRoutingModule } from './order/order-routing.module';
 import { SummaryComponent } from './summary/summary.component';
 import { SummaryRoutingModule } from './summary/summary-routing.module';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { InvoiceRoutingModule } from './invoice/invoice-routing.module';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -62,6 +63,7 @@ import { InvoiceRoutingModule } from './invoice/invoice-routing.module';
     OrderComponent,
     SummaryComponent,
     InvoiceComponent,
+    DialogContent
   ],
   imports: [
     LayoutModule,
@@ -70,6 +72,7 @@ import { InvoiceRoutingModule } from './invoice/invoice-routing.module';
     HomeRoutingModule,
     InvoiceRoutingModule,
     CartRoutingModule,
+    MatDialogModule,
     SigninRoutingModule,
     SignupRoutingModule,
     CategoryRoutingModule,
