@@ -21,6 +21,13 @@
       <td mat-cell *matCellDef="let element"> {{element.Quantity}} </td>
       <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
+
+    <!-- Delete Column -->
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef> Delete </th>
+      <td mat-cell *matCellDef="let element"><a mat-button (click)="Delete(element.Commodity_ID)">Delete</a></td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
   
     <!-- Total Column -->
     <ng-container matColumnDef="total">
@@ -31,8 +38,8 @@
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    <tr mat-footer-row *matFooterRowDef="['item','quantity','cost','total']"></tr>
+    <tr mat-footer-row *matFooterRowDef="['item','quantity','cost','delete','total']"></tr>
   </table>
 
-  <a mat-button (click)="goToOrders()">Buy Now</a>
+  <a mat-button class="buy" (click)="goToOrders()">Buy Now</a>
   

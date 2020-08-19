@@ -9,11 +9,11 @@
 
     <a mat-button class="navitem" *ngIf="userRole=='1'"> Admin Access </a>
 
-    <a mat-button [routerLink]="'/invoice'" class="navitem"> Orders </a>
+    <a mat-button [routerLink]="'/invoice'" class="navitem"  *ngIf="userRole=='0'"> Orders </a>
 
 
     
-    <a mat-button [routerLink]="'/cart'" class="navitem"><mat-icon>shopping_cart</mat-icon> Cart </a>
+    <a mat-button [routerLink]="'/cart'" class="navitem"  *ngIf="userRole=='0'"><mat-icon>shopping_cart</mat-icon> Cart </a>
 
     <mat-icon> {{show ? 'wb_sunny' : 'nights_stay'}} </mat-icon>    
     <section class="theme">
