@@ -24,6 +24,7 @@ export class OrderComponent implements OnInit {
   user : User;
   selectedAddr : Address;
   GrandTotal : any;
+  userid : number;
   selectedMOP : PaymentMode;
   order : Order = new Order();
   shippingAgent : Shipment;
@@ -41,6 +42,7 @@ export class OrderComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem("user"));
+    this.userid = JSON.parse(localStorage.getItem("userid"));
     this.getAddress(this.user[0].User_ID);
     this.getCart(this.user[0].Username);
     // this.getAddressid();
@@ -123,14 +125,20 @@ export class OrderComponent implements OnInit {
       result =>  { console.log(result); },
       error =>  console.log(error));
 
+      this.dataservice.putCart(this.user[0].Cart_ID).subscribe (
+        result =>  { console.log(result); },
+        error =>  console.log(error));
+
     this.dataservice.postCart(this.user[0].User_ID).subscribe (
       result =>  { console.log(result); },
       error =>  console.log(error));
 
-    this.dataservice.putCart(this.user[0].Cart_ID).subscribe (
-      result =>  { console.log(result); },
-      error =>  console.log(error));
-
+      this.dataservice.getUserDetails(this.userid).subscribe (
+        result => { this.user = result;
+          localStorage.removeItem("user");
+          localStorage.setItem("user",JSON.stringify(this.user));
+        },
+        error=>console.log(error));
       const dialogRef = this.dialog.open(DialogContent, {disableClose: true });
 
       dialogRef.afterClosed().subscribe(result => {

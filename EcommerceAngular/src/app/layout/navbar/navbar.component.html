@@ -1,12 +1,14 @@
 
   <mat-toolbar class="toolbar">
-   <div (click)="goToHome()" ><img class="logo" src="../../assets/logo.png"/></div>
+
+    <div (click)="goToHome()" ><img class="logo" src="../../assets/logo.png"/></div>
   
     <span (click)="goToHome()" class="link">mirror.com</span>
 
     <span class="spacer"></span>
 
-    
+    <a mat-button class="navitem" *ngIf="userRole=='1'"> Admin Access </a>
+
     <a mat-button [routerLink]="'/invoice'" class="navitem"> Orders </a>
 
 
@@ -22,6 +24,7 @@
       
     <section class="logout" (click)="logout()"> <mat-icon> power_settings_new </mat-icon></section>
      
+
   </mat-toolbar>
 
 

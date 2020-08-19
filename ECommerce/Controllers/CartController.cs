@@ -158,5 +158,62 @@ namespace ECommerce.Controllers
         return BadRequest();
       }
     }
+
+    [HttpGet]
+    [Route("api/GetItemsDetails/{id=id}")]
+    public IHttpActionResult GetItemsDetails(long id)
+    {
+      try
+      {
+        var itemList = (from c in db.Carts.Where(e => e.Cart_ID == id) join
+                        i in db.Items on c.Cart_ID equals i.Cart_ID
+                        select new
+                        {
+                          i.Items_ID, i.Quantity, i.Commodity_ID
+                        });
+
+        return Ok(itemList.ToList());
+      }
+
+      catch (Exception e)
+      {
+        LogFile.WriteLog(e);
+        return BadRequest();
+      }
+    }
+
+    [HttpPut]
+    [Route("api/PutItem/{id=id}")]
+    public IHttpActionResult PutItem([FromUri()] long id, [FromBody()] int qty)
+    {
+      try
+      {
+        if (!ModelState.IsValid)
+        {
+          return BadRequest(ModelState);
+        }
+
+        var list = db.Items.FirstOrDefault(e => e.Items_ID == id);
+
+        if (list == null)
+        {
+          return NotFound();
+        }
+
+        else
+        {
+          list.Quantity = list.Quantity + qty;
+          db.SaveChanges();
+        }
+
+        return Ok("Item Updated Successfully");
+      }
+      catch (Exception ex)
+      {
+        LogFile.WriteLog(ex);
+        return BadRequest();
+      }
+    }
+
   }
 }

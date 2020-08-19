@@ -98,4 +98,13 @@ export class DataService {
     return this.http.get<any>("https://localhost:44313/api/GetOrdersList/" + id);
   }
 
+  public getItemsList(id : number): Observable<any> {
+    return this.http.get<any>("https://localhost:44313/api/GetItemsDetails/" + id);
+  }
+
+  public putItems(id : number, qty:number){
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) }; 
+    return this.http.put<any>("https://localhost:44313/api/PutItem/"+id,qty,httpOptions);
+  }
+
 }

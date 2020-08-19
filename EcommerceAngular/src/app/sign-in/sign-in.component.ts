@@ -86,6 +86,7 @@ export class SignInComponent implements OnInit {
 
     this.dataservice.getUserDetails(decoded['certserialnumber']).subscribe (
       result => { this.user = result;
+        localStorage.removeItem("user");
         localStorage.setItem("user",JSON.stringify(this.user));
       },
       error=>console.log(error));

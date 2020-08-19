@@ -17,6 +17,7 @@ export class NavbarComponent implements OnInit {
   disabled = false;
   darkTheme =  new FormControl(false);
   show : boolean = true;
+  userRole : string;
 
   constructor(private router : Router,private dataservice : DataService,public dialog: MatDialog,
     private form: FormBuilder) { 
@@ -34,6 +35,7 @@ export class NavbarComponent implements OnInit {
     };}
 
   ngOnInit(): void {
+    this.userRole = JSON.parse(localStorage.getItem("isAdmin"));
   }
 
   changetheme()
