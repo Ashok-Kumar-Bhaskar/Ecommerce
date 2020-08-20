@@ -9,4 +9,7 @@ export class Inventory {
     CategoryName : string;
     Stock : number;
     Price : any;
+    Product_ID : number;
+    Category_ID : number;
+    Seller_ID : number;
 }

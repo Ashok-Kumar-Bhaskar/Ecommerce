@@ -7,6 +7,7 @@ import { DataService } from '../shared/data.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Inventory } from '../models/inventory.model';
 
 @Component({
   selector: 'app-add-product',
@@ -24,7 +25,11 @@ export class AddProductComponent implements OnInit {
   cat_ID : number;
   Seller_ID : number;
   seller : Seller[] = [];
-    selectFile(event){
+  inventory : Inventory = new Inventory();
+  p_ID : number;
+    
+  //Upload Image
+  selectFile(event){
       var files = event.target.files;
       var file = files[0];
 
@@ -73,7 +78,7 @@ export class AddProductComponent implements OnInit {
         Category_ID :0,
         Seller_ID : 0,
         Stock : 0,
-        
+        Price : 0,
     });
   }
 
@@ -83,11 +88,19 @@ export class AddProductComponent implements OnInit {
       // tslint:disable-next-line:prefer-const
       this.dataservice.postProduct(this.product).subscribe (
         result =>  {console.log(result); },
-        error =>  {console.log(error)}
-  );
-  this._snackBar.open("Product Added", "Close", {
-    duration: 1000,});
-    this.productForm.reset();
+        error =>  {console.log(error)});
+
+        this.dataservice.getProdID().subscribe (
+          result =>  {this.p_ID = result.Product_ID;
+            console.log(result); 
+            this.updateInventoryValues();},
+          error =>  {console.log(error)});
+
+        
+       
+      this._snackBar.open("Product Added", "Close", {
+      duration: 1000,});
+     
     } 
     
     else {
@@ -114,4 +127,17 @@ export class AddProductComponent implements OnInit {
     this.product.Image = this.img;
   }
 
+  updateInventoryValues()
+  {
+    this.inventory.Product_ID = this.p_ID;
+    this.inventory.Seller_ID = this.Seller_ID;
+    this.inventory.Stock = this.productForm.get('Stock').value;
+    this.inventory.Price = this.productForm.get('Price').value;
+
+    this.dataservice.postInventory(this.inventory).subscribe (
+      result =>  {console.log(result); },
+      error =>  {console.log(error)});
+      this.productForm.reset();
+
+  }
 }

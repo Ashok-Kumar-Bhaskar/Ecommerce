@@ -7,6 +7,7 @@ import { Signin } from '../models/signin.model';
 import { User } from '../models/user.model';
 import { Item } from '../models/item.model';
 import { Order } from '../models/order.model';
+import { Inventory } from '../models/inventory.model';
 
 export const darkTheme = {
   'primary-color': '#ffd6bd',
@@ -133,5 +134,14 @@ export class DataService {
 
     public getSellers(): Observable<any> {
     return this.http.get<any>("https://localhost:44313/api/GetSeller");
+  }
+  
+  public getProdID(): Observable<any> {
+    return this.http.get<any>("https://localhost:44313/api/GetProductID");
+  }
+
+  public postInventory(inventory : Inventory){
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) }; 
+    return this.http.post<any>("https://localhost:44313/api/PostInventory",inventory);
   }
 }
