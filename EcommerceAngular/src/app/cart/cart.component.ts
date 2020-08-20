@@ -51,6 +51,13 @@ export class CartComponent implements OnInit {
 
   Delete(id)
   {
-    console.log(id);
+    this.dataservice.DeleteItems(id).subscribe(  
+      result => {  
+      console.log(result);
+    },err=>{  
+      console.log(err);  
+    }
+  );
+    window.location.reload();
   }
 }

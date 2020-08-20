@@ -215,5 +215,38 @@ namespace ECommerce.Controllers
       }
     }
 
+    [HttpDelete]
+    [Route("api/DeleteItem/{id=id}")]
+    public IHttpActionResult DeleteItem(long id)
+    {
+      try
+      {
+        if (!ModelState.IsValid)
+        {
+          return BadRequest(ModelState);
+        }
+
+        Item item = db.Items.Find(id);
+
+        if (item == null)
+        {
+          return NotFound();
+        }
+
+        else
+        {
+          db.Items.Remove(item);
+          db.SaveChanges();
+        }
+
+        return Ok("Item Deleted Successfully");
+      }
+      catch (Exception ex)
+      {
+        LogFile.WriteLog(ex);
+        return BadRequest();
+      }
+    }
+
   }
 }

@@ -50,6 +50,10 @@ import { InvoiceComponent } from './invoice/invoice.component';
 import { InvoiceRoutingModule } from './invoice/invoice-routing.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { AddUserComponent } from './add-user/add-user.component';
+import { AddUserRoutingModule } from './add-user/add-user-routing.module';
+import { AddProductComponent } from './add-product/add-product.component';
+import { AddProductRoutingModule } from './add-product/add-product-routing.module';
 
 
 @NgModule({
@@ -64,13 +68,17 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     OrderComponent,
     SummaryComponent,
     InvoiceComponent,
-    DialogContent
+    DialogContent,
+    AddUserComponent,
+    AddProductComponent
   ],
   imports: [
     LayoutModule,
     MatSidenavModule,
     SummaryRoutingModule,
+    AddProductRoutingModule,
     HomeRoutingModule,
+    AddUserRoutingModule,
     InvoiceRoutingModule,
     CartRoutingModule,
     MatDialogModule,

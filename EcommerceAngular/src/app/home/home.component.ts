@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
   pList : string[] = [];
   cartid : number;
   item : Item = new Item();
-  
+  userRole : string;
 
   expire: Boolean;
 
@@ -43,11 +43,14 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.userRole = JSON.parse(localStorage.getItem("isAdmin"));
     const token=localStorage.getItem('token');
     this.expire = this.jwtHelper.isTokenExpired(token);
     if(token==null || this.expire ){
       this.router.navigate(['/signin']);
     }
+    if(this.userRole == '0')
+    {
       this.getProducts();
       this.getCategories();
       setTimeout(
@@ -55,6 +58,12 @@ export class HomeComponent implements OnInit {
        )
       this.user =  JSON.parse(localStorage.getItem("user"));
       this.cartid = this.user[0].Cart_ID;
+    }
+    else{
+      setTimeout(
+        () => this.ui.spin$.next(false), 0
+       )
+    }
   }
 
  getCategories()

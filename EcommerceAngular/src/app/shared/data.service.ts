@@ -107,4 +107,15 @@ export class DataService {
     return this.http.put<any>("https://localhost:44313/api/PutItem/"+id,qty,httpOptions);
   }
 
+  public DeleteItems(id : number){
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) }; 
+    return this.http.delete<any>("https://localhost:44313/api/DeleteItem/"+id,httpOptions);
+  }
+
+  public postProduct(product : Product){
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) }; 
+    return this.http.post<any>("https://localhost:44313/api/PostProduct",product);
+  }
+  
+
 }

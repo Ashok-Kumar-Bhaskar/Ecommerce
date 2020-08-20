@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { User } from '../models/user.model';
-import { Router } from '@angular/router';
 import { DataService, lightTheme } from '../shared/data.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { User } from '../models/user.model';
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  selector: 'app-add-user',
+  templateUrl: './add-user.component.html',
+  styleUrls: ['./add-user.component.css']
 })
-export class SignupComponent implements OnInit {
-
+export class AddUserComponent implements OnInit {
   signupForm : FormGroup;
   user: User = new User()
   emailRegx = /^(([^<>+()\[\]\\.,;:\s@"-#$%&=]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,3}))$/;
@@ -64,7 +63,8 @@ export class SignupComponent implements OnInit {
     this.user.Username = this.signupForm.get('Username').value;
     this.user.Password = this.signupForm.get('Password').value;
     this.user.DefaultContact = this.signupForm.get('DefaultContact').value;
-    this.user.Role = "User";
+    this.user.Role = "Admin";
   }
+
 
 }

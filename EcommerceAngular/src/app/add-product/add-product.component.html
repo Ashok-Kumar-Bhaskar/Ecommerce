@@ -1,0 +1,92 @@
+<html>
+<body class='body'>
+<mat-card class="product-card">
+    <mat-card-header>
+      <mat-card-title class="card-container-center">Register New Product</mat-card-title>
+    </mat-card-header>
+    <div class="product-container">
+              
+    <form [formGroup]="productForm" autocomplete="off">
+    <mat-card-content>
+
+<table class="table">
+    <tbody>
+
+        <tr>
+            <th scope="row"></th>
+            <td>
+                <mat-form-field appearance="outline">
+                    <mat-label>Product Name</mat-label>
+                        <input matInput placeholder="Enter Product Name" required formControlName="ProductName">
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field appearance="outline">
+                    <mat-label>Brand</mat-label>
+                        <input matInput placeholder="Enter Brand" required formControlName="Brand">
+                </mat-form-field>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row"></th>
+            <td>
+                <mat-form-field appearance="outline">
+                    <mat-label>Color</mat-label>
+                        <input matInput placeholder="Enter Color" formControlName="Color">
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field appearance="outline">
+                    <mat-label>Variance</mat-label>
+                        <input matInput placeholder="Enter Variance" formControlName="Variance">
+                </mat-form-field>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row"></th>
+            <td>
+                <mat-form-field appearance="outline">
+                    <mat-label>Description</mat-label>
+                        <textarea matInput placeholder="Enter Description" type="text" formControlName="Description" class="description"></textarea>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-label>Upload Image</mat-label><br>
+                <input style="display: none"
+                      type="file" (change)="selectFile($event)"
+                      #fileInput>
+                    <button (click)="fileInput.click()">Select File</button>
+                    <!-- <button (click)="onUpload()">Upload!</button> -->
+            </td>
+        </tr>
+        <tr>
+            <th scope="row"></th>
+            <td>
+                <mat-form-field appearance="outline">
+                    <mat-label>Reorder Quantity</mat-label>
+                        <input matInput placeholder="Enter Reorder Quantity" type="number" min="1" max="20000" required formControlName="ReorderQuantity"/>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field appearance="outline">
+                    <!-- <mat-select> --><mat-label>Category</mat-label>
+                        <!-- <mat-option required [(ngModel)]="selectedCategory" [ngModelOptions]="{standalone: true}" ngDefaultControl *ngFor="let cat of categories" [value]="cat.Category_ID"> {{cat.CategoryName}}
+                        </mat-option> -->
+                        <input matInput placeholder="Enter Category_ID" type="number" min="1" max="13" required formControlName="Category_ID"/>
+                      <!-- </mat-select> -->
+                </mat-form-field>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<mat-card-actions>
+    <button mat-raised-button color="primary" type="submit" (click)="onSubmit()"  color="primary">Add Product</button>
+</mat-card-actions>
+
+</mat-card-content>
+</form>
+</div>
+</mat-card>
+</body>
+</html>

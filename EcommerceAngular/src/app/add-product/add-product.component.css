@@ -1,0 +1,36 @@
+.product-card{
+    max-width: 50%;
+    height: 100%;
+    position: relative;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 12), 0 5px 5px 0 rgba(100, 51, 74, 5);
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top : 5%;
+  }
+  .mat-card-title{
+    position: relative;
+    width: max-content;
+    font-size: 1.5em;
+  }
+  .mat-form-field {
+    position: relative;
+   
+  }
+
+  .mat-card-actions{
+    position: relative;
+    margin-left: 45%;
+    font-size: larger;
+    height: 2%;
+    
+  }
+
+
+  html, body { height: 100%; }
+

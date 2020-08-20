@@ -40,7 +40,8 @@ namespace ECommerce.DBOperations
                                            p.Brand,
                                            p.Color,
                                            p.Variance,
-                                           u.Username
+                                           u.Username,
+                                           item.Items_ID
                                          });
         foreach (var list in ListOfProductsForCartPage)
         {
@@ -58,6 +59,7 @@ namespace ECommerce.DBOperations
           cartvm.Color = list.Color;
           cartvm.Total = list.Price * list.Quantity;
           cartvm.Username = list.Username;
+          cartvm.Items_ID = list.Items_ID;
           cartList.Add(cartvm);
         }
         return cartList;

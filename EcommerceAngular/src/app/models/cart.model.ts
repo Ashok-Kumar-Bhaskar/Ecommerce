@@ -12,4 +12,5 @@ export class Cart {
     Brand : string;
     Color : string;
     Variance : string;
+    Items_ID : number;
 }
