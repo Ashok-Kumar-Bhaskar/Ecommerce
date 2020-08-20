@@ -54,7 +54,12 @@ import { AddUserComponent } from './add-user/add-user.component';
 import { AddUserRoutingModule } from './add-user/add-user-routing.module';
 import { AddProductComponent } from './add-product/add-product.component';
 import { AddProductRoutingModule } from './add-product/add-product-routing.module';
-
+import { AddCategoryComponent } from './add-category/add-category.component';
+import { AddCategoryRoutingModule } from './add-category/add-category-routing.module';
+import { InventoryComponent } from './inventory/inventory.component';
+import { InventoryRoutingModule } from './inventory/inventory-routing.module';
+import { Seller } from './models/seller.model'
+  
 
 @NgModule({
   declarations: [
@@ -70,16 +75,20 @@ import { AddProductRoutingModule } from './add-product/add-product-routing.modul
     InvoiceComponent,
     DialogContent,
     AddUserComponent,
-    AddProductComponent
+    AddProductComponent,
+    AddCategoryComponent,
+    InventoryComponent,
   ],
   imports: [
     LayoutModule,
     MatSidenavModule,
     SummaryRoutingModule,
+    AddCategoryRoutingModule,
     AddProductRoutingModule,
+    InvoiceRoutingModule,
     HomeRoutingModule,
     AddUserRoutingModule,
-    InvoiceRoutingModule,
+    InventoryRoutingModule,
     CartRoutingModule,
     MatDialogModule,
     SigninRoutingModule,

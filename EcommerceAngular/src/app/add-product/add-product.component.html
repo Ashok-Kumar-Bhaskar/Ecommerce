@@ -2,7 +2,7 @@
 <body class='body'>
 <mat-card class="product-card">
     <mat-card-header>
-      <mat-card-title class="card-container-center">Register New Product</mat-card-title>
+      <mat-card-title class="card-container-center">Add New Product</mat-card-title>
     </mat-card-header>
     <div class="product-container">
               
@@ -69,11 +69,31 @@
             </td>
             <td>
                 <mat-form-field appearance="outline">
-                    <!-- <mat-select> --><mat-label>Category</mat-label>
-                        <!-- <mat-option required [(ngModel)]="selectedCategory" [ngModelOptions]="{standalone: true}" ngDefaultControl *ngFor="let cat of categories" [value]="cat.Category_ID"> {{cat.CategoryName}}
-                        </mat-option> -->
-                        <input matInput placeholder="Enter Category_ID" type="number" min="1" max="13" required formControlName="Category_ID"/>
-                      <!-- </mat-select> -->
+                   <mat-label>Category</mat-label>
+                      <mat-select [(ngModel)]="cat_ID" [ngModelOptions]="{standalone: true}" name="category">
+                        <mat-option *ngFor="let cat of categories" [value]="cat.Category_ID">
+                          {{cat.CategoryName}}
+                        </mat-option>
+                      </mat-select>
+                </mat-form-field>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row"></th>
+            <td>
+                <mat-form-field appearance="outline">
+                    <mat-label>Stock</mat-label>
+                        <input matInput placeholder="Enter Stock" type="number" min="1" max="20000" required formControlName="Stock"/>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field appearance="outline">
+                   <mat-label>Seller</mat-label>
+                      <mat-select [(ngModel)]="Seller_ID" [ngModelOptions]="{standalone: true}" name="seller">
+                        <mat-option *ngFor="let s of seller" [value]="s.Seller_ID">
+                          {{s.SellerName}}
+                        </mat-option>
+                      </mat-select>
                 </mat-form-field>
             </td>
         </tr>

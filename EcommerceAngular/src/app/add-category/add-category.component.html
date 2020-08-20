@@ -1,0 +1,35 @@
+<html>
+<body class='body'>
+<mat-card class="category-card">
+    <mat-card-header>
+      <mat-card-title class="card-container-center">Add New Category</mat-card-title>
+    </mat-card-header>
+    <div class="category-container">
+              
+    <form [formGroup]="categoryForm" autocomplete="off">
+    <mat-card-content>
+
+<table class="table">
+    <tbody>
+        <tr>
+            <th scope="row"></th>
+            <td>
+                <mat-form-field appearance="outline">
+                    <mat-label>Category Name</mat-label>
+                        <input matInput placeholder="Enter Category Name" required formControlName="CategoryName">
+                </mat-form-field>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<mat-card-actions>
+    <button mat-raised-button color="primary" type="submit" (click)="onSubmit()"  color="primary">Add Category</button>
+</mat-card-actions>
+
+</mat-card-content>
+</form>
+</div>
+</mat-card>
+</body>
+</html>

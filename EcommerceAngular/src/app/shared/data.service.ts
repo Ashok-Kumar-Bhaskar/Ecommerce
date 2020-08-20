@@ -117,5 +117,21 @@ export class DataService {
     return this.http.post<any>("https://localhost:44313/api/PostProduct",product);
   }
   
+  public postCategory(category : Category){
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) }; 
+    return this.http.post<any>("https://localhost:44313/api/PostCategory",category);
+  }
 
+  public getInventoryItems(): Observable<any> {
+    return this.http.get<any>("https://localhost:44313/api/GetInventoryProducts");
+  }
+
+  public putInventoryItems(id : number, qty:number){
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) }; 
+    return this.http.put<any>("https://localhost:44313/api/PutInventory/"+id+"/"+qty,httpOptions);
+  }
+
+    public getSellers(): Observable<any> {
+    return this.http.get<any>("https://localhost:44313/api/GetSeller");
+  }
 }

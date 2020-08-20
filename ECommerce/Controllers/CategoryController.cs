@@ -35,6 +35,30 @@ namespace ECommerce.Controllers
         return BadRequest(); }
       }
 
+    [HttpGet]
+    [Route("api/GetSeller")]
+    public IHttpActionResult GetSeller()
+    {
+      try
+      {
+        List<Seller> sellerList = new List<Seller>();
+        sellerList = db.Sellers.ToList();
+        var ListOfSeller = (from s in db.Sellers
+                              select new
+                              {
+                                s.SellerName,
+                                s.Seller_ID
+                              });
+        return Ok(ListOfSeller.ToList());
+      }
+
+      catch (Exception e)
+      {
+        LogFile.WriteLog(e);
+        return BadRequest();
+      }
+    }
+
     [HttpPost]
     [Route("api/PostCategory")]
     public IHttpActionResult PostCategory(Category category)

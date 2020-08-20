@@ -171,5 +171,62 @@ namespace ECommerce.Controllers
         return BadRequest();
       }
     }
+
+    [HttpGet]
+    [Route("api/GetInventoryProducts")]
+    public IHttpActionResult GetInventoryProducts()
+    {
+      try
+      {
+        var ListOfProducts = (from p in db.Products.Where(e=> e.IsDeleted == false) join
+                              i in db.Inventories on p.Product_ID equals i.Product_ID join
+                              c in db.Categories on p.Category_ID equals c.Category_ID join
+                              s in db.Sellers on i.Seller_ID equals s.Seller_ID
+                              select new
+                              {
+                                i.Commodity_ID, p.ProductName, p.Brand, p.Color, p.Variance, p.ReorderQuantity, s.SellerName,
+                                c.CategoryName, i.Stock, i.Price
+                              });
+        return Ok(ListOfProducts);
+      }
+
+      catch (Exception e)
+      {
+        LogFile.WriteLog(e);
+        return BadRequest();
+      }
+    }
+
+    [HttpPut]
+    [Route("api/PutInventory/{id=id}/{qty=qty}")]
+    public IHttpActionResult PutInventory(long id, int qty)    //Modify Product
+    {
+      try
+      {
+        if (!ModelState.IsValid)
+        {
+          return BadRequest(ModelState);
+        }
+
+        var inventory = db.Inventories.FirstOrDefault(e => e.Commodity_ID == id);
+
+        if (inventory == null)
+        {
+          return NotFound();
+        }
+        else
+        {
+          inventory.Stock += qty;
+          db.SaveChanges();
+
+          return Ok("Inventory has been Updated");
+        }
+      }
+      catch (Exception ex)
+      {
+        LogFile.WriteLog(ex);
+        return BadRequest();
+      }
+    }
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Product } from '../models/product.model';
 import { Category } from '../models/category.model';
+import { Seller } from '../models/seller.model';
 import { DataService } from '../shared/data.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -20,7 +21,9 @@ export class AddProductComponent implements OnInit {
   selectedCategory : number;
   base64textString: string;
   img : string;
-
+  cat_ID : number;
+  Seller_ID : number;
+  seller : Seller[] = [];
     selectFile(event){
       var files = event.target.files;
       var file = files[0];
@@ -47,18 +50,6 @@ export class AddProductComponent implements OnInit {
     }
   
 
-  // onUpload() {
-  //   // this.http is the injected HttpClient
-  //   const uploadData = new FormData();
-  //   uploadData.append('myFile', this.selectedFile, this.selectedFile.name);
-  //   this.http.post('my-backend.com/file-upload', uploadData, {
-  //     reportProgress: true,
-  //     observe: 'events'
-  //   })
-  //     .subscribe(event => {
-  //       console.log(event); // handle event here
-  //     });
-  // }
 
   constructor(private _snackBar: MatSnackBar,private dataservice:DataService, private form: FormBuilder, private router: Router) { }
 
@@ -67,9 +58,11 @@ export class AddProductComponent implements OnInit {
   ngOnInit(): void {
     this.dataservice.getCategoriesList().subscribe (
       result =>  { this.categories = result; console.log(this.categories); },
-      error =>  console.log(error)
-);
-console.log(this.categories);
+      error =>  console.log(error));
+      this.dataservice.getSellers().subscribe (
+        result =>  { this.seller = result; console.log(this.seller); },
+        error =>  console.log(error));
+
       this.productForm = this.form.group({
         ProductName : ['', Validators.required],
         Brand : ['', Validators.required],
@@ -78,6 +71,9 @@ console.log(this.categories);
         Description : [''],
         ReorderQuantity : 0,
         Category_ID :0,
+        Seller_ID : 0,
+        Stock : 0,
+        
     });
   }
 
@@ -113,7 +109,7 @@ console.log(this.categories);
       this.product.Description = this.productForm.get('Description').value;
     }
     this.product.ReorderQuantity = this.productForm.get('ReorderQuantity').value;
-    this.product.Category_ID = this.productForm.get('Category_ID').value;;
+    this.product.Category_ID = this.cat_ID;
     this.product.IsDeleted = false;
     this.product.Image = this.img;
   }

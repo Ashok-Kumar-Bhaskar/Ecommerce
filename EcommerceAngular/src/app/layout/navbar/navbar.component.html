@@ -7,8 +7,9 @@
 
     <span class="spacer"></span>
 
-    <a mat-button class="navitem" *ngIf="userRole=='1'"> Add Product </a>
-    <a mat-button class="navitem" *ngIf="userRole=='1'"> Add Category </a>
+    <a mat-button class="navitem" [routerLink]="'/addproduct'" *ngIf="userRole=='1'"> Add Product </a>
+    <a mat-button class="navitem" [routerLink]="'/addcategory'" *ngIf="userRole=='1'"> Add Category </a>
+    <a mat-button class="navitem" [routerLink]="'/inventory'" *ngIf="userRole=='1'"> Inventory </a>
     <a mat-button class="navitem" [routerLink]="'/adduser'" *ngIf="userRole=='1'"> Add Admin </a>
 
     <a mat-button [routerLink]="'/invoice'" class="navitem"  *ngIf="userRole=='0'"> Orders </a>
