@@ -18,7 +18,8 @@ export class NavbarComponent implements OnInit {
   darkTheme =  new FormControl(false);
   show : boolean = true;
   userRole : string;
-
+  count : number;
+  
   constructor(private router : Router,private dataservice : DataService,public dialog: MatDialog,
     private form: FormBuilder) { 
       this.darkTheme.valueChanges.subscribe(value => {

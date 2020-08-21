@@ -5,7 +5,7 @@
   <!-- Position Column -->
   <ng-container matColumnDef="Date">
     <th mat-header-cell *matHeaderCellDef> Date </th>
-    <td mat-cell *matCellDef="let element"> {{element.Date}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.Date | date:'mediumDate'}} </td>
   </ng-container>
 
   <!-- Name Column -->
@@ -33,7 +33,7 @@
 
   <ng-container matColumnDef="DeliveryDate">
     <th mat-header-cell *matHeaderCellDef> DeliveryDate </th>
-    <td mat-cell *matCellDef="let element"> {{element.DeliveryDate}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.DeliveryDate | date:'mediumDate'}} </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -56,7 +56,7 @@ export class HomeComponent implements OnInit {
       this.getProducts();
       this.getCategories();
       setTimeout(
-        () => this.ui.spin$.next(false), 5000
+        () => this.ui.spin$.next(false), 7000
        )
       this.user =  JSON.parse(localStorage.getItem("user"));
       

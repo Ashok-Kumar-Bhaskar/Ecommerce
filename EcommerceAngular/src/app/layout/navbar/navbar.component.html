@@ -16,7 +16,7 @@
 
 
     
-    <a mat-button [routerLink]="'/cart'" class="navitem"  *ngIf="userRole=='0'"><mat-icon>shopping_cart</mat-icon> Cart </a>
+    <a mat-button [routerLink]="'/cart'" class="navitem"  *ngIf="userRole=='0'"><mat-icon [matBadge]="count" matBadgeColor="warn">shopping_cart</mat-icon> Cart </a>
 
     <mat-icon> {{show ? 'wb_sunny' : 'nights_stay'}} </mat-icon>    
     <section class="theme">

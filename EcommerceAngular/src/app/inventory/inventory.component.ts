@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../shared/data.service';
 import { Inventory } from '../models/inventory.model';
+import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-inventory',
@@ -11,8 +12,9 @@ import { Inventory } from '../models/inventory.model';
 export class InventoryComponent implements OnInit {
 
   displayedColumns: string[] = ['ID','item','seller','cost','quantity','stock','qty','order'];
-  dataSource : Inventory[] = [];
+  dataSource = new MatTableDataSource();
   qty : number;
+
   
   qtychange(newValue) {
     this.qty = newValue;
@@ -23,9 +25,10 @@ export class InventoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataservice.getInventoryItems().subscribe(  
-      data => {  this.dataSource = data ;
+      data => {  this.dataSource=new  MatTableDataSource(data) as any ;
       console.log(this.dataSource);
     },err=>{ console.log(err);});
+
   }
 
   Order(id)

@@ -108,6 +108,33 @@ namespace ECommerce.Controllers
       }
     }
 
+    [HttpGet]
+    [Route("api/GetEmail/{id=id}")]
+    public IHttpActionResult SendEmail(int id)
+    {
+      try
+      {
+        var user = db.Users.Find(id);
+        if (user == null)
+        {
+          return NotFound();
+        }
+
+        var email = user.Email;
+        var name = user.FirstName + " " + user.LastName;
+
+        EmailGeneration.sendEmail(user.Email, name);
+
+        return Ok("Email Sent");
+      }
+
+      catch (Exception ex)
+      {
+        LogFile.WriteLog(ex);
+        return null;
+      }
+    }
+
 
   }
 }

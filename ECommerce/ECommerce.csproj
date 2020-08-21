@@ -185,6 +185,7 @@
     <Compile Include="DataPopulation\ThemeData.cs" />
     <Compile Include="DataPopulation\UserData.cs" />
     <Compile Include="DBOperations\DataOperations.cs" />
+    <Compile Include="DBOperations\EmailGeneration.cs" />
     <Compile Include="Helper Classes\Encode.cs" />
     <Compile Include="DBOperations\Login.cs" />
     <Compile Include="Global.asax.cs">
