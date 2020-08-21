@@ -6,14 +6,14 @@
             </mat-list-option>
         </mat-selection-list> -->
 
+        <button mat-raised-button color="primary" class="addAddress" (click)="AddAddress()">Add New Address?</button>
+
         <mat-selection-list #addresses [multiple]="false" >
             <mat-list-option *ngFor="let a of address" [value]="a.Address_ID" (click)="getAddressid(a)"> 
                 {{a.Door}}, {{a.Street1}}, {{a.Street2}}, {{a.Area}}, {{a.City}}, {{a.State}}, <br> {{a.Pincode}},<br> {{a.Contact}}, {{a.AlternateContact}}
             </mat-list-option>
           </mat-selection-list>
-          <p id="selectedAddress">
-            {{addresses.selectedOptions.selected[0]?.value}}
-          </p>
+
           
     </div>
 

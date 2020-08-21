@@ -8,6 +8,7 @@ import { User } from '../models/user.model';
 import { Item } from '../models/item.model';
 import { Order } from '../models/order.model';
 import { Inventory } from '../models/inventory.model';
+import { Address } from '../models/address.model';
 
 export const darkTheme = {
   'primary-color': '#ffd6bd',
@@ -148,4 +149,11 @@ export class DataService {
   public GetCartCommodityID(id:number, cid:number): Observable<any> {
     return this.http.get<any>("https://localhost:44313/api/GetCartCommodityID/"+id+"/"+cid);
   }
+
+  public postAddress(address : Address){
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) }; 
+    return this.http.post<any>("https://localhost:44313/api/PostAddress",address);
+  }
+
+  
 }

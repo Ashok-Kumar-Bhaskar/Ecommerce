@@ -58,7 +58,9 @@ import { AddCategoryComponent } from './add-category/add-category.component';
 import { AddCategoryRoutingModule } from './add-category/add-category-routing.module';
 import { InventoryComponent } from './inventory/inventory.component';
 import { InventoryRoutingModule } from './inventory/inventory-routing.module';
-import { Seller } from './models/seller.model'
+import { Seller } from './models/seller.model';
+import { AddAddressComponent } from './add-address/add-address.component';
+import { AddAddressRoutingModule } from './add-address/add-address-routing.module';
   
 
 @NgModule({
@@ -78,6 +80,7 @@ import { Seller } from './models/seller.model'
     AddProductComponent,
     AddCategoryComponent,
     InventoryComponent,
+    AddAddressComponent,
   ],
   imports: [
     LayoutModule,
@@ -86,6 +89,7 @@ import { Seller } from './models/seller.model'
     AddCategoryRoutingModule,
     AddProductRoutingModule,
     InvoiceRoutingModule,
+    AddAddressRoutingModule,
     HomeRoutingModule,
     AddUserRoutingModule,
     InventoryRoutingModule,

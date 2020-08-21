@@ -13,4 +13,5 @@ export class Address {
     FirstName : string;
     LastName : string;
     Email : string;
+    IsDeleted : boolean;
 }

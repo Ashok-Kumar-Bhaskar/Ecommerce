@@ -52,7 +52,7 @@ qtychange(newValue) {
     if(!this.product.Quantity || this.product.Quantity <=0)
     {
       this._snackBar.open("Please enter Quantity", "Close", {
-        duration: 2000,});
+        duration: 2000,verticalPosition: 'top',horizontalPosition: 'right',panelClass: ['red-snackbar'],});
     }
     else{
       this.addToItems();
@@ -82,7 +82,7 @@ qtychange(newValue) {
         res =>  { this.com_ID = res;
           console.log(this.com_ID);
         this._snackBar.open("Added To Cart", "Close", {
-          duration: 2000,});},
+          duration: 2000,verticalPosition: 'top',horizontalPosition: 'right',panelClass: ['red-snackbar'],});},
         error =>  console.log(error));
     }
     else{
@@ -95,7 +95,7 @@ qtychange(newValue) {
     this.dataservice.postItems(this.item).subscribe (
       res =>  { console.log(res);
         this._snackBar.open("Added To Cart", "Close", {
-          duration: 2000,});
+          duration: 2000,verticalPosition: 'top',horizontalPosition: 'right',panelClass: ['red-snackbar'],});
       },
       error =>  console.log(error));
   }

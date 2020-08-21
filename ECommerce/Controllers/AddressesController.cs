@@ -40,6 +40,36 @@ namespace ECommerce.Controllers
           }
         }
 
+    [HttpPost]
+    [Route("api/PostAddress")]
+    public IHttpActionResult PostCategory(Address address)
+    {
+      try
+      {
+        Address addr = new Address();
+        addr.User_ID = address.User_ID;
+        addr.Door = address.Door;
+        addr.Street1 = address.Street1;
+        addr.Street2 = address.Street2;
+        addr.Area = address.Area;
+        addr.City = address.City;
+        addr.State = address.State;
+        addr.Pincode = address.Pincode;
+        addr.Contact = address.Contact;
+        addr.AlternateContact = address.AlternateContact;
+
+        db.Addresses.Add(addr);
+        db.SaveChanges();
+        return Ok(addr);
+      }
+
+      catch (Exception e)
+      {
+        LogFile.WriteLog(e);
+        return BadRequest();
+      }
+    }
+
 
         [HttpGet]
         [Route("api/GetAddresses/{id=id}")]

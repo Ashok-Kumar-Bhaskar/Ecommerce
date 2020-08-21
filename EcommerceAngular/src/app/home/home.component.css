@@ -1,15 +1,14 @@
 .example-container {
     position: fixed;
-    top: 10%;
+    top: 12%;
     bottom: 10%;
-    width: 20%;
+    width: 15%;
     height: 90%;
     left: 0;
     right: 0;
     background-color: transparent;
     text-decoration: none;
     overflow-y: hidden;
-    margin-bottom: 5%;
   }
 
   .side-menu{

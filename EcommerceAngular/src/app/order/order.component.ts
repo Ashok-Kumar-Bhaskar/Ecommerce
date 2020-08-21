@@ -145,8 +145,10 @@ export class OrderComponent implements OnInit {
         console.log(`Dialog result: ${result}`);
         
       });
-
-
+  }
+  AddAddress()
+  {
+    this.router.navigate(['/addaddress']);
   }
 }
 

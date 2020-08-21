@@ -74,8 +74,19 @@ mat-icon
 mat-card,table, ng-container, th, td{
     background-color: var(--foreground-color) !important ;
     color: var(--text-color) !important;
+    
 }
 
+table{
+    width: 90% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.red-snackbar{
+    background-color: rgb(153, 50, 50);
+    color:lightgoldenrodyellow;
+  }
   /* darkTheme {
     primary-color: #ffd6bd;
     background-color: #455a64;

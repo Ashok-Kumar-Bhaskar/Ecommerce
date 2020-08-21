@@ -32,7 +32,7 @@ export class AddCategoryComponent implements OnInit {
         error =>  {console.log(error)}
   );
   this._snackBar.open("Category Added", "Close", {
-    duration: 1000,});
+    duration: 1000, verticalPosition: 'top',horizontalPosition: 'right',panelClass: ['red-snackbar'],});
     this.categoryForm.reset();
     } 
     

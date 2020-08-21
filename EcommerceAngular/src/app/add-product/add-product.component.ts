@@ -51,7 +51,7 @@ export class AddProductComponent implements OnInit {
             this.img = btoa(binaryString);
             console.log(this.img);
             this._snackBar.open("Image Uploaded", "Close", {
-              duration: 1000,});
+              duration: 1000,verticalPosition: 'top',horizontalPosition: 'right',panelClass: ['red-snackbar'],});
     }
   
 
@@ -99,7 +99,7 @@ export class AddProductComponent implements OnInit {
         
        
       this._snackBar.open("Product Added", "Close", {
-      duration: 1000,});
+      duration: 1000,verticalPosition: 'top',horizontalPosition: 'right',panelClass: ['red-snackbar'],});
      
     } 
     

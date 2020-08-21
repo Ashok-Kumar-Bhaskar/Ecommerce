@@ -41,5 +41,5 @@
     <tr mat-footer-row *matFooterRowDef="['item','quantity','cost','delete','total']"></tr>
   </table>
 
-  <a mat-button class="buy" (click)="goToOrders()">Buy Now</a>
+  <a mat-button class="buy" (click)="goToOrders()" *ngIf = "GrandTotal > 0">Buy Now</a>
   

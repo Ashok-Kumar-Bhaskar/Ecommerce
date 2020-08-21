@@ -132,7 +132,7 @@ export class CategoryComponent implements OnInit {
         res =>  { this.com_ID = res;
           console.log(this.com_ID);
         this._snackBar.open("Added To Cart", "Close", {
-          duration: 2000,});},
+          duration: 2000,verticalPosition: 'top',horizontalPosition: 'right',panelClass: ['red-snackbar'],});},
         error =>  console.log(error));
     }
     else{
@@ -145,7 +145,7 @@ export class CategoryComponent implements OnInit {
     this.dataservice.postItems(this.item).subscribe (
       res => {console.log(res); 
         this._snackBar.open("Added To Cart", "Close", {
-          duration: 2000,});
+          duration: 2000,verticalPosition: 'top',horizontalPosition: 'right',panelClass: ['red-snackbar'],});
         },
       error =>  console.log(error));
     }

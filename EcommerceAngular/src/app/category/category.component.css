@@ -1,6 +1,6 @@
 .example-container {
     position: fixed;
-    top: 10%;
+    top: 12%;
     bottom: 10%;
     width: 15%;
     height: 90%;
@@ -11,6 +11,7 @@
     overflow-y: hidden;
   }
 
+  
   .side-menu{
       overflow-y: auto;
   }
