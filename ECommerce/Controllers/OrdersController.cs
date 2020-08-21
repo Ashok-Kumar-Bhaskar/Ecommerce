@@ -45,7 +45,7 @@ namespace ECommerce.Controllers
       }
     }
 
-        [HttpGet]
+    [HttpGet]
     [Route("api/GetOrdersID/{id=id}")]
     public IHttpActionResult GetOrdersID(long id)
     {
@@ -68,6 +68,57 @@ namespace ECommerce.Controllers
         return BadRequest();
       }
     }
+
+    [HttpGet]
+    [Route("api/GetLastOrdersID/{id=id}")]
+    public IHttpActionResult GetLastOrdersID(long id)
+    {
+      try
+      {
+        var order = (from o in db.Orders.Where(e => e.User_ID == id).OrderByDescending(f => f.Orders_ID)
+
+                    select new
+                    {
+                      o.Orders_ID, o.DeliveryDate
+                    });
+
+
+        return Ok(order);
+      }
+
+      catch (Exception e)
+      {
+        LogFile.WriteLog(e);  
+        return BadRequest();
+      }
+    }
+
+    [HttpPost]
+    [Route("api/PostInvoice")]
+    public IHttpActionResult PostInvoice(Order order)
+    {
+      try
+      {
+        if (!ModelState.IsValid)
+        {
+          return BadRequest(ModelState);
+        }
+
+        Invoice invoice = new Invoice();
+        invoice.Orders_ID = order.Orders_ID;
+        invoice.Date = order.DeliveryDate;
+
+        db.Invoices.Add(invoice);
+        db.SaveChanges();
+        return Ok("Invoice Added Successfully");
+      }
+      catch (Exception ex)
+      {
+        LogFile.WriteLog(ex);
+        return BadRequest();
+      }
+    }
+
     [HttpGet]
       [Route("api/GetInvoice/{id=id}")]
       public IHttpActionResult GetInvoice(long id)
@@ -157,6 +208,7 @@ namespace ECommerce.Controllers
         return null;
       }
     }
+
 
 
   }
