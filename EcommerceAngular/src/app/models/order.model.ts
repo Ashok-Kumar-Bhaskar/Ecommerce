@@ -6,4 +6,5 @@ export class Order {
    OrdersStatus_Code : number;
    Date : string;
    EstimatedDate : string;
+   DeliveryDate : string;
 }

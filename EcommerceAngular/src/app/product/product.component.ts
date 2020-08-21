@@ -20,6 +20,8 @@ export class ProductComponent implements OnInit {
   user : User = new User();
   item : Item = new Item();
   cartid : number;
+  flag: any;
+  com_ID : any[] = [];
 
 //   doSomething(event){
 //     this.product.Quantity = event;  // input value is logged
@@ -57,11 +59,33 @@ qtychange(newValue) {
     }
   }
 
-  addToItems(){
+  addToItems()
+  {
+    this.cartid = this.user[0].Cart_ID;
+    console.log(this.cartid);
+    this.dataservice.GetCartCommodityID(this.cartid,this.product.Commodity_ID).subscribe (
+      res =>  { this.flag = res;
+        console.log(this.flag);
+        this.addToCart();},
+      error =>  console.log(error));
+
+     
+  }
+
+  addToCart(){
     console.log(this.user.Cart_ID);
     console.log(this.product);
     console.log(this.item);
-
+    if(this.flag === 0)
+    {
+      this.dataservice.putItems(this.cartid,this.product.Commodity_ID,this.product.Quantity).subscribe (
+        res =>  { this.com_ID = res;
+          console.log(this.com_ID);
+        this._snackBar.open("Added To Cart", "Close", {
+          duration: 2000,});},
+        error =>  console.log(error));
+    }
+    else{
     this.item.Cart_ID = this.user[0].Cart_ID;
     this.item.Commodity_ID = this.product.Commodity_ID;
     this.item.Quantity = this.product.Quantity;
@@ -75,6 +99,6 @@ qtychange(newValue) {
       },
       error =>  console.log(error));
   }
-
+  }
 }
 

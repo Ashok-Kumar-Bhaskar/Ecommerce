@@ -103,9 +103,9 @@ export class DataService {
     return this.http.get<any>("https://localhost:44313/api/GetItemsDetails/" + id);
   }
 
-  public putItems(id : number, qty:number){
+  public putItems(cartid : number,id : number, qty:number){
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) }; 
-    return this.http.put<any>("https://localhost:44313/api/PutItem/"+id,qty,httpOptions);
+    return this.http.put<any>("https://localhost:44313/api/PutItem/"+id+"/"+cartid+"/"+qty,httpOptions);
   }
 
   public DeleteItems(id : number){
@@ -143,5 +143,9 @@ export class DataService {
   public postInventory(inventory : Inventory){
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) }; 
     return this.http.post<any>("https://localhost:44313/api/PostInventory",inventory);
+  }
+
+  public GetCartCommodityID(id:number, cid:number): Observable<any> {
+    return this.http.get<any>("https://localhost:44313/api/GetCartCommodityID/"+id+"/"+cid);
   }
 }

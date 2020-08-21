@@ -39,6 +39,38 @@ namespace ECommerce.Controllers
       }
     }
 
+    [HttpGet]
+    [Route("api/GetCartCommodityID/{id=id}/{cid=cid}")]
+    public int GetCartCommodityID(long id,long cid)
+    {
+      try
+      {
+        var cartCommodityList = (from c in db.Carts.Where(e => e.Cart_ID==id) join 
+                        i in db.Items.Where(f => f.Commodity_ID == cid && f.Cart_ID==id) on c.Cart_ID equals i.Cart_ID 
+                        select new
+                        {
+                          i.Commodity_ID
+                        });
+
+        bool isEmpty = !cartCommodityList.Any();
+        if (isEmpty)
+        {
+          return 1;
+        }
+        else
+        {
+          return 0;
+        }
+
+      }
+
+      catch (Exception e)
+      {
+        LogFile.WriteLog(e);
+        return -1;
+      }
+    }
+
     [HttpPost]
     [Route("api/PostCart/{id=id}")]
     public IHttpActionResult PostCart(long id)
@@ -183,8 +215,8 @@ namespace ECommerce.Controllers
     }
 
     [HttpPut]
-    [Route("api/PutItem/{id=id}")]
-    public IHttpActionResult PutItem([FromUri()] long id, [FromBody()] int qty)
+    [Route("api/PutItem/{id=id}/{cartid=cartid}/{qty=qty}")]
+    public IHttpActionResult PutItem(long id,long cartid,int qty)
     {
       try
       {
@@ -193,7 +225,7 @@ namespace ECommerce.Controllers
           return BadRequest(ModelState);
         }
 
-        var list = db.Items.FirstOrDefault(e => e.Items_ID == id);
+        var list = db.Items.FirstOrDefault(e => e.Cart_ID == cartid && e.Commodity_ID == id);
 
         if (list == null)
         {

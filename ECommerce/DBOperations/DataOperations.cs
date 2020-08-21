@@ -41,8 +41,9 @@ namespace ECommerce.DBOperations
                                            p.Color,
                                            p.Variance,
                                            u.Username,
-                                           item.Items_ID
-                                         });
+                                           item.Items_ID,
+                                           p.Product_ID
+                                         }) ;
         foreach (var list in ListOfProductsForCartPage)
         {
           CartViewModel cartvm = new CartViewModel();
@@ -60,6 +61,7 @@ namespace ECommerce.DBOperations
           cartvm.Total = list.Price * list.Quantity;
           cartvm.Username = list.Username;
           cartvm.Items_ID = list.Items_ID;
+          cartvm.Product_ID = list.Product_ID;
           cartList.Add(cartvm);
         }
         return cartList;

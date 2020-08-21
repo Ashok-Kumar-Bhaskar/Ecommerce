@@ -10,7 +10,7 @@ namespace ECommerce.Models
   public class JWTContainerModel : IAuthContainerModel
   {
     #region --Methods--
-    public int ExpireMinutes { get; set; } = 5;
+    public int ExpireMinutes { get; set; } = 60;
     public string SecretKey { get; set; } = "TW9zaGVFcmV6UHJpdmF0ZUtleQ==";
     public string SecurityAlgorithm { get; set; } = SecurityAlgorithms.HmacSha256Signature;
     public Claim[] Claims { get; set; }

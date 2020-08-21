@@ -33,6 +33,8 @@ export class CategoryComponent implements OnInit {
   pList : string[] = [];
   
   category : Category;
+  flag: any;
+  com_ID : any[] = [];
   
 
   constructor(private _snackBar: MatSnackBar,private ui : UiService,private httpService: HttpClient,public jwtHelper: JwtHelperService, fb: FormBuilder, private dataservice : DataService, private router:Router) {
@@ -108,8 +110,32 @@ export class CategoryComponent implements OnInit {
     this.router.navigate(["/product"]);
   }
 
-  addToItems(ps){
-    
+  addToItems(ps)
+  {
+    this.cartid = this.user[0].Cart_ID;
+    console.log(this.cartid);
+    this.dataservice.GetCartCommodityID(this.cartid,ps.Commodity_ID).subscribe (
+      res =>  { this.flag = res;
+        console.log(this.flag);
+        this.addToCart(ps);},
+      error =>  console.log(error));
+
+     
+  }
+
+  addToCart(ps)
+  {
+    console.log(this.flag);
+    if(this.flag === 0)
+    {
+      this.dataservice.putItems(this.cartid,ps.Commodity_ID,1).subscribe (
+        res =>  { this.com_ID = res;
+          console.log(this.com_ID);
+        this._snackBar.open("Added To Cart", "Close", {
+          duration: 2000,});},
+        error =>  console.log(error));
+    }
+    else{
     this.item.Cart_ID = this.user[0].Cart_ID;
     this.item.Commodity_ID = ps.Commodity_ID;
     this.item.Quantity = 1;
@@ -117,11 +143,12 @@ export class CategoryComponent implements OnInit {
 
     console.log(this.item);
     this.dataservice.postItems(this.item).subscribe (
-      res =>  {console.log(res)
+      res => {console.log(res); 
         this._snackBar.open("Added To Cart", "Close", {
           duration: 2000,});
-      },
+        },
       error =>  console.log(error));
+    }
   }
 
 }

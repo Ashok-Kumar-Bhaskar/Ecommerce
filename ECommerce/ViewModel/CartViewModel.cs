@@ -19,6 +19,7 @@ namespace ECommerce.ViewModel
     public decimal Total { get; set; }
     public string Username { get; set; }
     public long Items_ID { get; set; }
+    public long Product_ID { get; set; }
 
   }
 }

@@ -115,9 +115,9 @@ export class OrderComponent implements OnInit {
     this.order.Date = date.toDateString();
     var edate = new Date();
     edate.setDate(date.getDate()+3);
-    this.order.EstimatedDate = edate.toDateString();
+    this.order.DeliveryDate = edate.toDateString();
     console.log(this.order.Date);
-    console.log(this.order.EstimatedDate);
+    console.log(this.order.DeliveryDate);
     this.order.OrdersStatus_Code = 11002;
     console.log(this.order);
 
