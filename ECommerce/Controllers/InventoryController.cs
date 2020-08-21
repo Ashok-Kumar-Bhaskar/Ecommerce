@@ -58,5 +58,70 @@ namespace ECommerce.Controllers
       }
     }
 
+    [HttpPut]
+    [Route("api/PutStock/{id=id}/{qty=qty}")]
+    public IHttpActionResult PutStock(long id, int qty)
+    {
+      try
+      {
+        if (!ModelState.IsValid)
+        {
+          return BadRequest(ModelState);
+        }
+
+        var list = db.Inventories.FirstOrDefault(e => e.Commodity_ID == id);
+
+        if (list == null)
+        {
+          return NotFound();
+        }
+
+        else
+        {
+          list.Stock -= qty;
+          db.SaveChanges();
+        }
+
+        return Ok("Stock Updated Successfully");
+      }
+      catch (Exception ex)
+      {
+        LogFile.WriteLog(ex);
+        return BadRequest();
+      }
+    }
+
+    [HttpPut]
+    [Route("api/PutStockIntoInventory/{id=id}/{qty=qty}")]
+    public IHttpActionResult PutStockIntoInventory(long id, int qty)
+    {
+      try
+      {
+        if (!ModelState.IsValid)
+        {
+          return BadRequest(ModelState);
+        }
+
+        var list = db.Inventories.FirstOrDefault(e => e.Commodity_ID == id);
+
+        if (list == null)
+        {
+          return NotFound();
+        }
+
+        else
+        {
+          list.Stock += qty;
+          db.SaveChanges();
+        }
+
+        return Ok("Stock Updated Successfully");
+      }
+      catch (Exception ex)
+      {
+        LogFile.WriteLog(ex);
+        return BadRequest();
+      }
+    }
   }
 }

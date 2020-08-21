@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { Cart } from '../models/cart.model';
 import {FormsModule} from '@angular/forms';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-cart',
@@ -28,36 +29,43 @@ export class CartComponent implements OnInit {
 
 
 
-  constructor(private dataservice : DataService, private router:Router) { }
+  constructor(private _snackBar: MatSnackBar,private dataservice : DataService, private router:Router) { }
 
   ngOnInit(): void {
     this.user = localStorage.getItem("isUsername") ;
     
     this.dataservice.getCartItems(this.user).subscribe(  
       data => {  this.dataSource = data ;
-      console.log(this.dataSource);
-    }
-      ,err=>{  
-        console.log(err);  
-      }
-    );
-         
+      console.log(this.dataSource);}
+      ,err=>{ console.log(err); });  
   }
 
   goToOrders()
   {
-    this.router.navigate(['/order']);
+    if(this.GrandTotal == 0)
+    {
+      this._snackBar.open("Please add Items to Cart", "Close", {
+        duration: 2000,verticalPosition: 'top',horizontalPosition: 'right',panelClass: ['red-snackbar'],});
+    }
+    else{
+      this.router.navigate(['/order']);
+    }
+   
   }
 
-  Delete(id)
+  Delete(element)
   {
-    this.dataservice.DeleteItems(id).subscribe(  
-      result => {  
-      console.log(result);
-    },err=>{  
-      console.log(err);  
-    }
-  );
+    this.dataservice.DeleteItems(element.Items_ID).subscribe(  
+      result => { console.log(result);},
+      err=>{ console.log(err);});
+
+      this._snackBar.open("Item Deleted From Cart", "Close", {
+        duration: 2000,verticalPosition: 'top',horizontalPosition: 'right',panelClass: ['red-snackbar'],});
+    
+    this.dataservice.putInventoryItems(element.Commodity_ID,element.Quantity).subscribe(  
+      result => { console.log(result);},
+      err=>{ console.log(err);});
+      
     window.location.reload();
   }
 }

@@ -125,6 +125,10 @@ export class OrderComponent implements OnInit {
       result =>  { console.log(result); },
       error =>  console.log(error));
 
+      this.dataservice.SendEmail(this.user[0].User_ID,this.user[0].Cart_ID).subscribe (
+        result =>  { console.log(result); },
+        error =>  console.log(error));
+      
       this.dataservice.putCart(this.user[0].Cart_ID).subscribe (
         result =>  { console.log(result); },
         error =>  console.log(error));

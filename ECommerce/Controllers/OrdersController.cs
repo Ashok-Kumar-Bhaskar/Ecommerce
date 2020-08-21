@@ -109,8 +109,8 @@ namespace ECommerce.Controllers
     }
 
     [HttpGet]
-    [Route("api/GetEmail/{id=id}")]
-    public IHttpActionResult SendEmail(int id)
+    [Route("api/GetEmail/{id=id}/{cartid=cartid}")]
+    public IHttpActionResult SendEmail(long id,long cartid)
     {
       try
       {
@@ -122,10 +122,33 @@ namespace ECommerce.Controllers
 
         var email = user.Email;
         var name = user.FirstName + " " + user.LastName;
+        List<EmailViewModel> eList = new List<EmailViewModel>();
+        var itemList = (from c in db.Carts.Where(e => e.Cart_ID == cartid)
+                        join i in db.Items on c.Cart_ID equals i.Cart_ID
+                        join inv in db.Inventories on i.Commodity_ID equals inv.Commodity_ID 
+                        join p in db.Products on inv.Product_ID equals p.Product_ID
 
-        EmailGeneration.sendEmail(user.Email, name);
+                        select new
+                        {
+                          p.ProductName, p.Brand, p.Color, p.Variance,
+                          i.Quantity,i.Amount
+                        });
 
-        return Ok("Email Sent");
+        foreach (var list in itemList)
+        {
+          EmailViewModel emailvm = new EmailViewModel();
+          emailvm.ProductName = list.ProductName;
+          emailvm.Brand = list.Brand;
+          emailvm.Color = list.Color;
+          emailvm.Variance = list.Variance;
+          emailvm.Quantity = list.Quantity;
+          emailvm.Amount = (decimal)list.Amount;
+          eList.Add(emailvm);
+        }
+
+        EmailGeneration.sendEmail(user.Email, name, eList);
+
+        return Ok("Email Sent");  
       }
 
       catch (Exception ex)

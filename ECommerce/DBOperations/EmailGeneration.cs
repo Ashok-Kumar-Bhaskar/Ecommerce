@@ -1,27 +1,38 @@
-﻿using System;
+﻿using ECommerce.Models;
+using ECommerce.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Web;
+using System.Web.Http;
 
 namespace ECommerce.DBOperations
 {
-  public class EmailGeneration
+  public class EmailGeneration : ApiController
   {
-    public static void sendEmail(string emailID, string name)
+    public static void sendEmail(string emailID, string name, List<EmailViewModel> itemList)
     {
       var fromEmail = new MailAddress("ashkumpsiog@gmail.com", "Mirror.com");
       var toEmail = new MailAddress(emailID);
       var fromEmailPassword = "passwordpsiog";
 
       string subject = "Order Confirmation";
-      string body = "<br/><br/> " + "Hi " + name + ", " + "<br/>" +
-          "You order has been confirmed and Mirror.com promises you to deliver your orders " +
-          "within 3 days." + "<br/>" +
+      string body = "<br/><br/> " + "Hi " + name + "," + "<br/>" +
+          "You order has been confirmed." +
+           "<br/><br>" +
+          "Order Details <br>";
 
-          "<br/>" +
-          "Warm Regards";
+          foreach(var item in itemList)
+          {
+        body += item.Brand + " " + item.ProductName + " " + item.Color + " " + item.Variance + "------" +
+              item.Quantity + "-----" + item.Amount + "<br>";
+          }
+
+      body += "<br/>" + "Mirror.com promises you to deliver your orders within 3 days." + "<br>"
+        + "Warm Regards" + "<br>Mirror.com";
+
       var smtp = new SmtpClient
       {
         Host = "smtp.gmail.com",

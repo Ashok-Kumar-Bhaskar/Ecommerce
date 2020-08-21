@@ -145,6 +145,10 @@ export class HomeComponent implements OnInit {
         },
       error =>  console.log(error));
     }
+
+    this.dataservice.PutStock(ps.Commodity_ID,1).subscribe (
+      res => {console.log(res);},
+      error =>  console.log(error));
   }
 
 }

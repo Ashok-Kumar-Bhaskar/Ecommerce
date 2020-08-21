@@ -3,6 +3,7 @@ import { Address } from '../models/address.model';
 import { DataService, lightTheme } from '../shared/data.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-address',
@@ -14,7 +15,7 @@ export class AddAddressComponent implements OnInit {
   addressForm : FormGroup;
   address : Address = new Address();
   userid : number;
-   constructor(private dataservice: DataService, private form: FormBuilder,private router: Router) { }
+   constructor(private _snackBar: MatSnackBar,private dataservice: DataService, private form: FormBuilder,private router: Router) { }
 
   private setTheme(theme: {}) {
     Object.keys(theme).forEach(k =>
@@ -52,15 +53,22 @@ export class AddAddressComponent implements OnInit {
           result =>  {console.log(result); },
           error =>  console.log(error)
     );
+    this._snackBar.open("New Address Added", "Close", {
+      duration: 2000,verticalPosition: 'top',horizontalPosition: 'right',panelClass: ['red-snackbar'],});
     this.addressForm.reset();
+    this.router.navigate(['/order']);
     } 
     else {
+      this._snackBar.open("Please Enter Valid Address", "Close", {
+        duration: 2000,verticalPosition: 'top',horizontalPosition: 'right',panelClass: ['red-snackbar'],});
       console.log("invalid");
     }
-
-    this.router.navigate(['/order']);
   }
 
+  goBack()
+  {
+    this.router.navigate(['/order']);
+  }
   updateAddressValues()
   {
     this.address.User_ID = this.userid;

@@ -25,7 +25,7 @@
     <!-- Delete Column -->
     <ng-container matColumnDef="delete">
       <th mat-header-cell *matHeaderCellDef> Delete </th>
-      <td mat-cell *matCellDef="let element"><a mat-button (click)="Delete(element.Items_ID)">Delete</a></td>
+      <td mat-cell *matCellDef="let element"><a mat-button (click)="Delete(element)">Delete</a></td>
       <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
   
@@ -41,5 +41,5 @@
     <tr mat-footer-row *matFooterRowDef="['item','quantity','cost','delete','total']"></tr>
   </table>
 
-  <a mat-button class="buy" (click)="goToOrders()" *ngIf = "GrandTotal > 0">Buy Now</a>
+  <a mat-button class="buy" (click)="goToOrders()">Buy Now</a>
   

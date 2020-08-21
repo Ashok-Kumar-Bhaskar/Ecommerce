@@ -96,9 +96,12 @@ qtychange(newValue) {
       res =>  { console.log(res);
         this._snackBar.open("Added To Cart", "Close", {
           duration: 2000,verticalPosition: 'top',horizontalPosition: 'right',panelClass: ['red-snackbar'],});
-      },
+      },error =>  console.log(error));
+    }
+
+    this.dataservice.PutStock(this.product.Commodity_ID,this.product.Quantity).subscribe (
+      res => {console.log(res);},
       error =>  console.log(error));
-  }
   }
 }
 
