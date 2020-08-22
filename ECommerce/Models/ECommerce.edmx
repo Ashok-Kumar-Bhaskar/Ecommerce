@@ -36,7 +36,7 @@
           <Key>
             <PropertyRef Name="CartStatus_ID" />
           </Key>
-          <Property Name="CartStatus_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CartStatus_ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Description" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="Category">
@@ -101,7 +101,7 @@
           <Key>
             <PropertyRef Name="Payment_ID" />
           </Key>
-          <Property Name="Payment_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Payment_ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="PaymentMode_ID" Type="bigint" Nullable="false" />
           <Property Name="Paid" Type="bit" Nullable="false" />
         </EntityType>
@@ -169,7 +169,7 @@
           <Property Name="LastName" Type="nvarchar" MaxLength="50" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
           <Property Name="DefaultContact" Type="bigint" Nullable="false" />
           <Property Name="Role" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
@@ -663,7 +663,7 @@
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DefaultContact" Type="Int64" Nullable="false" />
           <Property Name="Role" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />

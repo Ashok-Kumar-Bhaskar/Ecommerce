@@ -1,18 +1,11 @@
 ﻿using System;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace ECommerce.Helper_Classes
 {
   public static class PasswordHash
   {
-    public static string GenerateSalt(int size)
-    {
-      var saltBytes = new byte[size];
-      var provider = new RNGCryptoServiceProvider();
-      provider.GetNonZeroBytes(saltBytes);
-      var salt = Convert.ToBase64String(saltBytes);
-      return (salt);
-    }
     public static string GenerateHash(string password)
     {
       var saltBytes = new byte[64];
@@ -21,6 +14,7 @@ namespace ECommerce.Helper_Classes
       var hashPassword = Convert.ToBase64String(rfc2898DeriveBytes.GetBytes(256));
 
       return hashPassword;
+
     }
   }
 }

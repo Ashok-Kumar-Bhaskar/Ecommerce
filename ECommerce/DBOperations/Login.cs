@@ -22,7 +22,7 @@ namespace ECommerce.DBOperations
         using (ECommerceEntities db = new ECommerceEntities())
         {
           user = db.Users.Where(l => l.Username == username).FirstOrDefault();
-          //password = PasswordHash.GenerateHash(password);
+          password = PasswordHash.GenerateHash(password);
           if (user != null)
           {
             if (String.Compare(password, user.Password) == 0)
@@ -56,6 +56,7 @@ namespace ECommerce.DBOperations
       {
         using (ECommerceEntities db = new ECommerceEntities())
         {
+          
           db.Users.Add(user);
           int flag = db.SaveChanges();
           return flag;

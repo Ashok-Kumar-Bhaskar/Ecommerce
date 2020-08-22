@@ -1,4 +1,5 @@
 ﻿using ECommerce.DBOperations;
+using ECommerce.Helper_Classes;
 using ECommerce.HelperClasses;
 using ECommerce.Models;
 using ECommerce.ViewModel;
@@ -41,6 +42,8 @@ namespace ECommerce.Controllers
         {
           return BadRequest(ModelState);
         }
+
+        user.Password = PasswordHash.GenerateHash(user.Password);
 
         db.Users.Add(user);
         db.SaveChanges();
