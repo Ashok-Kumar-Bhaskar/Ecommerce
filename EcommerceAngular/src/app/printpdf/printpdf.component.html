@@ -1,0 +1,36 @@
+<div id="content" #content>  
+    <mat-card class="alert">  
+      <div class="alert alert-info">  
+          <strong>Invoice</strong>  
+      </div>  
+      <div>  
+        <a mat-button type="button" value="Download" (click)="download()"> Download  </a>
+      </div>  
+    </mat-card>  
+  </div>  
+  <div id="contentToConvert" class="contentToConvert" >  
+      <br><br>
+      <div class="data">
+          <div> <b>Order ID : </b> {{element.Orders_ID}} </div>
+          <div> <b>Order Date : </b>  {{element.Date | date:'mediumDate'}} </div>
+          <div> <b>Delivery Date : </b> {{element.DeliveryDate | date:'mediumDate'}} </div>
+      </div>
+      <br><br>
+    <table>  
+        <tr>  
+          <th>S.no.</th>  
+          <th>Product Description</th>  
+          <th>Quantity</th>  
+          <th>Price</th> 
+        </tr>  
+        <tr>  
+          <th>1.</th>  
+          <th>{{element.Brand}} {{element.ProductName}} {{element.Color}} {{element.Variance}}</th>  
+          <th>{{element.Quantity}}</th>  
+          <th>{{element.Amount}}</th>
+        </tr>  
+        
+      </table>  
+
+      <div class='ty'>Thank you For Shopping with Mirror.com</div>
+  </div>  

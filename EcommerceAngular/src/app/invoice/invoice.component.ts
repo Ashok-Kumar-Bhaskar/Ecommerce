@@ -8,6 +8,8 @@ import { FormBuilder } from '@angular/forms';
 import { DataService } from '../shared/data.service';
 import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
+import * as jspdf from 'jspdf';  
+import html2canvas from 'html2canvas';  
 
 
 @Component({
@@ -21,8 +23,10 @@ export class InvoiceComponent implements OnInit {
     
     orderlist : Invoiceitems[] =[];
 
+    currentdate = new Date();
+
     dataSource = this.orderlist;
-    displayedColumns = ['Date', 'Orders_ID', 'Product', 'Quantity', 'Amount', 'DeliveryDate'];
+     displayedColumns = ['Date', 'Orders_ID', 'Product', 'Quantity', 'Amount', 'DeliveryDate', 'Print'];
   
     constructor(private httpService: HttpClient,public jwtHelper: JwtHelperService, fb: FormBuilder, private dataservice : DataService, private router:Router) {}
 
@@ -46,5 +50,10 @@ export class InvoiceComponent implements OnInit {
     // );
   }
 
-
+  generateInvoice(element)
+  {
+    localStorage.removeItem("invoice");
+    localStorage.setItem("invoice",JSON.stringify(element));
+    this.router.navigate(['/printpdf']);
+  }
 }

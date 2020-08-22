@@ -61,6 +61,9 @@ import { InventoryRoutingModule } from './inventory/inventory-routing.module';
 import { Seller } from './models/seller.model';
 import { AddAddressComponent } from './add-address/add-address.component';
 import { AddAddressRoutingModule } from './add-address/add-address-routing.module';
+import { PrintpdfComponent } from './printpdf/printpdf.component';
+import { PrintpdfRoutingModule } from './printpdf/printpdf-routing.module';
+
   
 
 @NgModule({
@@ -81,6 +84,7 @@ import { AddAddressRoutingModule } from './add-address/add-address-routing.modul
     AddCategoryComponent,
     InventoryComponent,
     AddAddressComponent,
+    PrintpdfComponent,
   ],
   imports: [
     LayoutModule,
@@ -92,6 +96,7 @@ import { AddAddressRoutingModule } from './add-address/add-address-routing.modul
     AddAddressRoutingModule,
     HomeRoutingModule,
     AddUserRoutingModule,
+    PrintpdfRoutingModule,
     InventoryRoutingModule,
     CartRoutingModule,
     MatDialogModule,

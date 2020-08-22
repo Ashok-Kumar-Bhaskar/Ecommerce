@@ -29,7 +29,7 @@ export class InventoryComponent implements OnInit {
     const token=localStorage.getItem('token');
     const admin=localStorage.getItem('isAdmin');
     const expire = this.jwtHelper.isTokenExpired(token);
-    if(token==null  || expire || admin==='1')
+    if(token==null  || expire || admin==='0')
     {
       this.router.navigate(['/signin']);
     }

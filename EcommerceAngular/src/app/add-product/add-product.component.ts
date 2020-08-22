@@ -24,6 +24,7 @@ export class AddProductComponent implements OnInit {
   base64textString: string;
   img : string;
   cat_ID : number;
+  flag : boolean;
   Seller_ID : number;
   seller : Seller[] = [];
   inventory : Inventory = new Inventory();
@@ -51,6 +52,7 @@ export class AddProductComponent implements OnInit {
          
             this.img = btoa(binaryString);
             console.log(this.img);
+            this.flag = true;
             this._snackBar.open("Image Uploaded", "Close", {
               duration: 1000,verticalPosition: 'top',horizontalPosition: 'right',panelClass: ['red-snackbar'],});
     }
