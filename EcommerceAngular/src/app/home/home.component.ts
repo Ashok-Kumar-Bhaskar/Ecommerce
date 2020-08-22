@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
   expire: Boolean;
   value: any;
   flag: any;
-
+  userid : number;
 
   constructor(private _snackBar: MatSnackBar,private ui : UiService,private httpService: HttpClient,public jwtHelper: JwtHelperService, fb: FormBuilder, private dataservice : DataService, private router:Router) {
     this.ui.spin$.next(true);
@@ -46,6 +46,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.userRole = JSON.parse(localStorage.getItem("isAdmin"));
+    this.userid = JSON.parse(localStorage.getItem("userid"));
     const token=localStorage.getItem('token');
     this.expire = this.jwtHelper.isTokenExpired(token);
     if(token==null || this.expire ){
@@ -60,6 +61,16 @@ export class HomeComponent implements OnInit {
        )
       this.user =  JSON.parse(localStorage.getItem("user"));
       
+      // this.dataservice.postCart(this.user[0].User_ID).subscribe (
+      //   result =>  { console.log(result); },
+      //   error =>  console.log(error));
+        
+      this.dataservice.getUserDetails(this.userid).subscribe (
+        result => { this.user = result;
+          localStorage.removeItem("user");
+          localStorage.setItem("user",JSON.stringify(this.user));
+          console.log(this.user);
+        },error=>console.log(error));
     }
     else{
       setTimeout(

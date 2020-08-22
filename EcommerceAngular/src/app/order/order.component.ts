@@ -24,6 +24,7 @@ export class OrderComponent implements OnInit {
   user : User;
   selectedAddr : Address;
   GrandTotal : any;
+  lastOrder : Order = new Order();
   userid : number;
   selectedMOP : PaymentMode;
   order : Order = new Order();
@@ -130,25 +131,51 @@ export class OrderComponent implements OnInit {
         error =>  console.log(error));
       
       this.dataservice.putCart(this.user[0].Cart_ID).subscribe (
-        result =>  { console.log(result); },
+        result =>  { console.log(result); this.postCart(); },
         error =>  console.log(error));
 
-    this.dataservice.postCart(this.user[0].User_ID).subscribe (
-      result =>  { console.log(result); },
-      error =>  console.log(error));
 
-      this.dataservice.getUserDetails(this.userid).subscribe (
-        result => { this.user = result;
-          localStorage.removeItem("user");
-          localStorage.setItem("user",JSON.stringify(this.user));
-        },
-        error=>console.log(error));
+
+      // this.dataservice.getUserDetails(this.userid).subscribe (
+      //   result => { this.user = result;
+      //     localStorage.removeItem("user");
+      //     localStorage.setItem("user",JSON.stringify(this.user));
+      //     console.log(this.user);
+      //   },error=>console.log(error));
+
+      // this.dataservice.GetLastOrdersID(this.user[0].User_ID).subscribe (
+      //   result =>  { this.lastOrder = result; console.log(this.lastOrder); },
+      //   error =>  console.log(error));
+      
+      // this.dataservice.PostInvoice(this.lastOrder[0]).subscribe (
+      //   result =>  { console.log(result); },
+      //   error =>  console.log(error));
+
       const dialogRef = this.dialog.open(DialogContent, {disableClose: true });
 
       dialogRef.afterClosed().subscribe(result => {
         console.log(`Dialog result: ${result}`);
         
+
       });
+
+      // this.dataservice.postCart(this.user[0].User_ID).subscribe (
+      //   result =>  { console.log(result); },
+      //   error =>  console.log(error));
+
+      // this.dataservice.getUserDetails(this.userid).subscribe (
+      //   result => { this.user = result;
+      //     localStorage.removeItem("user");
+      //     localStorage.setItem("user",JSON.stringify(this.user));
+      //     console.log(this.user);
+      //   },error=>console.log(error));
+  }
+
+  postCart()
+  {
+    this.dataservice.postCart(this.user[0].User_ID).subscribe (
+      result =>  { console.log(result); },
+      error =>  console.log(error));
   }
   AddAddress()
   {
@@ -165,5 +192,4 @@ export class DialogContent {
   {
     this.router.navigate(['/home']);
   }
-
 }

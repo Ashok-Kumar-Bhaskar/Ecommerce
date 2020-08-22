@@ -163,4 +163,14 @@ export class DataService {
   public SendEmail(id:number, cid:number): Observable<any> {
     return this.http.get<any>("https://localhost:44313/api/GetEmail/"+id+"/"+cid);
   }
+
+  public GetLastOrdersID(userid:number): Observable<any> {
+    return this.http.get<any>("https://localhost:44313/api/GetLastOrdersID/"+userid);
+  }
+
+  public PostInvoice(order : Order){
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) }; 
+    return this.http.post<any>("https://localhost:44313/api/PostInvoice",order);
+  }
+
 }
