@@ -56,9 +56,9 @@ export class HomeComponent implements OnInit {
     {
       this.getProducts();
       this.getCategories();
-      setTimeout(
-        () => this.ui.spin$.next(false), 7000
-       )
+      // setTimeout(
+      //   () => this.ui.spin$.next(false), 7000
+      //  )
       this.user =  JSON.parse(localStorage.getItem("user"));
       
       // this.dataservice.postCart(this.user[0].User_ID).subscribe (
@@ -67,15 +67,24 @@ export class HomeComponent implements OnInit {
         
       this.dataservice.getUserDetails(this.userid).subscribe (
         result => { this.user = result;
-          localStorage.removeItem("user");
-          localStorage.setItem("user",JSON.stringify(this.user));
-          console.log(this.user);
+          if(this.user[0] == null)
+          {
+            this.dataservice.postCart(this.userid).subscribe (
+              result =>  { console.log(result); this.getUserDetails();},
+              error =>  console.log(error));
+          }
+          else{
+            localStorage.removeItem("user");
+            localStorage.setItem("user",JSON.stringify(this.user));
+            console.log(this.user);
+          }
         },error=>console.log(error));
     }
     else{
       setTimeout(
         () => this.ui.spin$.next(false), 0
        )
+       this.router.navigate(['/inventory']);
     }
   }
 
@@ -92,8 +101,9 @@ export class HomeComponent implements OnInit {
     this.dataservice.getProductsList().subscribe (
       res =>  { this.products = res;
         console.log(this.products);
-      this.p=this.products;},
-      error =>  console.log(error));
+      this.p=this.products;
+      this.ui.spin$.next(false)},
+      error =>  {console.log(error);this.ui.spin$.next(false);});
 
   }
   
@@ -160,6 +170,16 @@ export class HomeComponent implements OnInit {
     this.dataservice.PutStock(ps.Commodity_ID,1).subscribe (
       res => {console.log(res);},
       error =>  console.log(error));
+  }
+
+  getUserDetails()
+  {
+    this.dataservice.getUserDetails(this.userid).subscribe (
+      result => { this.user = result;
+        localStorage.removeItem("user");
+            localStorage.setItem("user",JSON.stringify(this.user));
+            console.log(this.user);},
+            error=>console.log(error));
   }
 
 }

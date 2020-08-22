@@ -50,6 +50,8 @@ export class SignupComponent implements OnInit {
           error =>  console.log(error)
     );
     this.signupForm.reset();
+    
+    this.router.navigate(['/signin']);
     } 
     else {
       console.log("invalid");
@@ -67,4 +69,8 @@ export class SignupComponent implements OnInit {
     this.user.Role = "User";
   }
 
+  signIn()
+  {
+    this.router.navigate(['/signin']);
+  }
 }

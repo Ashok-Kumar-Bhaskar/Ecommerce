@@ -49,9 +49,7 @@ export class CategoryComponent implements OnInit {
     }
     this.getProducts();
     this.getCategories();
-    setTimeout(
-      () => this.ui.spin$.next(false), 2500
-     )
+
     this.category = JSON.parse(localStorage.getItem("category"));
     
     console.log(this.category);
@@ -75,8 +73,9 @@ export class CategoryComponent implements OnInit {
         this.dataservice.getProductsList().subscribe (
         res =>  { this.products = res;
           console.log(this.products);
-        this.p=this.products;},
-        error =>  console.log(error));
+        this.p=this.products;
+        },
+        error =>  {console.log(error);this.ui.spin$.next(false);});
         
         
         
@@ -85,9 +84,8 @@ export class CategoryComponent implements OnInit {
   getProductsInCategory(id)
   {
     this.dataservice.getProductsListByCategory(id).subscribe(res => {
-        this.productOfCategory = res;
-        err => console.log(err);
-      });
+        this.productOfCategory = res;this.ui.spin$.next(false);},
+        err => {console.log(err);this.ui.spin$.next(false);});
   }
 
   getpdts(cat)

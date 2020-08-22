@@ -34,7 +34,7 @@ export class AddAddressComponent implements OnInit {
     this.addressForm = this.form.group({
       Door: [null, Validators.required],
       Street1: ['', Validators.required],
-      Street2: ['',Validators.required],
+      Street2: [''],
       Area: ['', Validators.required],
       City: ['', Validators.required],
       State: ['', Validators.required],

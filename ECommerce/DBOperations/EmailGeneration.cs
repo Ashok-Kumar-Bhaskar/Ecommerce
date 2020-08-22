@@ -26,7 +26,7 @@ namespace ECommerce.DBOperations
 
           foreach(var item in itemList)
           {
-        body += item.Brand + " " + item.ProductName + " " + item.Color + " " + item.Variance + "------" +
+              body += item.Brand + " " + item.ProductName + " " + item.Color + " " + item.Variance + "------" +
               item.Quantity + "-----" + item.Amount + "<br>";
           }
 
