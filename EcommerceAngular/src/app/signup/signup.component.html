@@ -10,9 +10,8 @@
            </mat-form-field>
            <mat-form-field class="full-width" appearance="outline">
               <mat-label>Last Name</mat-label>
-              <input  matInput formControlName="LastName" placeholder="Last Name" name="lname"  required>
+              <input  matInput formControlName="LastName" placeholder="Last Name" name="lname">
               <mat-error *ngIf="signupForm.controls.LastName.touched && signupForm.controls.LastName.invalid">
-                <span *ngIf="signupForm.controls.LastName.errors.required">This field is mandatory.</span>
               </mat-error>
            </mat-form-field>
            <mat-form-field class="full-width" appearance="outline">

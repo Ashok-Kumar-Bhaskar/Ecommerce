@@ -61,9 +61,8 @@
              </mat-form-field>
              <mat-form-field class="full-width" appearance="outline">
               <mat-label>Alternate Contact</mat-label>
-              <input  matInput formControlName="AlternateContact" placeholder="Alternate Contact"  name="AlternateContact" required>
+              <input  matInput formControlName="AlternateContact" placeholder="Alternate Contact"  name="AlternateContact">
               <mat-error *ngIf="addressForm.controls.AlternateContact.touched && addressForm.controls.AlternateContact.invalid">
-                  <span *ngIf="addressForm.controls.AlternateContact.errors.required">This field is mandatory.</span>
                   <span *ngIf="addressForm.controls.AlternateContact.errors.pattern">This field is invalid.</span>
               </mat-error>
            </mat-form-field>

@@ -30,7 +30,7 @@ namespace ECommerce.DBOperations
               item.Quantity + "-----" + item.Amount + "<br>";
           }
 
-      body += "<br/>" + "Mirror.com promises you to deliver your orders within 3 days." + "<br>"
+      body += "<br/>" + "Mirror.com promises you to deliver your orders within " + DateTime.Now.AddDays(3).ToString("dddd, dd MMMM yyyy") + ".<br>"
         + "Warm Regards" + "<br>Mirror.com";
 
       var smtp = new SmtpClient
