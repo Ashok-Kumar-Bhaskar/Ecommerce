@@ -4,6 +4,7 @@ import { DataService, lightTheme } from '../shared/data.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-add-address',
@@ -15,7 +16,7 @@ export class AddAddressComponent implements OnInit {
   addressForm : FormGroup;
   address : Address = new Address();
   userid : number;
-   constructor(private _snackBar: MatSnackBar,private dataservice: DataService, private form: FormBuilder,private router: Router) { }
+   constructor(private _snackBar: MatSnackBar,public jwtHelper: JwtHelperService, private dataservice: DataService, private form: FormBuilder,private router: Router) { }
 
   private setTheme(theme: {}) {
     Object.keys(theme).forEach(k =>
@@ -25,11 +26,13 @@ export class AddAddressComponent implements OnInit {
 
   ngOnInit(): void {
     this.setTheme(lightTheme);
-    // const token=localStorage.getItem('token');
-    // if(token==null)
-    // {
-    //   this.router.navigate(['/signin']);
-    // }
+    const token=localStorage.getItem('token');
+    const admin=localStorage.getItem('isAdmin');
+    const expire = this.jwtHelper.isTokenExpired(token);
+    if(token==null || expire || admin==='0')
+    {
+      this.router.navigate(['/signin']);
+    }
     this.userid = JSON.parse(localStorage.getItem("userid"));
     this.addressForm = this.form.group({
       Door: [null, Validators.required],

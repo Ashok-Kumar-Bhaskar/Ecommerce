@@ -32,9 +32,17 @@ qtychange(newValue) {
   console.log(this.product.Quantity);
 } 
 
- constructor(private _snackBar: MatSnackBar,private dataservice:DataService) { }
+ constructor(private _snackBar: MatSnackBar,public jwtHelper: JwtHelperService, private router:Router,private dataservice:DataService) { }
 
  ngOnInit(): void {
+  const token=localStorage.getItem('token');
+  const admin=localStorage.getItem('isAdmin');
+  const expire = this.jwtHelper.isTokenExpired(token);
+  if(token==null || expire || admin==='1')
+  {
+    this.router.navigate(['/signin']);
+  }
+
    this.product = JSON.parse(localStorage.getItem("product"));
 
    document.getElementById("img").innerHTML = "<img src='data:image/jpg;base64," + this.product.Image + "'" + " style='height:100%'>" ;
@@ -102,6 +110,11 @@ qtychange(newValue) {
     this.dataservice.PutStock(this.product.Commodity_ID,this.product.Quantity).subscribe (
       res => {console.log(res);},
       error =>  console.log(error));
+  }
+
+  homePage()
+  {
+    this.router.navigate(['/home']);
   }
 }
 

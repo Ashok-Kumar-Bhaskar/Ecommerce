@@ -27,6 +27,14 @@ export class InvoiceComponent implements OnInit {
     constructor(private httpService: HttpClient,public jwtHelper: JwtHelperService, fb: FormBuilder, private dataservice : DataService, private router:Router) {}
 
   ngOnInit(): void {
+    const token=localStorage.getItem('token');
+    const admin=localStorage.getItem('isAdmin');
+    const expire = this.jwtHelper.isTokenExpired(token);
+    if(token==null || expire || admin==='1')
+    {
+      this.router.navigate(['/signin']);
+    }
+
     this.userid = JSON.parse(localStorage.getItem("userid"));
     this.dataservice.getOrdersList(this.userid).subscribe (
       result =>  {this.dataSource =result; console.log(result); },

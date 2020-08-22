@@ -3,6 +3,7 @@ import { DataService, lightTheme } from '../shared/data.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../models/user.model';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-add-user',
@@ -14,7 +15,7 @@ export class AddUserComponent implements OnInit {
   user: User = new User()
   emailRegx = /^(([^<>+()\[\]\\.,;:\s@"-#$%&=]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,3}))$/;
 
-  constructor(private dataservice: DataService, private form: FormBuilder,private router: Router) { }
+  constructor(private dataservice: DataService,public jwtHelper: JwtHelperService,  private form: FormBuilder,private router: Router) { }
 
   private setTheme(theme: {}) {
     Object.keys(theme).forEach(k =>
@@ -24,11 +25,13 @@ export class AddUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.setTheme(lightTheme);
-    // const token=localStorage.getItem('token');
-    // if(token==null)
-    // {
-    //   this.router.navigate(['/signin']);
-    // }
+    const token=localStorage.getItem('token');
+    const admin=localStorage.getItem('isAdmin');
+    const expire = this.jwtHelper.isTokenExpired(token);
+    if(token==null || expire || admin==='0')
+    {
+      this.router.navigate(['/signin']);
+    }
 
     this.signupForm = this.form.group({
       FirstName: ['', Validators.required],

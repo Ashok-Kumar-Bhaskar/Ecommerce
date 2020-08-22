@@ -12,7 +12,7 @@ import { Address } from '../models/address.model';
 
 export const darkTheme = {
   'primary-color': '#ffd6bd',
-  'background-color': '#455a64',
+  'background-color': '#4f6873',
   'foreground-color' : '#263238',
   'text-color': '#fff'
 };

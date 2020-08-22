@@ -28,6 +28,13 @@ export class SummaryComponent implements OnInit {
   constructor(private httpService: HttpClient,public jwtHelper: JwtHelperService, fb: FormBuilder, private dataservice : DataService, private router:Router) { }
 
   ngOnInit(): void {
+    const token=localStorage.getItem('token');
+    const admin=localStorage.getItem('isAdmin');
+    const expire = this.jwtHelper.isTokenExpired(token);
+    if(token==null || expire || admin==='1')
+    {
+      this.router.navigate(['/signin']);
+    }
     // this.address = JSON.parse(localStorage.getItem("Address"));
     this.payment = JSON.parse(localStorage.getItem("PaymentMode"));
     // this.shipmentAgent();

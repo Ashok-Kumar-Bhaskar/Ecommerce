@@ -42,6 +42,14 @@ export class OrderComponent implements OnInit {
   constructor(public dialog: MatDialog,private httpService: HttpClient,public jwtHelper: JwtHelperService, fb: FormBuilder, private dataservice : DataService, private router:Router) { }
 
   ngOnInit(): void {
+    const token=localStorage.getItem('token');
+    const admin=localStorage.getItem('isAdmin');
+    const expire = this.jwtHelper.isTokenExpired(token);
+    if(token==null || expire || admin==='1')
+    {
+      this.router.navigate(['/signin']);
+    }
+
     this.user = JSON.parse(localStorage.getItem("user"));
     this.userid = JSON.parse(localStorage.getItem("userid"));
     this.getAddress(this.user[0].User_ID);

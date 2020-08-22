@@ -40,18 +40,20 @@ export class HomeComponent implements OnInit {
   userid : number;
 
   constructor(private _snackBar: MatSnackBar,private ui : UiService,private httpService: HttpClient,public jwtHelper: JwtHelperService, fb: FormBuilder, private dataservice : DataService, private router:Router) {
-    this.ui.spin$.next(true);
+    
   }
 
 
   ngOnInit(): void {
+
     this.userRole = JSON.parse(localStorage.getItem("isAdmin"));
     this.userid = JSON.parse(localStorage.getItem("userid"));
     const token=localStorage.getItem('token');
     this.expire = this.jwtHelper.isTokenExpired(token);
-    if(token==null || this.expire ){
+    if(token==null || this.expire){
       this.router.navigate(['/signin']);
     }
+    this.ui.spin$.next(true);
     if(this.userRole == '0')
     {
       this.getProducts();

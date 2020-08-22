@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DataService } from '../shared/data.service';
 import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-add-category',
@@ -15,9 +16,17 @@ export class AddCategoryComponent implements OnInit {
   categoryForm : FormGroup;
   category : Category = new Category();
 
-  constructor(private _snackBar: MatSnackBar,private dataservice:DataService, private form: FormBuilder, private router: Router) { }
+  constructor(private _snackBar: MatSnackBar,private dataservice:DataService,public jwtHelper: JwtHelperService,  private form: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
+    const token=localStorage.getItem('token');
+    const admin=localStorage.getItem('isAdmin');
+    const expire = this.jwtHelper.isTokenExpired(token);
+    if(token==null || expire || admin==='0')
+    {
+      this.router.navigate(['/signin']);
+    }
+
     this.categoryForm = this.form.group({
       CategoryName : ['', Validators.required],
   });
@@ -32,8 +41,8 @@ export class AddCategoryComponent implements OnInit {
         error =>  {console.log(error)}
   );
   this._snackBar.open("Category Added", "Close", {
-    duration: 1000, verticalPosition: 'top',horizontalPosition: 'right',panelClass: ['red-snackbar'],});
-    this.categoryForm.reset();
+    duration: 1000, verticalPosition: 'top',horizontalPosition: 'right',panelClass: ['red-snackbar'],},);
+    window.location.reload();
     } 
     
     else {

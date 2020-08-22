@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Inventory } from '../models/inventory.model';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-add-product',
@@ -56,11 +57,19 @@ export class AddProductComponent implements OnInit {
   
 
 
-  constructor(private _snackBar: MatSnackBar,private dataservice:DataService, private form: FormBuilder, private router: Router) { }
+  constructor(private _snackBar: MatSnackBar,private dataservice:DataService,public jwtHelper: JwtHelperService,  private form: FormBuilder, private router: Router) { }
 
 
 
   ngOnInit(): void {
+    const token=localStorage.getItem('token');
+    const admin=localStorage.getItem('isAdmin');
+    const expire = this.jwtHelper.isTokenExpired(token);
+    if(token==null  || expire || admin==='0')
+    {
+      this.router.navigate(['/signin']);
+    }
+
     this.dataservice.getCategoriesList().subscribe (
       result =>  { this.categories = result; console.log(this.categories); },
       error =>  console.log(error));
@@ -87,20 +96,12 @@ export class AddProductComponent implements OnInit {
       this.updateProductValues();
       // tslint:disable-next-line:prefer-const
       this.dataservice.postProduct(this.product).subscribe (
-        result =>  {console.log(result); },
+        result =>  {console.log(result);
+        this.addToIventory(); },
         error =>  {console.log(error)});
-
-        this.dataservice.getProdID().subscribe (
-          result =>  {this.p_ID = result.Product_ID;
-            console.log(result); 
-            this.updateInventoryValues();},
-          error =>  {console.log(error)});
-
-        
-       
       this._snackBar.open("Product Added", "Close", {
       duration: 1000,verticalPosition: 'top',horizontalPosition: 'right',panelClass: ['red-snackbar'],});
-     
+      this.productForm.reset();
     } 
     
     else {
@@ -138,6 +139,14 @@ export class AddProductComponent implements OnInit {
       result =>  {console.log(result); },
       error =>  {console.log(error)});
       this.productForm.reset();
-
   }
+  addToIventory()
+  {
+    this.dataservice.getProdID().subscribe (
+      result =>  {this.p_ID = result.Product_ID;
+        console.log(result); 
+        this.updateInventoryValues();},
+      error =>  {console.log(error)});
+  }
+
 }

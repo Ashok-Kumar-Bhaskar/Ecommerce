@@ -7,6 +7,7 @@ import { Cart } from '../models/cart.model';
 import {FormsModule} from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-cart',
@@ -29,9 +30,17 @@ export class CartComponent implements OnInit {
 
 
 
-  constructor(private _snackBar: MatSnackBar,private dataservice : DataService, private router:Router) { }
+  constructor(private _snackBar: MatSnackBar,public jwtHelper: JwtHelperService, private dataservice : DataService, private router:Router) { }
 
   ngOnInit(): void {
+    const token=localStorage.getItem('token');
+    const admin=localStorage.getItem('isAdmin');
+    const expire = this.jwtHelper.isTokenExpired(token);
+    if(token==null  || expire|| admin==='1')
+    {
+      this.router.navigate(['/signin']);
+    }
+
     this.user = localStorage.getItem("isUsername") ;
     
     this.dataservice.getCartItems(this.user).subscribe(  

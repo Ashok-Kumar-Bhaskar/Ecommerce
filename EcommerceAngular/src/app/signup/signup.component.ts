@@ -25,11 +25,6 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
     this.setTheme(lightTheme);
-    // const token=localStorage.getItem('token');
-    // if(token==null)
-    // {
-    //   this.router.navigate(['/signin']);
-    // }
 
     this.signupForm = this.form.group({
       FirstName: ['', Validators.required],
@@ -66,7 +61,7 @@ export class SignupComponent implements OnInit {
     this.user.Username = this.signupForm.get('Username').value;
     this.user.Password = this.signupForm.get('Password').value;
     this.user.DefaultContact = this.signupForm.get('DefaultContact').value;
-    this.user.Role = "User";
+    this.user.Role = "Customer";
   }
 
   signIn()

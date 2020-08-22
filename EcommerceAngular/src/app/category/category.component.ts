@@ -26,7 +26,6 @@ export class CategoryComponent implements OnInit {
 
   productOfCategory : Product[] = [];
 
-  expire : boolean;
   cartid : number;
   item : Item = new Item();
   user : User;
@@ -38,15 +37,17 @@ export class CategoryComponent implements OnInit {
   
 
   constructor(private _snackBar: MatSnackBar,private ui : UiService,private httpService: HttpClient,public jwtHelper: JwtHelperService, fb: FormBuilder, private dataservice : DataService, private router:Router) {
-    this.ui.spin$.next(true);
+    
   }
 
   ngOnInit(): void {
     const token=localStorage.getItem('token');
-    this.expire = this.jwtHelper.isTokenExpired(token);
-    if(token==null || this.expire ){
+    const admin=localStorage.getItem('isAdmin');
+    const expire = this.jwtHelper.isTokenExpired(token);
+    if(token==null || expire || admin==='1'){
       this.router.navigate(['/signin']);
     }
+    this.ui.spin$.next(true);
     this.getProducts();
     this.getCategories();
 
