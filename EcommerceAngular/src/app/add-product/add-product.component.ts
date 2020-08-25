@@ -128,19 +128,22 @@ export class AddProductComponent implements OnInit {
     this.product.Category_ID = this.cat_ID;
     this.product.IsDeleted = false;
     this.product.Image = this.img;
+    this.product.Stock = this.productForm.get('Stock').value;
+    this.product.Price = this.productForm.get('Price').value;
   }
 
   updateInventoryValues()
   {
     this.inventory.Product_ID = this.p_ID;
     this.inventory.Seller_ID = this.Seller_ID;
-    this.inventory.Stock = this.productForm.get('Stock').value;
-    this.inventory.Price = this.productForm.get('Price').value;
+    this.inventory.Stock = this.product.Stock;
+    this.inventory.Price = this.product.Price;
 
     this.dataservice.postInventory(this.inventory).subscribe (
       result =>  {console.log(result); },
       error =>  {console.log(error)});
       this.productForm.reset();
+      this.router.navigate(['/inventory']);
   }
   addToIventory()
   {

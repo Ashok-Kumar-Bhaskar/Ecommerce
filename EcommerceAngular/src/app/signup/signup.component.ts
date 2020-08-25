@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { User } from '../models/user.model';
 import { Router } from '@angular/router';
 import { DataService, lightTheme } from '../shared/data.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-signup',
@@ -15,7 +16,7 @@ export class SignupComponent implements OnInit {
   user: User = new User()
   emailRegx = /^(([^<>+()\[\]\\.,;:\s@"-#$%&=]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,3}))$/;
 
-  constructor(private dataservice: DataService, private form: FormBuilder,private router: Router) { }
+  constructor(private _snackBar: MatSnackBar,private dataservice: DataService, private form: FormBuilder,private router: Router) { }
 
   private setTheme(theme: {}) {
     Object.keys(theme).forEach(k =>
@@ -41,15 +42,17 @@ export class SignupComponent implements OnInit {
       this.updateUserValues();
       // tslint:disable-next-line:prefer-const
       this.dataservice.postSignupForm(this.user).subscribe (
-          result =>  {console.log(result); },
-          error =>  console.log(error)
+          result =>  {console.log(result);    this.router.navigate(['/signin']);},
+          error =>  { console.log(error); this._snackBar.open("Username Already Exists", "Close", {
+            duration: 2000,verticalPosition: 'top',horizontalPosition: 'right',panelClass: ['red-snackbar'],});}
     );
     this.signupForm.reset();
-    
-    this.router.navigate(['/signin']);
+  
     } 
     else {
       console.log("invalid");
+      this._snackBar.open("Please fill in all mandatory fields", "Close", {
+        duration: 2000,verticalPosition: 'top',horizontalPosition: 'right',panelClass: ['red-snackbar'],});
     }
   }
 

@@ -15,6 +15,7 @@
             <mat-list-item role="listitem" id="seller"> Seller : {{product.SellerName}} </mat-list-item>
             <mat-list-item role="listitem" class="button-container"><span>Quantity : </span>
             <input mat-input type="number" id="qty" value = {{product.Quantity}} [ngModel]="product.Quantity" (ngModelChange)="qtychange($event)" step="1" min="1" max="10" required></mat-list-item>
+            <mat-list-item *ngIf = "product.Stock<5" class="danger"> Hurry!!! Only {{product.Stock}} more left!!</mat-list-item>
             <mat-list-item role="listitem" id="seller"><a mat-button (click)="checkQuantity()">Add To Cart <mat-icon>shopping_cart</mat-icon></a></mat-list-item>
   
         </mat-list>

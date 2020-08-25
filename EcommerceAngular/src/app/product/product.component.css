@@ -16,7 +16,7 @@
     width: 40%;
     margin-top: 5%;
     margin-right: 10%;
-
+    margin-bottom: 5%;
 }
 
 .image{
@@ -32,6 +32,10 @@ table {
     box-shadow: none;
     padding: 20px;
   }
+
+.danger{
+    color: red;
+}
 
   
   .button-container

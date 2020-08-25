@@ -10,3 +10,11 @@
     margin-left: 45%;
     margin-bottom: 5%;
 }
+
+.positive {
+    background-color: #00ff08 !important;
+}
+
+.negative {
+    background-color: red !important;
+}

@@ -29,7 +29,7 @@ export class AddAddressComponent implements OnInit {
     const token=localStorage.getItem('token');
     const admin=localStorage.getItem('isAdmin');
     const expire = this.jwtHelper.isTokenExpired(token);
-    if(token==null || expire || admin==='0')
+    if(token==null || expire || admin==='1')
     {
       this.router.navigate(['/signin']);
     }
@@ -71,6 +71,7 @@ export class AddAddressComponent implements OnInit {
   goBack()
   {
     this.router.navigate(['/order']);
+    window.location.reload();
   }
   updateAddressValues()
   {

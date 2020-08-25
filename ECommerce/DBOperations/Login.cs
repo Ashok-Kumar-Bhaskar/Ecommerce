@@ -50,26 +50,6 @@ namespace ECommerce.DBOperations
       }
     }
 
-    public static int SaveToDB(User user) //Check Saving to DB exists in the DB
-    {
-      try
-      {
-        using (ECommerceEntities db = new ECommerceEntities())
-        {
-          
-          db.Users.Add(user);
-          int flag = db.SaveChanges();
-          return flag;
-
-        }
-      }
-      catch (Exception ex)
-      {
-        LogFile.WriteLog(ex);
-        return -1;
-      }
-    }
-
     public User FindUser(string givenUsername)
     {
       try
@@ -84,7 +64,7 @@ namespace ECommerce.DBOperations
       }
     }
 
-    public bool? IsUsernameExist(string givenUsername)
+    public bool IsUsernameExist(string givenUsername)
     {
       try {
           var result = db.Users.Where(u => u.Username == givenUsername).FirstOrDefault();

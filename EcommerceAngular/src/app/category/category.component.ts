@@ -111,15 +111,20 @@ export class CategoryComponent implements OnInit {
 
   addToItems(ps)
   {
-    this.cartid = this.user[0].Cart_ID;
-    console.log(this.cartid);
-    this.dataservice.GetCartCommodityID(this.cartid,ps.Commodity_ID).subscribe (
-      res =>  { this.flag = res;
-        console.log(this.flag);
-        this.addToCart(ps);},
-      error =>  console.log(error));
-
-     
+    if(ps.Stock>0)
+    {
+      this.cartid = this.user[0].Cart_ID;
+      console.log(this.cartid);
+      this.dataservice.GetCartCommodityID(this.cartid,ps.Commodity_ID).subscribe (
+        res =>  { this.flag = res;
+          console.log(this.flag);
+          this.addToCart(ps);},
+        error =>  console.log(error));
+    }
+    else{
+      this._snackBar.open("Stock Not Available", "Close", {
+        duration: 2000,verticalPosition: 'top',horizontalPosition: 'right',panelClass: ['red-snackbar'],});
+    }   
   }
 
   addToCart(ps)

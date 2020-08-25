@@ -36,9 +36,10 @@ namespace ECommerce.Controllers
     [Route("api/PostUser")]
     public IHttpActionResult PostUser(User user)
     {
+      Login l = new Login();
       try
       {
-        if (!ModelState.IsValid)
+        if (!ModelState.IsValid || l.IsUsernameExist(user.Username))
         {
           return BadRequest(ModelState);
         }

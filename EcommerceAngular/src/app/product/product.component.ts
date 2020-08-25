@@ -62,6 +62,11 @@ qtychange(newValue) {
       this._snackBar.open("Please enter Quantity", "Close", {
         duration: 2000,verticalPosition: 'top',horizontalPosition: 'right',panelClass: ['red-snackbar'],});
     }
+    else if(this.product.Quantity>this.product.Stock)
+    {
+      this._snackBar.open("Stock Not Available", "Close", {
+        duration: 2000,verticalPosition: 'top',horizontalPosition: 'right',panelClass: ['red-snackbar'],});
+    }
     else{
       this.addToItems();
     }
